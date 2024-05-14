@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCZ-YvGGlTSZh1IcX9OraGn_csnPfpRlM4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>319710447950</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.gomeet</string>
+	<key>PROJECT_ID</key>
+	<string>redbus-3ec46</string>
+	<key>STORAGE_BUCKET</key>
+	<string>redbus-3ec46.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:319710447950:ios:5dab8f87f8ca013aa2f61f</string>
+</dict>
+</plist>

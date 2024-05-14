@@ -1,0 +1,248 @@
+{
+  "Please don`t press back until the transaction is complete" : "من فضلك لا تضغط مرة أخرى حتى تكتمل المعاملة",
+  "SUCCESS PAYMENT" : "الدفع الناجح",
+  "Something went wrong," : "هناك خطأ ما،",
+  "Tap to retry" : "إضغط لإعادة المحاولة",
+  "Payment Completed" : "تم التسديد",
+  "Inappropriate Content" : "محتوى غير لائق",
+  "Violation of Terms" : "انتهاك الشروط",
+  "Offensive Language" : "لغة بذيئة",
+  "Disrespectful Behavior" : "السلوك غير المحترم",
+  "Threats" : "التهديدات",
+  "Catfishing" : "صيد القطط",
+  "Unwanted Advances" : "التقدم غير المرغوب فيه",
+  "Unsolicited Explicit Content" : "المحتوى الصريح غير المرغوب فيه",
+  "Privacy Concerns" : "مخاوف الخصوصية",
+  "Scam or Spam" : "احتيال أو البريد المزعج",
+  "Something else" : "شيء آخر",
+  "They will not be able to find your profile and send you messages." : "لن يتمكنوا من العثور على ملفك الشخصي وإرسال رسائل إليك.",
+  "Blocking" : "الحظر",
+  "They will not be notified if you block them." : "لن يتم إخطارهم إذا قمت بحظرهم.",
+  "You can unblock them anytime in Settings." : "يمكنك إلغاء حظرهم في أي وقت في الإعدادات.",
+  "Cancel" : "يلغي",
+  "Yes, Block" : "نعم بلوك",
+  "Block" : "حاجز",
+  "Why did you report this user?" : "لماذا قمت بالإبلاغ عن هذا المستخدم؟",
+  "Reporting" : "إعداد التقارير",
+  "Continue" : "يكمل",
+  "Report" : "تقرير",
+  "Something Want Wrong" : "شيء يريد خطأ",
+  "Say Something.." : "قل شيئا..",
+  "No messages here yet..." : "لا توجد رسائل هنا بعد...",
+  "Send a message or tap on the greeting below" : "أرسل رسالة أو اضغط على الترحيب أدناه",
+  "Please wait for user to join" : "يرجى الانتظار حتى ينضم المستخدم",
+  "Ringing.." : "رنين..",
+  "Sign in" : "تسجيل الدخول",
+  "Welcome back! Please enter your details." : "مرحبًا بعودتك! الرجاء إدخال التفاصيل الخاصة بك.",
+  "Email or MobileNumber" : "البريد الإلكتروني أو رقم الجوال",
+  "Password" : "كلمة المرور",
+  "Forgot password? " : "هل نسيت كلمة السر؟",
+  "Reset it" : "إعادة تعيينها",
+  "Enter Number" : "أدخل رقم",
+  "Mobile Number" : "رقم الهاتف المحمول",
+  "Please enter your mobile number" : "الرجاء إدخال رقم هاتفك المحمول",
+  "Number Not Exist" : "الرقم غير موجود",
+  "Sign In" : "تسجيل الدخول",
+  "Connect with Google" : "تواصل مع جوجل",
+  "Connect with Facebook" : "تواصل مع الفيسبوك",
+  "Connect with Apple" : "تواصل مع أبل",
+  "You’ve seen everyone in your filters" : "لقد رأيت الجميع في مرشحاتك",
+  "To give you another chance, we’re showing you everyone again." : "ولإعطائك فرصة أخرى، نعرض لك الجميع مرة أخرى.",
+  "We’ll always show you new and unseen profiles first." : "سنعرض لك دائمًا الملفات الشخصية الجديدة وغير المرئية أولاً.",
+  "Unverify" : "إلغاء التحقق",
+  "Verify" : "يؤكد",
+  "Reset" : "إعادة ضبط",
+  "Apply" : "يتقدم",
+  "Filter & Show" : "تصفية وعرض",
+  "Distance Range" : "نطاق المسافة",
+  "KM" : "كم",
+  "Age Range" : "الفئة العمرية",
+  "Search Preference" : "تفضيلات البحث",
+  "Interests" : "الإهتمامات",
+  "Languages I Know" : "اللغات التي أعرفها",
+  "Religion" : "دِين",
+  "Relationship Goals" : "أهداف العلاقة",
+  "Verify Profile" : "التحقق من الملف الشخصي",
+  "Explore" : "يستكشف",
+  "Match" : "مباراة",
+  "Away" : "بعيد",
+  "UNLIKE" : "على عكس",
+  "LIKE" : "يحب",
+  "Home" : "بيت",
+  "Maps" : "خرائط",
+  "Chats" : "الدردشات",
+  "Profile" : "حساب تعريفي",
+  "Search.." : "يبحث..",
+  "No contact, yet." : "لا يوجد اتصال، حتى الآن.",
+  "No messages in your inbox.Start chatting with people around you." : "لا توجد رسائل في صندوق الوارد الخاص بك. ابدأ الدردشة مع الأشخاص من حولك.",
+  "User Not Found" : "لم يتم العثور على المستخدم",
+  "User granted permission" : "تم منح المستخدم الإذن",
+  "User granted provisional permission" : "تم منح المستخدم إذنًا مؤقتًا",
+  "User declined or has not accepted permission" : "رفض المستخدم الإذن أو لم يقبله",
+  "Hello" : "مرحبًا",
+  "No New Profiles" : "لا توجد ملفات تعريف جديدة",
+  "Change your preferences to expand your search and see new profiles." : "قم بتغيير تفضيلاتك لتوسيع نطاق البحث ورؤية الملفات الشخصية الجديدة.",
+  "Change my preferences" : "تغيير تفضيلاتي",
+  "Refresh" : "ينعش",
+  "Premium" : "غالي",
+  "Your admirers haven't noticed you yet" : "المعجبون بك لم يلاحظوك بعد",
+  "Find here people who are intrested in you react on their profile for Crusher and to disccus in the maintime, put all the chances on your side with a great profile!" : "ابحث هنا عن الأشخاص المهتمين بك الذين يتفاعلون مع ملفهم الشخصي لـ Crusher ويمارسون المناقشة في الوقت الرئيسي، ضع كل الفرص في صفك من خلال ملف تعريف رائع!",
+  "Improve my profile" : "تحسين ملفي الشخصي",
+  "Boost your profile" : "تعزيز ملف التعريف الخاص بك",
+  "Location (Within " : "الموقع (داخل",
+  " km)" : "  كم)",
+  "Edit" : "يحرر",
+  "Notifications" : "إشعارات",
+  "Update" : "تحديث",
+  "Nick name" : "كنية",
+  "First Name" : "الاسم الأول",
+  "Email" : "بريد إلكتروني",
+  "Radius" : "نصف القطر",
+  " KM" : "  كم",
+  "Birthdate" : "تاريخ الميلاد",
+  "Bio" : "السيرة الذاتية",
+  "Gender" : "جنس",
+  "Ok" : "نعم",
+  "Height" : "ارتفاع",
+  "New" : "جديد",
+  "Submit" : "يُقدِّم",
+  "Here is a chance to add height to your profile" : "هذه فرصة لإضافة ارتفاع إلى ملفك الشخصي",
+  "cm" : "سم",
+  "Awesome" : "مذهل",
+  "OTP Invalid" : "كلمة المرور لمرة واحدة غير صالحة",
+  "You and " : "انت و",
+  " liked each other!" : "  أحب بعضنا البعض!",
+  "Send a message" : "ارسل رسالة",
+  "Keep Swiping" : "استمر في الضرب",
+  "Upgrade" : "يرقي",
+  "You're Activated Membership!" : "لقد تم تفعيل العضوية!",
+  "Payment method" : "طريقة الدفع او السداد",
+  "transaction id" : "رقم المعاملة",
+  "Date of Purchase" : "تاريخ الشراء",
+  "Date of Expiry" : "تاريخ الانتهاء",
+  "Membership Amount" : "مبلغ العضوية",
+  "Not Valid" : "غير صالح",
+  "Payment Successfully" : "تم الدفع بنجاح",
+  "Select Plan" : "اختر خطة",
+  "Active" : "نشيط",
+  "Add Your payment information" : "أضف معلومات الدفع الخاصة بك",
+  "What number is written on card?" : "ما هو الرقم المكتوب على البطاقة؟",
+  "Number" : "رقم",
+  "Number behind the card" : "الرقم خلف البطاقة",
+  "CVV" : "CVV",
+  "MM/YY" : "مم / سنة",
+  "Expiry Date" : "تاريخ الانتهاء",
+  "Please fix the errors in red before submitting." : "يرجى إصلاح الأخطاء باللون الأحمر قبل الإرسال.",
+  "Payment card is valid" : "بطاقة الدفع صالحة",
+  "Something went Wrong....!!!" : "هناك خطأ ما....!!!",
+  "From where do you want to take the photo?" : "من أين تريد التقاط الصورة؟",
+  "Unblock" : "رفع الحظر",
+  "Faq" : "التعليمات",
+  "Get Photo Verified" : "الحصول على التحقق من الصورة",
+  "We want to know it`s really you." : "نريد أن نعرف أنه أنت حقًا.",
+  "Tack a quick video selfie" : "التقط صورة سيلفي فيديو سريعة",
+  "Confirm you`re the person in your photos." : "أكد أنك الشخص الموجود في صورك.",
+  "Before you continue..." : "قبل أن تستمر...",
+  "Prep your lighting" : "إعداد الإضاءة الخاصة بك",
+  "Choose a well-lit environment" : "اختر بيئة مضاءة جيدًا",
+  "Turn up your brightness" : "ارفع سطوعك",
+  "Show your face" : "أظهر وجهك",
+  "Face the camera directly" : "واجه الكاميرا مباشرة",
+  "Remove hats, sunglasses, and face coverings" : "قم بإزالة القبعات والنظارات الشمسية وأغطية الوجه",
+  "Get ready for" : "كن جاهز ل",
+  "your image selfie" : "صورتك الشخصية",
+  "Make sure to frame your face in the oval, then tap  'i`m ready'!" : "تأكد من تحديد إطار وجهك بشكل بيضاوي، ثم اضغط على ",
+  "i m ready" : "أنا مستعد",
+  "Maybe Later" : "ربما في وقت لاحق",
+  "verification Under" : "التحقق تحت",
+  "We are currently reviewing your selfies and will get back to you shortly!" : "نحن نقوم حاليًا بمراجعة صورك الشخصية وسنعود إليك قريبًا!",
+  "OKAY" : "تمام",
+  "Gallery" : "صالة عرض",
+  "did not pick an image!!" : "لم اختر صورة!!",
+  "Camera" : "آلة تصوير",
+  "Join Our Membership Today!" : "انضم إلى عضويتنا اليوم!",
+  "Enjoy  premium and match anywhere." : "استمتع بالمتميز والمطابقة في أي مكان.",
+  "Checkout GoMeet Premium" : "الخروج من GoMeet بريميوم",
+  "Go" : "يذهب",
+  "Profile & Privacy" : "الملف الخصوصية",
+  "The people you blocked are displayed here." : "يتم عرض الأشخاص الذين قمت بحظرهم هنا.",
+  "Push Notifications (4)" : "إشعارات الدفع (4)",
+  "Dark Mode" : "الوضع المظلم",
+  "Pages" : "الصفحات",
+  "Help Center" : "مركز المساعدة",
+  "Account & Security" : "أمن الحساب",
+  "Invite Friends" : "ادعو أصدقاء",
+  "Delete Account" : "حذف الحساب",
+  "Logout" : "تسجيل خروج",
+  "Are you sure you want to delete account?" : "هل أنت متأكد أنك تريد حذف الحساب؟",
+  "Find Your Spark: Where Connections Ignite." : "ابحث عن شرارتك: حيث تشتعل الاتصالات.",
+  "Connecting Hearts, One Swipe at a Time" : "ربط القلوب، تمريرة واحدة في كل مرة",
+  "Discover, Connect, Love: Your Journey Starts Here" : "اكتشف، تواصل، حب: رحلتك تبدأ هنا",
+  "It’s match" : "إنها مباراة",
+  "Man" : "رجل",
+  "Woman" : "امرأة",
+  "Other" : "آخر",
+  "Both" : "كلاهما",
+  "We have sent the OTP to" : "لقد أرسلنا OTP إلى",
+  "Confirm Password" : "تأكيد كلمة المرور",
+  "Confirm" : "يتأكد",
+  "Password Not Match" : "كلمة السر ليست جيدة",
+  "MALE" : "ذكر",
+  "FEMALE" : "أنثى",
+  "OTHER" : "آخر",
+  "BOTH" : "كلاهما",
+  "Let's dive in into your account!" : "دعنا نتعمق في حسابك!",
+  "Continue with Email/Mobile Number" : "تواصل مع البريد الإلكتروني / رقم الهاتف المحمول",
+  "I have an account? " : "لدي حساب؟",
+  "Please Enter Name" : "الرجاء إدخال الاسم",
+  "Please Enter Email" : "الرجاء إدخال البريد الإلكتروني",
+  "Please Enter Password" : "الرجاء إدخال كلمة المرور",
+  "Please Enter MobileNumber" : "الرجاء إدخال رقم الجوال",
+  "Please Enter BirthDate" : "الرجاء إدخال تاريخ الميلاد",
+  "Please Select Gender" : "يرجى تحديد الجنس",
+  "Please Select Relationship Goals" : "الرجاء تحديد أهداف العلاقة",
+  "Please Select Nearby" : "الرجاء تحديد قريب",
+  "Please Select Hobies" : "الرجاء تحديد الهوايات",
+  "Please Select Language" : "الرجاء اختيار اللغة",
+  "Please Select Religion" : "الرجاء تحديد الدين",
+  "Please Select Minimum 3 Images" : "الرجاء تحديد الحد الأدنى 3 صور",
+  "Can you elaborate on your identity? 😎" : "هل يمكنك توضيح هويتك؟ 😉",
+  "It will Display on your Profile and you will not able to change it later" : "سيتم عرضه في ملف التعريف الخاص بك ولن تتمكن من تغييره لاحقًا",
+  "Frist Name" : "الاسم الأول",
+  "Your GoMeet identity 😎" : "هوية GoMeet الخاصة بك 😉",
+  "Add your phone number and your job to tell others what you do for a living." : "أضف رقم هاتفك ووظيفتك لتخبر الآخرين بما تفعله لكسب لقمة العيش.",
+  "Let's celebrate you 🎂" : "دعونا نحتفل بكم 🎂",
+  "Tell us your birthdate. Your profile does not display your birthdate, only your age." : "أخبرنا بتاريخ ميلادك. ملفك الشخصي لا يعرض تاريخ ميلادك، بل عمرك فقط.",
+  "Choose the gender that best represents you. Authenticity is key to meaningful connections." : "اختر الجنس الذي يمثلك بشكل أفضل. الأصالة هي مفتاح الاتصالات ذات المغزى.",
+  "Be true to yourself 🌟" : "كن صادقاً مع نفسك 🌟",
+  "Your relationship goals 💘" : "أهداف علاقتك 💘",
+  "Choose the type of relationship you're seeking on Datify. Love, friendship, or something in between—it's your choice." : "اختر نوع العلاقة التي تبحث عنها على Datify. الحب أو الصداقة أو أي شيء بينهما – إنه اختيارك.",
+  "Find matches nearby📍" : "ابحث عن التطابقات القريبة📍",
+  "Distance Preference" : "تفضيل المسافة",
+  "Select your preferred distance range to discover matches conveniently. We'll help you find love close by." : "حدد نطاق المسافة المفضل لديك لاكتشاف التطابقات بسهولة. سنساعدك في العثور على الحب بالقرب منك.",
+  "Discover like-minded people 🤗" : "اكتشف الأشخاص ذوي التفكير المماثل 🤗",
+  "Share your interests, passions, and hobbies. We'll connect you with people who share your enthusiasm." : "شارك اهتماماتك وعواطفك وهواياتك. سنقوم بتوصيلك بالأشخاص الذين يشاركونك حماسك.",
+  "Search." : "يبحث.",
+  "Do you know which languages? 🗺️" : "هل تعرف أي اللغات؟ 🗺️",
+  "Select your country of origin. We will verify your identity in the next step of your residence." : "اختر بلدك الأصلي. سوف نتحقق من هويتك في الخطوة التالية من إقامتك.",
+  "Discover religion 🤗" : "اكتشف الدين 🤗",
+  "Search Preference 🌟" : "تفضيلات البحث 🌟",
+  "Show your best self 📸" : "أظهر أفضل ما لديك 📸",
+  "Upload up to six of your best photos or video to make a fantastic first impression. Let your personality shine." : "قم بتحميل ما يصل إلى ستة من أفضل الصور أو مقاطع الفيديو لديك لترك انطباع أول رائع. دع شخصيتك تتألق.",
+  "Let's Start" : "لنبدأ",
+  "Skip" : "يتخطى",
+  "Next" : "التالي",
+  "Recover your account using your email address" : "قم باسترداد حسابك باستخدام عنوان بريدك الإلكتروني",
+  "Example@gmail.com" : "example@gmail.com",
+  "We'll email you a link to connect to your account" : "سنرسل إليك رابطًا عبر البريد الإلكتروني للاتصال بحسابك",
+  "Push Notifications" : "دفع الإخطارات",
+  "New Matches" : "مباريات جديدة",
+  "You just got a new match." : "لقد حصلت للتو على مباراة جديدة.",
+  "Message" : "رسالة",
+  "Someone sent you a new message." : "أرسل لك شخص ما رسالة جديدة.",
+  "Message Likes" : "إعجابات الرسالة",
+  "Someone liked your message." : "شخص ما أحب رسالتك.",
+  "Super Likes" : "الإعجابات الفائقة",
+  "You`ve been Super Liked." : "لقد كنت معجبًا جدًا.",
+  "Language" : "لغة"
+}
