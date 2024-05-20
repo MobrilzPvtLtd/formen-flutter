@@ -56,7 +56,7 @@ dependencies:
   cached_network_image: ^3.3.1
   flutter_localization: ^0.2.0
   lottie: ^3.1.0
-  cloud_firestore: ^4.13.4
+  cloud_firestore: ^4.17.3
   firebase_messaging: ^14.7.7
   flutter_local_notifications: ^9.7.0
   intl: ^0.18.1

@@ -33,12 +33,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+  
   late HomeProvider homeProvider;
   late EditProfileProvider editProfileProvider;
 
   @override
   void initState() {
     super.initState();
+   StackTrace;
     BlocProvider.of<HomePageCubit>(context).initforHome(context);
     homeProvider = Provider.of<HomeProvider>(context, listen: false);
     editProfileProvider = Provider.of<EditProfileProvider>(context, listen: false);
@@ -71,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    StackTrace;
     homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
       appBar:  PreferredSize(

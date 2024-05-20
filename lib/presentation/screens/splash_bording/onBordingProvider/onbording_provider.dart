@@ -82,19 +82,19 @@ class OnBordingProvider with ChangeNotifier {
   List onBordingData = [
     {
       "title": "Find Your Spark: Where Connections Ignite.",
-      "image": "assets/Image/onborading3.png",
+      "image": "assets/Image/mainHomeBackground.jpg",
     },
     {
       "title": "Connecting Hearts, One Swipe at a Time",
-      "image": "assets/Image/onborading1.png",
+      "image": "assets/Image/mainMembrosBackground.jpg",
     },
     {
       "title": "Discover, Connect, Love: Your Journey Starts Here",
-      "image": "assets/Image/onborading2.png",
+      "image": "assets/Image/mainHomeBackground.jpg",
     },
     {
       "title": "It’s match",
-      "image": "assets/Image/onborading4.png",
+      "image": "assets/Image/mainMembrosBackground.jpg",
     }
   ];
 

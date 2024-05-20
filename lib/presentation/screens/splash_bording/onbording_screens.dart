@@ -19,6 +19,8 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   late OnBordingProvider onBordingProvider;
   @override
   Widget build(BuildContext context) {
+   final height =MediaQuery.of(context).size.height;
+   final width =MediaQuery.of(context).size.width;
     onBordingProvider = Provider.of<OnBordingProvider>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
@@ -34,9 +36,9 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             itemBuilder: (context, index){
               return Container(
                 decoration:  BoxDecoration(
-                  image: DecorationImage(image: AssetImage(onBordingProvider.onBordingData[index]["image"]))
+                  image: DecorationImage(image: AssetImage(onBordingProvider.onBordingData[index]["image"]),fit: BoxFit.cover)
                 ),
-                height: MediaQuery.of(context).size.height,width: MediaQuery.of(context).size.width,);
+                height: height*0.4,width: width*0.4,);
             }
           ),
           Padding(
@@ -63,7 +65,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                   ),
                   const SizedBox(height: 10,),
-                  Text(onBordingProvider.onBordingData[onBordingProvider.onboradingCurrent]["title"],style: Theme.of(context).textTheme.headlineSmall,textAlign: TextAlign.center,maxLines: 2),
+                  Text(onBordingProvider.onBordingData[onBordingProvider.onboradingCurrent]["title"],style:TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 40) ),
                   const SizedBox(height: 20,),
                    onBordingProvider.onboradingCurrent == onBordingProvider.onBordingData.length-1 ?   Row(
                      mainAxisAlignment: MainAxisAlignment.center,
@@ -74,7 +76,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                              Navigator.pushNamedAndRemoveUntil(context, AuthScreen.authScreenRoute, (route) => false);
                            },
                            // child: Text("Skip".tr,style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),textAlign: TextAlign.center,))),
-                           child: Text(AppLocalizations.of(context)?.translate("Skip") ?? "Skip",style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),textAlign: TextAlign.center,))
+                           child: Text(AppLocalizations.of(context)?.translate("Skip") ?? "Skip",textAlign: TextAlign.center,style: const TextStyle(fontWeight: FontWeight.w700,color: Colors.white,fontSize: 25,)))
                        ),
                        Expanded(
                          child: MainButton(title: AppLocalizations.of(context)?.translate("Let's Start") ?? "Let's Start",radius: 80,onTap: () {
@@ -89,7 +91,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           Navigator.pushNamedAndRemoveUntil(context, AuthScreen.authScreenRoute, (route) => false);
                         },
                         // child: Text("Skip".tr,style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),textAlign: TextAlign.center,))),
-                        child: Text(AppLocalizations.of(context)?.translate("Skip") ?? "Skip",style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),textAlign: TextAlign.center,))
+                        child: Text(AppLocalizations.of(context)?.translate("Skip") ?? "Skip",textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w600)))
                     ),
                      // Expanded(child: MainButton(title: "Next".tr,radius: 80,onTap: () {
                      Expanded(child: MainButton(title: AppLocalizations.of(context)?.translate("Next") ?? "Next",radius: 80,onTap: () {

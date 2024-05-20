@@ -75,6 +75,7 @@ class HomeProvider extends ChangeNotifier {
   }
 
   localData(context) {
+    StackTrace;
     Preferences.fetchUserDetails().then((value) {
       userlocalData = userModelFromJson(value);
       lat = Provider.of<OnBordingProvider>(context, listen: false).lat;
@@ -91,6 +92,7 @@ class HomeProvider extends ChangeNotifier {
   bool isedit = true;
 
   updateisEdit() {
+    StackTrace;
     isedit =!isedit;
     notifyListeners();
   }

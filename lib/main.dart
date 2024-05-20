@@ -16,6 +16,7 @@ import 'package:dating/presentation/firebase/vc_provider.dart';
 import 'package:dating/presentation/screens/AudioCall/audiocall_provider.dart';
 import 'package:dating/presentation/screens/BottomNavBar/chats.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
+import 'package:dating/presentation/screens/BottomNavBar/home_screen.dart';
 import 'package:dating/presentation/screens/BottomNavBar/match/matchprovider.dart';
 import 'package:dating/presentation/screens/other/editProfile/editprofile_provider.dart';
 import 'package:dating/presentation/screens/other/likeMatch/likematch_provider.dart';

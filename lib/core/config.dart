@@ -1,16 +1,21 @@
 class Config {
 
-  static const String agoraVcKey = "*******************************";
+  static const String agoraVcKey = "942c66d6342c4468a94c41b04db60b20";
 
 
   static const Map<String, dynamic> header = {
     "Content-Type": "application/json"
   };
 
-  static const String firebaseKey = '******************************************';
+  static const String firebaseKey = 'AAAA85FrdeA:APA91bHuTdwMGWrT0rzGUGHTwJcB4yqNepra4QFutzJxybCfKOto8pEgbbglIG8kRrRpC02y3K9OSe-dXcNNEIUkVCAdPTOm6WJMGePSH4UiwzqMKr4SPIsDPdkav4vHH5kF2XuUlzyZ';
   static const String notificationUrl = 'https://fcm.googleapis.com/fcm/send';
-  static const String baseUrl = "https://gomeet.cscodetech.cloud/";
-  static const String baseUrlApi = "https://gomeet.cscodetech.cloud/api";
+  static const String baseUrl = "https://formen.ultimatetrueweb.com";
+  static const String baseUrlApi = "https://formen.ultimatetrueweb.com/api";
+
+
+
+  
+
 
 
 
@@ -52,6 +57,6 @@ class Config {
   static const String identifyapi = "/identity_doc.php";
 
 
-  static String oneSignel = "***********************************";
+  static String oneSignel = "7db21887-2378-483a-81b9-cee6239fac8d";
 
 }

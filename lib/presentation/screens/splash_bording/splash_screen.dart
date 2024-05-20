@@ -26,7 +26,7 @@ class _SplashScreenState extends State<SplashScreen> {
         children: [
 
           Center(
-              child: SvgPicture.asset("assets/Image/appLogo.svg",height:60,width: 60,)),
+              child: Image.asset("assets/Image/Isotipo.png",height:80,width: 80,)),
 
         ],
       ),

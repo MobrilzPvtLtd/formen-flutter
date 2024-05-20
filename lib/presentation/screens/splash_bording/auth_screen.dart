@@ -47,16 +47,19 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
 
           const ImageSlider(
             imageUrls: [
-              'https://images.pexels.com/photos/16355930/pexels-photo-16355930/free-photo-of-woman-with-a-bunch-of-red-roses-and-a-man-walking-holding-hands.jpeg',
-              'https://images.pexels.com/photos/16355931/pexels-photo-16355931/free-photo-of-woman-with-a-bunch-of-red-roses-and-a-man-walking-holding-hands.jpeg',
-              'https://images.pexels.com/photos/16355932/pexels-photo-16355932/free-photo-of-woman-with-a-bunch-of-red-roses-and-a-man-walking-holding-hands.jpeg',
-            ],
+            //   'https://images.pexels.com/photos/16355930/pexels-photo-16355930/free-photo-of-woman-with-a-bunch-of-red-roses-and-a-man-walking-holding-hands.jpeg',
+            //   'https://images.pexels.com/photos/16355931/pexels-photo-16355931/free-photo-of-woman-with-a-bunch-of-red-roses-and-a-man-walking-holding-hands.jpeg',
+            //   'https://images.pexels.com/photos/16355932/pexels-photo-16355932/free-photo-of-woman-with-a-bunch-of-red-roses-and-a-man-walking-holding-hands.jpeg',
+             "assets/Image/mainHomeBackground.jpg",
+             "assets/Image/mainMembrosBackground.jpg"
+             
+             ],
           ),
 
           Positioned(
             bottom: 0,
             child: Container(
-              height: MediaQuery.of(context).size.height ,
+              height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -64,8 +67,8 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                   end: Alignment.bottomCenter,
                   stops: const [0.1, 1, 1.3],
                   colors: [
-                    Colors.transparent,
-                    AppColors.appColor.withOpacity(0.8),
+                    Colors.white10, 
+                    AppColors.appColor.withOpacity(0.3),
                     AppColors.appColor,
                   ],
                 ),
@@ -87,7 +90,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         const SizBoxH(size: 0.02),
-                        SvgPicture.asset("assets/Image/appLogo.svg",height: 60,width: 60,),
+                        
                         const Spacer(flex: 6),
                         // Text("Let's dive in into your account!".tr,style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.appColor),),
                         Text(AppLocalizations.of(context)?.translate("Let's dive in into your account!") ?? "Let's dive in into your account!",style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white),),
@@ -277,7 +280,7 @@ class ImageSliderState extends State<ImageSlider> {
     return AnimatedSwitcher(
       duration: const Duration(seconds: 5),
 
-      child: Image.network(
+      child: Image.asset(
         widget.imageUrls[_currentPage],
         key: ValueKey<int>(_currentPage),
         fit: BoxFit.cover,

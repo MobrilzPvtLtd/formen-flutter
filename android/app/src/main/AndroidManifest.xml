@@ -2,12 +2,12 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <application
-        android:label="GoMeet"
+        android:label="Formen"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <meta-data
               android:name="com.google.android.geo.API_KEY"
-              android:value="***********************************************"/>
+              android:value="AIzaSyD_-tbTgUuNJS6LpF80nEcFs99BgJTemu8"/>
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher"/>
