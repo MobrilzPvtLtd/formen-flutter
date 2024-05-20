@@ -242,29 +242,26 @@ class _CreatStepsState extends State<CreatSteps> {
                             ),
                           ),
                     const SizBoxW(size: 0.05),
-                    Expanded(
-                      child: Stack(
-                        children: [
-
-                          Container(
-                            height: 4,
-                            decoration: BoxDecoration(
-                                color: Theme.of(context).dividerTheme.color!,
-                                borderRadius: BorderRadius.circular(10)),
-                            width: MediaQuery.of(context).size.width,
-                          ),
-                          Container(
-                            height: 4,
-                            decoration: BoxDecoration(
-                                color: AppColors.appColor,
-                                borderRadius: BorderRadius.circular(10)),
-                            width: onBordingProvider.stepsCount == 0
-                                ? 10
-                                : (onBordingProvider.stepsCount * 2.6) *
-                                    (MediaQuery.of(context).size.width * 0.027),
-                          ),
-                        ],
-                      ),
+                    Stack(
+                      children: [
+                        Container(
+                          height: 4,
+                          decoration: BoxDecoration(
+                              color: Theme.of(context).dividerTheme.color!,
+                              borderRadius: BorderRadius.circular(10)),
+                          width: MediaQuery.of(context).size.width,
+                        ),
+                        Container(
+                          height: 4,
+                          decoration: BoxDecoration(
+                              color: AppColors.appColor,
+                              borderRadius: BorderRadius.circular(10)),
+                          width: onBordingProvider.stepsCount == 0
+                              ? 10
+                              : (onBordingProvider.stepsCount * 2.6) *
+                                  (MediaQuery.of(context).size.width * 0.027),
+                        ),
+                      ],
                     ),
                     const SizBoxW(size: 0.05),
                   ]),
@@ -528,49 +525,47 @@ class _CreatStepsState extends State<CreatSteps> {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Expanded(
-                child: InkWell(
-                  onTap: () {
-                    showModalBottomSheet(
-                        context: context,
-                        builder: (c) {
-                          return Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: SizedBox(
-                              height: 200,
-                              child: CupertinoDatePicker(
-                                mode: CupertinoDatePickerMode.date,
-                                initialDateTime: DateTime(2000, 1, 1),
-                                onDateTimeChanged: (DateTime newDateTime) {
-                                  onBordingProvider.updatebdate(newDateTime);
-                                },
-                              ),
+              InkWell(
+                onTap: () {
+                  showModalBottomSheet(
+                      context: context,
+                      builder: (c) {
+                        return Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: SizedBox(
+                            height: 200,
+                            child: CupertinoDatePicker(
+                              mode: CupertinoDatePickerMode.date,
+                              initialDateTime: DateTime(2000, 1, 1),
+                              onDateTimeChanged: (DateTime newDateTime) {
+                                onBordingProvider.updatebdate(newDateTime);
+                              },
                             ),
-                          );
-                        });
-                  },
-                  child: Container(
-                    height: 48,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        border: Border.all(color: AppColors.borderColor)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                          child: Text(
-                              "${onBordingProvider.bdatePicker}" != "null"
-                                  ? onBordingProvider.bdatePicker
-                                      .toString()
-                                      .split(" ")
-                                      .first
-                                  : "YYYY - MM - DD",
-                              style: Theme.of(context).textTheme.bodySmall),
-                        ),
-                      ],
-                    ),
+                          ),
+                        );
+                      });
+                },
+                child: Container(
+                  height: 48,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      border: Border.all(color: AppColors.borderColor)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Text(
+                            "${onBordingProvider.bdatePicker}" != "null"
+                                ? onBordingProvider.bdatePicker
+                                    .toString()
+                                    .split(" ")
+                                    .first
+                                : "YYYY - MM - DD",
+                            style: Theme.of(context).textTheme.bodySmall),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -881,11 +876,11 @@ class _CreatStepsState extends State<CreatSteps> {
                                 const SizedBox(
                                   width: 5,
                                 ),
-                                Image.network(
-                                  "${Config.baseUrl}${data.img}",
-                                  height: 24,
-                                  width: 24,
-                                )
+                                // Image.network(
+                                //   "${Config.baseUrl}${data.img}",
+                                //   height: 24,
+                                //   width: 24,
+                                // )
                               ],
                             ),
                           ),
@@ -948,11 +943,11 @@ class _CreatStepsState extends State<CreatSteps> {
                                     const SizedBox(
                                       width: 5,
                                     ),
-                                    Image.network(
-                                      "${Config.baseUrl}${data.img}",
-                                      height: 24,
-                                      width: 24,
-                                    )
+                                    // Image.network(
+                                    //   "${Config.baseUrl}${data.img}",
+                                    //   height: 24,
+                                    //   width: 24,
+                                    // )
                                   ],
                                 ),
                               ),
@@ -1050,34 +1045,36 @@ class _CreatStepsState extends State<CreatSteps> {
                                           .contains(data!.id)
                                       ? AppColors.appColor
                                       : Theme.of(context).dividerTheme.color!)),
-                          child: Row(
-                            children: [
-                              Image.network(
-                                "${Config.baseUrl}${data.img}",
-                                height: 50,
-                                width: 50,
-                              ),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                data.title ?? "",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    ,
-                              ),
-                              const Spacer(),
-                              onBordingProvider.selectedLanguage
-                                      .contains(data.id)
-                                  ? SvgPicture.asset(
-                                      "assets/icons/Iconcheck.svg",
-                                      height: 25,
-                                      width: 25,
-                                colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                    )
-                                  : const SizedBox(),
-                            ],
+                          child: Expanded(
+                            child: Row(
+                              children: [
+                                // Image.network(
+                                //   "${Config.baseUrl}${data.img}",
+                                //   height: 50,
+                                //   width: 50,
+                                // ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  data.title ?? "",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      ,
+                                ),
+                                const Spacer(),
+                                onBordingProvider.selectedLanguage
+                                        .contains(data.id)
+                                    ? SvgPicture.asset(
+                                        "assets/icons/Iconcheck.svg",
+                                        height: 25,
+                                        width: 25,
+                                  colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
+                                      )
+                                    : const SizedBox(),
+                              ],
+                            ),
                           ),
                         ),
                       );
@@ -1120,11 +1117,11 @@ class _CreatStepsState extends State<CreatSteps> {
                                           : Theme.of(context).dividerTheme.color!)),
                               child: Row(
                                 children: [
-                                  Image.network(
-                                    "${Config.baseUrl}${data.img}",
-                                    height: 50,
-                                    width: 50,
-                                  ),
+                                  // Image.network(
+                                  //   "${Config.baseUrl}${data.img}",
+                                  //   height: 50,
+                                  //   width: 50,
+                                  // ),
                                   const SizedBox(
                                     width: 10,
                                   ),
@@ -1409,190 +1406,116 @@ class _CreatStepsState extends State<CreatSteps> {
           ),
           const SizBoxH(size: 0.018),
           Row(children: [
-            Expanded(
-              flex: 2,
-              child: InkWell(
-                onTap: () async {
-                  onBordingProvider.pickupImage(0);
-                  // if (images.isEmpty) {
-                  //   final XFile? image =
-                  //       await picker.pickImage(source: ImageSource.gallery);
-                  //   images.add(image!);
-                  //   setState(() {});
-                  // }
-                },
-                child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height / 3.5,
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                              color: onBordingProvider.images.isEmpty
-                                  ? AppColors.appColor
-                                  : Theme.of(context).dividerTheme.color!),
-                          image: onBordingProvider.images.isNotEmpty
-                              ? DecorationImage(
-                                  image: FileImage(
-                                    File(onBordingProvider.images.first.path
-                                        .toString()),
-                                  ),
-                                  fit: BoxFit.cover)
-                              : null,
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(20))),
-                      child: onBordingProvider.images.isEmpty
-                          ? Center(
-                              child: Container(
-                                height: 50,
-                                width: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Theme.of(context).cardColor,
+            InkWell(
+              onTap: () async {
+                onBordingProvider.pickupImage(0);
+                // if (images.isEmpty) {
+                //   final XFile? image =
+                //       await picker.pickImage(source: ImageSource.gallery);
+                //   images.add(image!);
+                //   setState(() {});
+                // }
+              },
+              child: Stack(
+                alignment: Alignment.topRight,
+                children: [
+                  Container(
+                    height: MediaQuery.of(context).size.height / 3.5,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            color: onBordingProvider.images.isEmpty
+                                ? AppColors.appColor
+                                : Theme.of(context).dividerTheme.color!),
+                        image: onBordingProvider.images.isNotEmpty
+                            ? DecorationImage(
+                                image: FileImage(
+                                  File(onBordingProvider.images.first.path
+                                      .toString()),
                                 ),
-                                child: const Icon(Icons.add),
+                                fit: BoxFit.cover)
+                            : null,
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20))),
+                    child: onBordingProvider.images.isEmpty
+                        ? Center(
+                            child: Container(
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Theme.of(context).cardColor,
                               ),
-                            )
-                          : null,
-                    ),
-                    onBordingProvider.images.isEmpty
-                        ? const SizedBox()
-                        : Positioned(
-                            top: 10,
-                            right: 10,
-                            child: InkWell(
-                              onTap: () {
-                                onBordingProvider.removeImages(0);
-                              },
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Theme.of(context).cardColor,
-                                ),
-                                child: Center(
-                                  child: SvgPicture.asset(
-                                    "assets/icons/times.svg",
-                                    height: 20,
-                                    width: 20,
-                                    colorFilter:  ColorFilter.mode(
-                                        Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                  ),
+                              child: const Icon(Icons.add),
+                            ),
+                          )
+                        : null,
+                  ),
+                  onBordingProvider.images.isEmpty
+                      ? const SizedBox()
+                      : Positioned(
+                          top: 10,
+                          right: 10,
+                          child: InkWell(
+                            onTap: () {
+                              onBordingProvider.removeImages(0);
+                            },
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Theme.of(context).cardColor,
+                              ),
+                              child: Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/times.svg",
+                                  height: 20,
+                                  width: 20,
+                                  colorFilter:  ColorFilter.mode(
+                                      Theme.of(context).indicatorColor, BlendMode.srcIn),
                                 ),
                               ),
                             ),
                           ),
-                  ],
-                ),
+                        ),
+                ],
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  Stack(
-                    children: [
-                      InkWell(
-                        onTap: () async {
-                          onBordingProvider.pickupImage(1);
-                          // if (images.length == 1) {
-                          //   final XFile? image = await picker.pickImage(
-                          //       source: ImageSource.gallery);
+            Column(
+              children: [
+                Stack(
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        onBordingProvider.pickupImage(1);
+                        // if (images.length == 1) {
+                        //   final XFile? image = await picker.pickImage(
+                        //       source: ImageSource.gallery);
 
-                          //   images.add(image!);
+                        //   images.add(image!);
 
-                          //   setState(() {});
-                          // }
-                        },
-                        child: Container(
-                            height: MediaQuery.of(context).size.height / 7,
-                            decoration: BoxDecoration(
-
-                                border: Border.all(
-                                    color: onBordingProvider.images.length == 1
-                                        ? AppColors.appColor
-                                        : Theme.of(context).dividerTheme.color!),
-                                image: onBordingProvider.images.length >= 2
-                                    ? DecorationImage(
-                                        image: FileImage(
-                                          File(onBordingProvider.images[1].path
-                                              .toString()),
-                                        ),
-                                        fit: BoxFit.cover)
-                                    : null,
-                                borderRadius: const BorderRadius.only(
-                                    topRight: Radius.circular(20))),
-                            child: onBordingProvider.images.length == 1
-                                ? Center(
-                                    child: Container(
-                                      height: 30,
-                                      width: 30,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(12),
-                                        color: Theme.of(context).cardColor,
-                                      ),
-                                      child: const Icon(
-                                        Icons.add,
-                                        size: 15,
-                                      ),
-                                    ),
-                                  )
-                                : null),
-                      ),
-                      onBordingProvider.images.length >= 2
-                          ? Positioned(
-                              top: 10,
-                              right: 10,
-                              child: InkWell(
-                                onTap: () {
-                                  onBordingProvider.removeImages(1);
-                                },
-                                child: Container(
-                                  height: 23,
-                                  width: 23,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Theme.of(context).dividerTheme.color!,
-                                  ),
-                                  child: Center(
-                                    child: SvgPicture.asset(
-                                      "assets/icons/times.svg",
-                                      height: 12,
-                                      width: 12,
-                                      colorFilter:  ColorFilter.mode(
-                                          Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            )
-                          : const SizedBox()
-                    ],
-                  ),
-                  Stack(
-                    children: [
-                      InkWell(
-                        onTap: () async {
-                          onBordingProvider.pickupImage(2);
-                        },
-                        child: Container(
+                        //   setState(() {});
+                        // }
+                      },
+                      child: Container(
                           height: MediaQuery.of(context).size.height / 7,
                           decoration: BoxDecoration(
-                            border: Border.all(
-                                color: onBordingProvider.images.length == 2
-                                    ? AppColors.appColor
-                                    : Theme.of(context).dividerTheme.color!),
-                            image: onBordingProvider.images.length >= 3
-                                ? DecorationImage(
-                                    image: FileImage(
-                                      File(onBordingProvider.images[2].path
-                                          .toString()),
-                                    ),
-                                    fit: BoxFit.cover)
-                                : null,
-                          ),
-                          child: onBordingProvider.images.length == 2
+
+                              border: Border.all(
+                                  color: onBordingProvider.images.length == 1
+                                      ? AppColors.appColor
+                                      : Theme.of(context).dividerTheme.color!),
+                              image: onBordingProvider.images.length >= 2
+                                  ? DecorationImage(
+                                      image: FileImage(
+                                        File(onBordingProvider.images[1].path
+                                            .toString()),
+                                      ),
+                                      fit: BoxFit.cover)
+                                  : null,
+                              borderRadius: const BorderRadius.only(
+                                  topRight: Radius.circular(20))),
+                          child: onBordingProvider.images.length == 1
                               ? Center(
                                   child: Container(
                                     height: 30,
@@ -1607,71 +1530,61 @@ class _CreatStepsState extends State<CreatSteps> {
                                     ),
                                   ),
                                 )
-                              : null,
-                        ),
-                      ),
-                      onBordingProvider.images.length >= 3
-                          ? Positioned(
-                              top: 10,
-                              right: 10,
-                              child: InkWell(
-                                onTap: () {
-                                  onBordingProvider.removeImages(2);
-                                },
-                                child: Container(
-                                  height: 23,
-                                  width: 23,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                  child: Center(
-                                    child: SvgPicture.asset(
-                                      "assets/icons/times.svg",
-                                      height: 12,
-                                      width: 12,
-                                      colorFilter: ColorFilter.mode(
-                                          Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                    ),
+                              : null),
+                    ),
+                    onBordingProvider.images.length >= 2
+                        ? Positioned(
+                            top: 10,
+                            right: 10,
+                            child: InkWell(
+                              onTap: () {
+                                onBordingProvider.removeImages(1);
+                              },
+                              child: Container(
+                                height: 23,
+                                width: 23,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Theme.of(context).dividerTheme.color!,
+                                ),
+                                child: Center(
+                                  child: SvgPicture.asset(
+                                    "assets/icons/times.svg",
+                                    height: 12,
+                                    width: 12,
+                                    colorFilter:  ColorFilter.mode(
+                                        Theme.of(context).indicatorColor, BlendMode.srcIn),
                                   ),
                                 ),
                               ),
-                            )
-                          : const SizedBox()
-                    ],
-                  ),
-                ],
-              ),
-            ),
-          ]),
-          Row(
-            children: [
-              Expanded(
-                child: Stack(
+                            ),
+                          )
+                        : const SizedBox()
+                  ],
+                ),
+                Stack(
                   children: [
                     InkWell(
                       onTap: () async {
-                        onBordingProvider.pickupImage(3);
+                        onBordingProvider.pickupImage(2);
                       },
                       child: Container(
                         height: MediaQuery.of(context).size.height / 7,
                         decoration: BoxDecoration(
                           border: Border.all(
-                              color: onBordingProvider.images.length == 3
+                              color: onBordingProvider.images.length == 2
                                   ? AppColors.appColor
                                   : Theme.of(context).dividerTheme.color!),
-                          borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(20)),
-                          image: onBordingProvider.images.length >= 4
+                          image: onBordingProvider.images.length >= 3
                               ? DecorationImage(
                                   image: FileImage(
-                                    File(onBordingProvider.images[3].path
+                                    File(onBordingProvider.images[2].path
                                         .toString()),
                                   ),
                                   fit: BoxFit.cover)
                               : null,
                         ),
-                        child: onBordingProvider.images.length == 3
+                        child: onBordingProvider.images.length == 2
                             ? Center(
                                 child: Container(
                                   height: 30,
@@ -1689,13 +1602,13 @@ class _CreatStepsState extends State<CreatSteps> {
                             : null,
                       ),
                     ),
-                    onBordingProvider.images.length >= 4
+                    onBordingProvider.images.length >= 3
                         ? Positioned(
                             top: 10,
                             right: 10,
                             child: InkWell(
                               onTap: () {
-                                onBordingProvider.removeImages(3);
+                                onBordingProvider.removeImages(2);
                               },
                               child: Container(
                                 height: 23,
@@ -1719,78 +1632,152 @@ class _CreatStepsState extends State<CreatSteps> {
                         : const SizedBox()
                   ],
                 ),
-              ),
-              Expanded(
-                child: Stack(
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        onBordingProvider.pickupImage(4);
-                      },
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 7,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: onBordingProvider.images.length == 4
-                                  ? AppColors.appColor
-                                  : Theme.of(context).dividerTheme.color!),
-                          image: onBordingProvider.images.length >= 5
-                              ? DecorationImage(
-                                  image: FileImage(
-                                    File(onBordingProvider.images[4].path
-                                        .toString()),
-                                  ),
-                                  fit: BoxFit.cover)
-                              : null,
-                        ),
-                        child: onBordingProvider.images.length == 4
-                            ? Center(
-                                child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color:Theme.of(context).cardColor,
-                                  ),
-                                  child: const Icon(
-                                    Icons.add,
-                                    size: 15,
-                                  ),
+              ],
+            ),
+          ]),
+          Row(
+            children: [
+              Stack(
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      onBordingProvider.pickupImage(3);
+                    },
+                    child: Container(
+                      height: MediaQuery.of(context).size.height / 7,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: onBordingProvider.images.length == 3
+                                ? AppColors.appColor
+                                : Theme.of(context).dividerTheme.color!),
+                        borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(20)),
+                        image: onBordingProvider.images.length >= 4
+                            ? DecorationImage(
+                                image: FileImage(
+                                  File(onBordingProvider.images[3].path
+                                      .toString()),
                                 ),
-                              )
+                                fit: BoxFit.cover)
                             : null,
                       ),
-                    ),
-                    onBordingProvider.images.length >= 5
-                        ? Positioned(
-                            top: 10,
-                            right: 10,
-                            child: InkWell(
-                              onTap: () {
-                                onBordingProvider.removeImages(4);
-                              },
+                      child: onBordingProvider.images.length == 3
+                          ? Center(
                               child: Container(
-                                height: 23,
-                                width: 23,
+                                height: 30,
+                                width: 30,
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(12),
                                   color: Theme.of(context).cardColor,
                                 ),
-                                child: Center(
-                                  child: SvgPicture.asset(
-                                    "assets/icons/times.svg",
-                                    height: 12,
-                                    width: 12,
-                                    colorFilter:  ColorFilter.mode(
-                                        Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                  ),
+                                child: const Icon(
+                                  Icons.add,
+                                  size: 15,
+                                ),
+                              ),
+                            )
+                          : null,
+                    ),
+                  ),
+                  onBordingProvider.images.length >= 4
+                      ? Positioned(
+                          top: 10,
+                          right: 10,
+                          child: InkWell(
+                            onTap: () {
+                              onBordingProvider.removeImages(3);
+                            },
+                            child: Container(
+                              height: 23,
+                              width: 23,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Theme.of(context).cardColor,
+                              ),
+                              child: Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/times.svg",
+                                  height: 12,
+                                  width: 12,
+                                  colorFilter: ColorFilter.mode(
+                                      Theme.of(context).indicatorColor, BlendMode.srcIn),
                                 ),
                               ),
                             ),
-                          )
-                        : const SizedBox()
-                  ],
-                ),
+                          ),
+                        )
+                      : const SizedBox()
+                ],
+              ),
+              Stack(
+                children: [
+                  InkWell(
+                    onTap: () async {
+                      onBordingProvider.pickupImage(4);
+                    },
+                    child: Container(
+                      height: MediaQuery.of(context).size.height / 7,
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                            color: onBordingProvider.images.length == 4
+                                ? AppColors.appColor
+                                : Theme.of(context).dividerTheme.color!),
+                        image: onBordingProvider.images.length >= 5
+                            ? DecorationImage(
+                                image: FileImage(
+                                  File(onBordingProvider.images[4].path
+                                      .toString()),
+                                ),
+                                fit: BoxFit.cover)
+                            : null,
+                      ),
+                      child: onBordingProvider.images.length == 4
+                          ? Center(
+                              child: Container(
+                                height: 30,
+                                width: 30,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color:Theme.of(context).cardColor,
+                                ),
+                                child: const Icon(
+                                  Icons.add,
+                                  size: 15,
+                                ),
+                              ),
+                            )
+                          : null,
+                    ),
+                  ),
+                  onBordingProvider.images.length >= 5
+                      ? Positioned(
+                          top: 10,
+                          right: 10,
+                          child: InkWell(
+                            onTap: () {
+                              onBordingProvider.removeImages(4);
+                            },
+                            child: Container(
+                              height: 23,
+                              width: 23,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: Theme.of(context).cardColor,
+                              ),
+                              child: Center(
+                                child: SvgPicture.asset(
+                                  "assets/icons/times.svg",
+                                  height: 12,
+                                  width: 12,
+                                  colorFilter:  ColorFilter.mode(
+                                      Theme.of(context).indicatorColor, BlendMode.srcIn),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      : const SizedBox()
+                ],
               ),
               Expanded(
                 child: Stack(

@@ -38,11 +38,14 @@ class HomePageCubit extends Cubit<HomePageStates> {
 
   Future<HomeModel> getHomeData(
       {required String uid, required String lat, required String long,required context}) async {
+
+
     try {
+
       Map data = {
         "uid": uid,
         "lats": lat,
-        "longs": long
+        "longs": long,
       };
 
       Response response = await _api.sendRequest

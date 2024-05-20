@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dating/Logic/cubits/onBording_cubit/onbording_state.dart';
 import 'package:dating/core/api.dart';
 import 'package:dating/core/config.dart';
@@ -188,23 +190,47 @@ class OnbordingCubit extends Cubit<OnbordingState> {
       Response response = await _api.sendRequest
           .post("${Config.baseUrlApi}${Config.regiseruser}", data: formData);
 
+      debugPrint("Response status: ${response.statusCode}");
+      debugPrint("Response data: ${response.data}");
+
       if (response.statusCode == 200) {
-        if (response.data["Result"] == "true") {
-          emit(CompletSteps());
-          Preferences.saveUserDetails(response.data);
-          initPlatformState();
-          OneSignal.shared.sendTag("user_id", response.data["UserLogin"]["id"]);
-          setUpFirebase(context, email: response.data["UserLogin"]["email"], uid: response.data["UserLogin"]["id"], proPic: response.data["UserLogin"]["profile_pic"].toString().split("\$;").first,number: response.data["UserLogin"]["mobile"],name: response.data["UserLogin"]["name"]);
-          return UserModel.fromJson(response.data);
+        // Check if the response is JSON
+        if (response.headers.value('content-type')?.contains('application/json') ?? false) {
+          final Map<String, dynamic> responseData = jsonDecode(response.data);
+
+          if (responseData["Result"] == "true") {
+            emit(CompletSteps());
+            Preferences.saveUserDetails(responseData);
+            initPlatformState();
+            OneSignal.shared.sendTag("user_id", responseData["UserLogin"]["id"]);
+            setUpFirebase(
+              context,
+              email: responseData["UserLogin"]["email"],
+              uid: responseData["UserLogin"]["id"],
+              proPic: responseData["UserLogin"]["profile_pic"]
+                  .toString()
+                  .split("\$;")
+                  .first,
+              number: responseData["UserLogin"]["mobile"],
+              name: responseData["UserLogin"]["name"],
+            );
+            return UserModel.fromJson(responseData);
+          } else {
+            emit(ErrorState(responseData["ResponseMsg"]));
+            return UserModel.fromJson(responseData);
+          }
         } else {
-          emit(ErrorState(response.data["ResponseMsg"]));
-          return UserModel.fromJson(response.data);
+          debugPrint("Non-JSON response: ${response.data}");
+          emit(ErrorState("Invalid response format"));
+          return UserModel.fromJson({});
         }
       } else {
-        emit(ErrorState(response.data["ResponseMsg"]));
-        return UserModel.fromJson(response.data);
+        debugPrint("Non-200 response: ${response.data}");
+        emit(ErrorState(response.data["ResponseMsg"] ?? "Unknown error"));
+        return UserModel.fromJson({});
       }
     } catch (e) {
+      debugPrint("Request failed: $e");
       emit(ErrorState(e.toString()));
       rethrow;
     }

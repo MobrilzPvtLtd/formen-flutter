@@ -13,6 +13,8 @@ class Api {
     log(Config.baseUrl);
     log(Config.baseUrlApi);
     log(Config.religionlist);
+    log(Config.baseUrlApi+Config.religionlist);
+    log(Config.baseUrlApi+Config.getInterestList);
     StackTrace;
     _dio.options.baseUrl = Config.baseUrl;
     _dio.options.headers = Config.header;

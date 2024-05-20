@@ -454,7 +454,7 @@ Future getmarkers(Map data,index) async {
       controller.reset();
       notifyListeners ();
     }).then((value) {
-       BlocProvider.of<HomePageCubit>(context).getHomeData(uid: uid, lat: lat.toString(), long: long.toString(),context: context).then((value) {
+       BlocProvider.of<HomePageCubit>(context).getHomeData(uid: uid, lat: lat.toString(), long:long.toString(),context: context).then((value) {
         currentIndex = 0;
         notifyListeners ();
       });

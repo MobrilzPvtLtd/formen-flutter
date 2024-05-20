@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:camera/camera.dart';
 import 'package:dating/Logic/cubits/Home_cubit/home_cubit.dart';
 import 'package:dating/Logic/cubits/auth_cubit/auth_cubit.dart';
@@ -6,6 +8,7 @@ import 'package:dating/Logic/cubits/language_cubit/language_bloc.dart';
 import 'package:dating/Logic/cubits/match_cubit/match_cubit.dart';
 import 'package:dating/Logic/cubits/onBording_cubit/onbording_cubit.dart';
 import 'package:dating/Logic/cubits/litedark/lite_dark_cubit.dart';
+import 'package:dating/core/config.dart';
 import 'package:dating/core/routes.dart';
 import 'package:dating/firebase_options.dart';
 import 'package:dating/language/localization/app_localization_setup.dart';
@@ -37,6 +40,7 @@ import 'Logic/cubits/premium_cubit/premium_bloc.dart';
 
 Future<void> main() async {
 
+  log(Config.baseUrlApi+Config.getInterestList);
   WidgetsFlutterBinding.ensureInitialized();
   cameras = await availableCameras();
 
