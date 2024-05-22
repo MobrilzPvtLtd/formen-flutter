@@ -1409,12 +1409,12 @@ class _CreatStepsState extends State<CreatSteps> {
             InkWell(
               onTap: () async {
                 onBordingProvider.pickupImage(0);
-                // if (images.isEmpty) {
-                //   final XFile? image =
-                //       await picker.pickImage(source: ImageSource.gallery);
-                //   images.add(image!);
-                //   setState(() {});
-                // }
+                if (images.isEmpty) {
+                  final XFile? image =
+                      await picker.pickImage(source: ImageSource.gallery);
+                  images.add(image!);
+                  setState(() {});
+                }
               },
               child: Stack(
                 alignment: Alignment.topRight,

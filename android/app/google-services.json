@@ -7,18 +7,18 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1046116791776:android:a06f9a2bef237a125de785",
+        "mobilesdk_app_id": "1:1046116791776:android:ba99d3931131ffe05de785",
         "android_client_info": {
-          "package_name": "com.example.formen"
+          "package_name": "com.example.gomeet"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1046116791776-n612q7n7rhslg8gltc0ldt5l7s424f75.apps.googleusercontent.com",
+          "client_id": "1046116791776-6img2kdhueeae7r50du1mn6cvcnu6rab.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.formen",
-            "certificate_hash": "ba92b00a452812a64f5019f5faaf996f01f21bd1"
+            "package_name": "com.example.gomeet",
+            "certificate_hash": "4ae79d56fe16dcd6aaee9ee36b67671879e16987"
           }
         },
         {
