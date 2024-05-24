@@ -83,7 +83,6 @@ class _MapScreenState extends State<MapScreen> {
 
                                         Row(
                                           children: [
-
                                             SvgPicture.asset(
                                               "assets/icons/Location.svg",
                                               colorFilter: ColorFilter.mode(AppColors.appColor, BlendMode.srcIn),

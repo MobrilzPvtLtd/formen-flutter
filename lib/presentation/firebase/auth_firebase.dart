@@ -27,7 +27,7 @@ class FirebaseAuthService extends ChangeNotifier {
   }
 
   singUpAndStore({
-    required String name,required String email, required String number, required String uid, required proPicPath
+    required String name,required String email,  String? number, required String uid, required proPicPath
   }) async {
     try {
       await FirebaseMessaging.instance.getToken().then((token) {
@@ -35,7 +35,7 @@ class FirebaseAuthService extends ChangeNotifier {
           "uid": uid,
           "name": name,
           "email": email,
-          "number": number,
+          // "number": number,
           "token": "$token",
           "isOnline": false,
           "pro_pic": proPicPath

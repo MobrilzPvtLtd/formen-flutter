@@ -187,46 +187,41 @@ class OnbordingCubit extends Cubit<OnbordingState> {
               filename: images[a].path.split('/').last)
       });
 
-      Response response = await _api.sendRequest
-          .post("${Config.baseUrlApi}${Config.regiseruser}", data: formData);
+      Response response = await _api.sendRequest.post(
+          "${Config.baseUrlApi}${Config.regiseruser}",
+          data: formData);
 
       debugPrint("Response status: ${response.statusCode}");
       debugPrint("Response data: ${response.data}");
 
-      if (response.statusCode == 200) {
-        // Check if the response is JSON
-        if (response.headers.value('content-type')?.contains('application/json') ?? false) {
-          final Map<String, dynamic> responseData = jsonDecode(response.data);
+      final Map<String, dynamic> responseData = response.data;
 
-          if (responseData["Result"] == "true") {
-            emit(CompletSteps());
-            Preferences.saveUserDetails(responseData);
-            initPlatformState();
-            OneSignal.shared.sendTag("user_id", responseData["UserLogin"]["id"]);
-            setUpFirebase(
-              context,
-              email: responseData["UserLogin"]["email"],
-              uid: responseData["UserLogin"]["id"],
-              proPic: responseData["UserLogin"]["profile_pic"]
-                  .toString()
-                  .split("\$;")
-                  .first,
-              number: responseData["UserLogin"]["mobile"],
-              name: responseData["UserLogin"]["name"],
-            );
-            return UserModel.fromJson(responseData);
-          } else {
-            emit(ErrorState(responseData["ResponseMsg"]));
-            return UserModel.fromJson(responseData);
-          }
+      if (response.statusCode == 200) {
+        if (responseData["Result"] == "true") {
+          emit(CompletSteps());
+          Preferences.saveUserDetails(responseData);
+          initPlatformState();
+          OneSignal.shared
+              .sendTag("user_id", responseData["UserLogin"]["id"]);
+          setUpFirebase(
+            context,
+            email: responseData["UserLogin"]["email"],
+            uid: responseData["UserLogin"]["id"],
+            proPic: responseData["UserLogin"]["profile_pic"]
+                .toString()
+                .split("\$;")
+                .first,
+            number: responseData["UserLogin"]["mobile"],
+            name: responseData["UserLogin"]["name"],
+          );
+          return UserModel.fromJson(responseData);
         } else {
-          debugPrint("Non-JSON response: ${response.data}");
-          emit(ErrorState("Invalid response format"));
-          return UserModel.fromJson({});
+          emit(ErrorState(responseData["ResponseMsg"]));
+          return UserModel.fromJson(responseData);
         }
       } else {
         debugPrint("Non-200 response: ${response.data}");
-        emit(ErrorState(response.data["ResponseMsg"] ?? "Unknown error"));
+        emit(ErrorState(responseData["ResponseMsg"] ?? "Unknown error"));
         return UserModel.fromJson({});
       }
     } catch (e) {
@@ -237,7 +232,8 @@ class OnbordingCubit extends Cubit<OnbordingState> {
   }
 
 
-  setUpFirebase(context,{required String email,required String name,required String number,required String uid,required String proPic}){
+
+  setUpFirebase(context,{required String email,required String name, required String number,required String uid,required String proPic}){
     try{
       Provider.of<FirebaseAuthService>(context,listen: false).singUpAndStore(email: email, uid: uid, proPicPath: proPic,name: name,number: number);
     }catch(e){

@@ -750,7 +750,7 @@ Future getmarkers(Map data,index) async {
                                                     width: 5,
                                                   ),
                                                   Image.network(
-                                                    "${Config.baseUrl}${data.img}",
+                                                    "${Config.baseUrl}/${data.img}",
                                                     height: 24,
                                                     width: 24,
                                                   )
@@ -827,7 +827,7 @@ Future getmarkers(Map data,index) async {
                                                   width: 5,
                                                 ),
                                                 Image.network(
-                                                  "${Config.baseUrl}${data.img}",
+                                                  "${Config.baseUrl}/${data.img}",
                                                   height: 24,
                                                   width: 24,
                                                 )

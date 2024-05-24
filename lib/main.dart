@@ -29,6 +29,7 @@ import 'package:dating/presentation/screens/other/profileScreen/profile_page.dar
 import 'package:dating/presentation/screens/other/profileScreen/profile_provider.dart';
 import 'package:dating/presentation/screens/splash_bording/onBordingProvider/onbording_provider.dart';
 import 'package:dating/presentation/screens/splash_bording/splash_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,7 @@ Future<void> main() async {
   cameras = await availableCameras();
 
   await Firebase.initializeApp(
+    name: "For-Men",
     options: DefaultFirebaseOptions.currentPlatform,
   );
   requestPermission();

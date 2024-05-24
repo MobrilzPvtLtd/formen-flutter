@@ -267,10 +267,10 @@ class _BottomBarState extends State<BottomBar> {
                                         homeProvider.setSelectPage(index);
                                         if(homeProvider.selectPageIndex == 2 && state.homeData.likeMenu == "0") {
                                           homeProvider.setSelectPage(0);
-                                          Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
+                                          Navigator.pushNamed(context, BrowesPage.browsPageRoute);
                                         }else if(homeProvider.selectPageIndex == 3 && (state.homeData.chat == "0")) {
                                           homeProvider.setSelectPage(0);
-                                          Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
+                                          Navigator.pushNamed(context, ChatScreen.chatScreenRoute);
                                         }
                                       },
                                       child: Container(
