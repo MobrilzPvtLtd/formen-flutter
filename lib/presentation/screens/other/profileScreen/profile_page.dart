@@ -226,7 +226,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     // image: DecorationImage(image:  NetworkImage('${Config.imagebaseurl}${profileImageController.profileimageeditApi!.userLogin.profilePic}'), fit: BoxFit.cover),
-                                    image: DecorationImage(image:  NetworkImage("${Config.baseUrl}${homeProvider.userlocalData.userLogin!.profilePic}"), fit: BoxFit.cover),
+                                    image: DecorationImage(image:  NetworkImage("${Config.baseUrl}/${homeProvider.userlocalData.userLogin!.profilePic}"), fit: BoxFit.cover),
                                   )) : selectImageprofile == null ? CircleAvatar(
                                 backgroundColor: Colors.grey.withOpacity(0.2),
                                 maxRadius: 33,
@@ -682,7 +682,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                       width: 100,
                                                       decoration: BoxDecoration(
                                                           shape: BoxShape.circle,
-                                                          image: DecorationImage(image: NetworkImage("${Config.baseUrl}${homeProvider.userlocalData.userLogin!.identityPicture}"),fit: BoxFit.cover)
+                                                          image: DecorationImage(image: NetworkImage("${Config.baseUrl}/${homeProvider.userlocalData.userLogin!.identityPicture}"),fit: BoxFit.cover)
                                                       ),
                                                     ),
                                                     const SizedBox(height: 10,),
@@ -1144,116 +1144,151 @@ class _ProfilePageState extends State<ProfilePage> {
                           //   ),
                           // ),
 
-
-
                           InkWell(
-                           onTap: () {
-                             // Navigator.pushNamed(context, EditProfile.editProfileRoute);
-
-
-                             showModalBottomSheet(
-                               context: context,
-                               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15))),
-                               builder: (context) {
-                               return Stack(
-                                 children: [
-                                   Padding(
-                                     padding: const EdgeInsets.all(15),
-                                     child: SingleChildScrollView(
-                                       child: Column(
-                                         children: [
-                                           // Text("From where do you want to take the photo?".tr, style: TextStyle(fontSize: 20, color: Colors.black),),
-                                           Text(AppLocalizations.of(context)?.translate("From where do you want to take the photo?") ?? "From where do you want to take the photo?", style: Theme.of(context).textTheme.bodyLarge,),
-                                           const SizedBox(height: 15),
-                                           Row(
-                                             children: [
-                                               Expanded(
-                                                 child: MainButton(
-                                                     bgColor: AppColors.appColor,titleColor: Colors.white,
-                                                     // title: "Gallery".tr,
-                                                     title: AppLocalizations.of(context)?.translate("Gallery") ?? "Gallery",
-                                                     onTap: () async {
-                                                       final picked=await picker.pickImage(source: ImageSource.gallery);
-                                                       if(picked!= null){
-                                                         setState(() {
-                                                           selectImageprofile = picked;
-                                                         });
-
-                                                         List<int> imageByte = File(selectImageprofile!.path).readAsBytesSync();
-                                                         base64String = base64Encode(imageByte);
-
-                                                         profileProvider.profilepicApi(context: context,img: base64String.toString()).then((value) {
-                                                           Navigator.of(context).pop();
-                                                           setState(() {
-
-                                                           });
-                                                         });
-
-                                                       } else{
-                                                         print("did not pick an image!!");
-                                                       }
-                                                     }),
-                                               ),
-                                               const SizedBox(width: 8),
-                                               Expanded(
-                                                 child: MainButton(
-                                                     bgColor: AppColors.appColor,titleColor: Colors.white,
-                                                     // title: "Camera".tr,
-                                                     title: AppLocalizations.of(context)?.translate("Camera") ?? "Camera",
-                                                     onTap: () async {
-                                                       final picked=await picker.pickImage(source: ImageSource.camera);
-                                                       if(picked!= null){
-                                                         setState(() {
-                                                           selectImageprofile = picked;
-                                                         });
-
-                                                         List<int> imageByte =File(selectImageprofile!.path).readAsBytesSync();
-                                                         base64String =base64Encode(imageByte);
-                                                         profileProvider.profilepicApi(context: context,img: base64String.toString()).then((value) {
-                                                           Navigator.of(context).pop();
-                                                           setState(() {
-
-                                                           });
-                                                         });
-
-                                                       } else{
-                                                         print("did not pick an image!!");
-                                                       }
-                                                     }
-                                                     ),
-                                               ),
-                                             ],
-                                           ),
-                                           const SizedBox(height: 15),
-                                         ],
-                                       ),
-                                     ),
-                                   ),
-                                 ],
-                               );
-                             },
-                           );
-
-
-                           },
+                            onTap: () {
+                              showModalBottomSheet(
+                                context: context,
+                                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(15),
+                                    topRight: Radius.circular(15),
+                                  ),
+                                ),
+                                builder: (context) {
+                                  return _buildImageSelectionModal(context);
+                                },
+                              );
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 color: AppColors.appColor,
-                                borderRadius: BorderRadius.circular(20)
+                                borderRadius: BorderRadius.circular(20),
                               ),
-                              padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 8),
+                              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 8),
                               child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    // Text("Edit".tr,style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white),),
-                                    Text(AppLocalizations.of(context)?.translate("Edit") ?? "Edit",style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white),),
-                                    const SizedBox(width: 5,),
-                                    SvgPicture.asset("assets/icons/edit.svg"),
-
-                              ]),
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    AppLocalizations.of(context)?.translate("Edit") ?? "Edit",
+                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white),
+                                  ),
+                                  const SizedBox(width: 5),
+                                  SvgPicture.asset("assets/icons/edit.svg"),
+                                ],
+                              ),
                             ),
                           ),
+
+
+                          // InkWell(
+                          //  onTap: () {
+                          //    // Navigator.pushNamed(context, EditProfile.editProfileRoute);
+                          //
+                          //
+                          //    showModalBottomSheet(
+                          //      context: context,
+                          //      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+                          //      shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15),topRight: Radius.circular(15))),
+                          //      builder: (context) {
+                          //      return Stack(
+                          //        children: [
+                          //          Padding(
+                          //            padding: const EdgeInsets.all(15),
+                          //            child: SingleChildScrollView(
+                          //              child: Column(
+                          //                children: [
+                          //                  // Text("From where do you want to take the photo?".tr, style: TextStyle(fontSize: 20, color: Colors.black),),
+                          //                  Text(AppLocalizations.of(context)?.translate("From where do you want to take the photo?") ?? "From where do you want to take the photo?", style: Theme.of(context).textTheme.bodyLarge,),
+                          //                  const SizedBox(height: 15),
+                          //                  Row(
+                          //                    children: [
+                          //                      Expanded(
+                          //                        child: MainButton(
+                          //                            bgColor: AppColors.appColor,titleColor: Colors.white,
+                          //                            // title: "Gallery".tr,
+                          //                            title: AppLocalizations.of(context)?.translate("Gallery") ?? "Gallery",
+                          //                            onTap: () async {
+                          //                              final picked=await picker.pickImage(source: ImageSource.gallery);
+                          //                              if(picked!= null){
+                          //                                setState(() {
+                          //                                  selectImageprofile = picked;
+                          //                                });
+                          //
+                          //                                List<int> imageByte = File(selectImageprofile!.path).readAsBytesSync();
+                          //                                base64String = base64Encode(imageByte);
+                          //
+                          //                                profileProvider.profilepicApi(context: context,img: base64String.toString()).then((value) {
+                          //                                  Navigator.of(context).pop();
+                          //                                  setState(() {
+                          //
+                          //                                  });
+                          //                                });
+                          //
+                          //                              } else{
+                          //                                print("did not pick an image!!");
+                          //                              }
+                          //                            }),
+                          //                      ),
+                          //                      const SizedBox(width: 8),
+                          //                      Expanded(
+                          //                        child: MainButton(
+                          //                            bgColor: AppColors.appColor,titleColor: Colors.white,
+                          //                            // title: "Camera".tr,
+                          //                            title: AppLocalizations.of(context)?.translate("Camera") ?? "Camera",
+                          //                            onTap: () async {
+                          //                              final picked=await picker.pickImage(source: ImageSource.camera);
+                          //                              if(picked!= null){
+                          //                                setState(() {
+                          //                                  selectImageprofile = picked;
+                          //                                });
+                          //
+                          //                                List<int> imageByte =File(selectImageprofile!.path).readAsBytesSync();
+                          //                                base64String =base64Encode(imageByte);
+                          //                                profileProvider.profilepicApi(context: context,img: base64String.toString()).then((value) {
+                          //                                  Navigator.of(context).pop();
+                          //                                  setState(() {
+                          //
+                          //                                  });
+                          //                                });
+                          //
+                          //                              } else{
+                          //                                print("did not pick an image!!");
+                          //                              }
+                          //                            }
+                          //                            ),
+                          //                      ),
+                          //                    ],
+                          //                  ),
+                          //                  const SizedBox(height: 15),
+                          //                ],
+                          //              ),
+                          //            ),
+                          //          ),
+                          //        ],
+                          //      );
+                          //    },
+                          //  );
+                          //
+                          //
+                          //  },
+                          //   child: Container(
+                          //     decoration: BoxDecoration(
+                          //       color: AppColors.appColor,
+                          //       borderRadius: BorderRadius.circular(20)
+                          //     ),
+                          //     padding: const EdgeInsets.symmetric(vertical: 5,horizontal: 8),
+                          //     child: Row(
+                          //         mainAxisSize: MainAxisSize.min,
+                          //         children: [
+                          //           // Text("Edit".tr,style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white),),
+                          //           Text(AppLocalizations.of(context)?.translate("Edit") ?? "Edit",style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white),),
+                          //           const SizedBox(width: 5,),
+                          //           SvgPicture.asset("assets/icons/edit.svg"),
+                          //
+                          //     ]),
+                          //   ),
+                          // ),
                         ],
                       ),
                       const SizedBox(height: 15,),
@@ -1286,7 +1321,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Text(state.homeData.planId != "0" ?AppLocalizations.of(context)?.translate("You're Activated Membership!") ?? "You're Activated Membership!" :AppLocalizations.of(context)?.translate("Join Our Membership Today!") ?? "Join Our Membership Today!",style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: AppColors.white,fontWeight: FontWeight.w700),maxLines: 1,overflow: TextOverflow.ellipsis),
                                     const SizedBox(height: 5,),
                                     // Text(state.homeData.planId != "0" ? "Enjoy  premium and match anywhere.".tr : "Checkout GoMeet Premium".tr,style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white,overflow: TextOverflow.ellipsis),maxLines: 1,overflow: TextOverflow.ellipsis),
-                                    Text(state.homeData.planId != "0" ? AppLocalizations.of(context)?.translate("Enjoy  premium and match anywhere.") ?? "Enjoy  premium and match anywhere." : AppLocalizations.of(context)?.translate("Checkout GoMeet Premium") ?? "Checkout GoMeet Premium",style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white,overflow: TextOverflow.ellipsis),maxLines: 1,overflow: TextOverflow.ellipsis),
+                                    Text(state.homeData.planId != "0" ? AppLocalizations.of(context)?.translate("Enjoy  premium and match anywhere.") ?? "Enjoy  premium and match anywhere." : AppLocalizations.of(context)?.translate("Checkout ForMen Premium") ?? "Checkout ForMen Premium",style: Theme.of(context).textTheme.bodySmall!.copyWith(color: AppColors.white,overflow: TextOverflow.ellipsis),maxLines: 1,overflow: TextOverflow.ellipsis),
                                   ],
                                 ),),
                                 Container(
@@ -1315,9 +1350,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 itemBuilder: (context, index) {
                                   return ListTile(
                                     onTap: () {
-
                                       Navigator.push(context, MaterialPageRoute(builder: (context) => Loream(title: profileProvider.privacyPolicy.pagelist![index].title.toString(), discription: profileProvider.privacyPolicy.pagelist![index].description.toString()),));
-
                                     },
                                     dense: true,
                                     contentPadding: EdgeInsets.zero,
@@ -1652,6 +1685,74 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  Widget _buildImageSelectionModal(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(15),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Text(
+              AppLocalizations.of(context)?.translate("From where do you want to take the photo?") ?? "From where do you want to take the photo?",
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+            const SizedBox(height: 15),
+            Row(
+              children: [
+                Expanded(
+                  child: MainButton(
+                    bgColor: AppColors.appColor,
+                    titleColor: Colors.white,
+                    title: AppLocalizations.of(context)?.translate("Gallery") ?? "Gallery",
+                    onTap: () => _selectImageFromGallery(context),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: MainButton(
+                    bgColor: AppColors.appColor,
+                    titleColor: Colors.white,
+                    title: AppLocalizations.of(context)?.translate("Camera") ?? "Camera",
+                    onTap: () => _selectImageFromCamera(context),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 15),
+          ],
+        ),
+      ),
+    );
+  }
 
+  Future<void> _selectImageFromGallery(BuildContext context) async {
+    final picked = await picker.pickImage(source: ImageSource.gallery);
+    if (picked != null) {
+      _processSelectedImage(context, picked.path);
+    } else {
+      print("No image selected!");
+    }
+  }
+
+  Future<void> _selectImageFromCamera(BuildContext context) async {
+    final picked = await picker.pickImage(source: ImageSource.camera);
+    if (picked != null) {
+      _processSelectedImage(context, picked.path);
+    } else {
+      print("No image selected!");
+    }
+  }
+
+  void _processSelectedImage(BuildContext context, String imagePath) {
+    // Process the selected image, for example, uploading it to a server or displaying it in UI.
+    List<int> imageBytes = File(imagePath).readAsBytesSync();
+    String base64String = base64Encode(imageBytes);
+
+    profileProvider.profilepicApi(context: context, img: base64String).then((value) {
+      Navigator.of(context).pop(); // Close the bottom modal sheet
+      setState(() {
+        // Update UI if necessary
+      });
+    });
+  }
 
 }

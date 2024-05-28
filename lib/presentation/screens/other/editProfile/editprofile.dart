@@ -145,7 +145,7 @@ class _EditProfileState extends State<EditProfile> {
                                               BorderRadius.circular(12),
                                               image: DecorationImage(
                                                   image: NetworkImage(
-                                                      "${Config.baseUrl}${editProvider.networkOldImage[a]}"),
+                                                      "${Config.baseUrl}/${editProvider.networkOldImage[a]}"),
                                                   fit: BoxFit.cover)),
                                         ),
                                         Positioned(
@@ -675,7 +675,7 @@ class _EditProfileState extends State<EditProfile> {
                                                                     ),
                                                                     Image
                                                                         .network(
-                                                                      "${Config.baseUrl}${data.img}",
+                                                                      "${Config.baseUrl}/${data.img}",
                                                                       height:
                                                                       24,
                                                                       width:
@@ -759,7 +759,7 @@ class _EditProfileState extends State<EditProfile> {
                                                                     ),
                                                                     Image
                                                                         .network(
-                                                                      "${Config.baseUrl}${data.img}",
+                                                                      "${Config.baseUrl}/${data.img}",
                                                                       height:
                                                                       24,
                                                                       width:
@@ -830,7 +830,7 @@ class _EditProfileState extends State<EditProfile> {
                                                   width: 5,
                                                 ),
                                                 Image.network(
-                                                  "${Config.baseUrl}${data.img}",
+                                                  "${Config.baseUrl}/${data.img}",
                                                   height: 24,
                                                   width: 24,
                                                 )
@@ -1012,7 +1012,7 @@ class _EditProfileState extends State<EditProfile> {
                                                                     ),
                                                                     Image
                                                                         .network(
-                                                                      "${Config.baseUrl}${data.img}",
+                                                                      "${Config.baseUrl}/${data.img}",
                                                                       height:
                                                                       24,
                                                                       width:
@@ -1099,7 +1099,7 @@ class _EditProfileState extends State<EditProfile> {
                                                                     ),
                                                                     Image
                                                                         .network(
-                                                                      "${Config.baseUrl}${data.img}",
+                                                                      "${Config.baseUrl}/${data.img}",
                                                                       height:
                                                                       24,
                                                                       width:
@@ -1169,7 +1169,7 @@ class _EditProfileState extends State<EditProfile> {
                                                   width: 5,
                                                 ),
                                                 Image.network(
-                                                  "${Config.baseUrl}${data.img}",
+                                                  "${Config.baseUrl}/${data.img}",
                                                   height: 24,
                                                   width: 24,
                                                 )

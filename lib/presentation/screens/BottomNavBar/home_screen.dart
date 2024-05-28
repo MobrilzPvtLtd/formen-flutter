@@ -240,7 +240,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                fit: BoxFit.cover
                                            )),
                                      ),
-
                                      Stack(
                                        alignment: Alignment.bottomCenter,
                                        children: [
