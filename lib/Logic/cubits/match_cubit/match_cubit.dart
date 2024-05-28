@@ -52,9 +52,7 @@ class MatchCubit extends Cubit<MatchStates> {
       };
 
       Response response = await _api.sendRequest.post("${Config.baseUrlApi}${Config.favourite}",data: data);
-
       if(response.statusCode == 200){
-
         if(response.data["Result"] == "true"){
           return FavlistModel.fromJson(response.data);
         }else{
@@ -72,7 +70,7 @@ class MatchCubit extends Cubit<MatchStates> {
     }catch(e){
 
       emit(MatchErrorState(e.toString()));
-      rethrow;
+       rethrow;
 
     }
   }

@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import '../../../core/config.dart';
 import '../../../core/ui.dart';
@@ -111,7 +112,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           BorderSide(color: Theme.of(context).dividerTheme.color!))),
                   onChanged: (s) {
                     chattingProvider.searchIteam(s);
-                  }) : const SizedBox(),
+                  }) :  _buildUserList(),
 
               chattingProvider.userData.isEmpty ? const SizedBox() : chattingProvider.searchController.text.isEmpty ? Expanded(child: _buildUserList()) : chattingProvider.searchIndexList.isEmpty ? Expanded(child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -189,37 +190,39 @@ class _ChatScreenState extends State<ChatScreen> {
 
   Widget _buildUserList() {
     return StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("datingUser").snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return const Text("Error");
-          }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return ListTile(
-              contentPadding: const EdgeInsets.symmetric(vertical: 5),
-              leading: commonSimmer(height: 50, width: 50,radius: 50),
-              title: Row(
-                children: [
-                  commonSimmer(height: 10, width: 50,radius: 10),
-                ],
-              ),
-              subtitle: Row(
-                children: [
-                  commonSimmer(height: 10, width: 30,radius: 10),
-                ],
-              ),
-              trailing: commonSimmer(height: 10, width: 30,radius: 10),
-            );
-          } else {
-            return ListView(
-              children: snapshot.data!.docs.map<Widget>((doc) {
-                print("!!!:-- ${snapshot.data!.docs.length}");
-                return  _buildUserListIteam(doc, snapshot.data!.docs.length);
-              }).toList(),
-            );
-          }
-        });
+      stream: FirebaseFirestore.instance.collection("datingUser").snapshots(),
+      builder: (context, snapshot) {
+        if (snapshot.hasError) {
+          return Text("Error: ${snapshot.error}");
+        }
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+        if (snapshot.data == null || snapshot.data!.docs.isEmpty) {
+          return  Center(
+            child: Column(
+              children: [
+               const SizedBox(height: 150,),
+                Lottie.asset('assets/lottie/no_text.json'),
+               const Text("No users found!!!")
+              ],
+            ),
+          );
+        }
+        return Expanded(
+          child: ListView.builder(
+            itemCount: snapshot.data!.docs.length,
+            itemBuilder: (context, index) {
+              return _buildUserListIteam(snapshot.data!.docs[index], snapshot.data!.docs.length);
+            },
+          ),
+        );
+      },
+    );
   }
+
 
 
 

@@ -1,4 +1,5 @@
 import 'package:dating/presentation/screens/BottomNavBar/bottombar.dart';
+import 'package:dating/presentation/screens/BottomNavBar/likes.dart';
 import 'package:dating/presentation/screens/BottomNavBar/match/browes.dart';
 import 'package:dating/presentation/screens/BottomNavBar/mapscreen.dart';
 import 'package:dating/presentation/screens/BottomNavBar/notification_page.dart';
@@ -16,6 +17,7 @@ import 'package:dating/presentation/screens/splash_bording/onbording_screens.dar
 import 'package:dating/presentation/screens/splash_bording/recover_email.dart';
 import 'package:dating/presentation/screens/splash_bording/splash_screen.dart';
 import 'package:flutter/cupertino.dart';
+import '../presentation/screens/BottomNavBar/chats.dart';
 import '../presentation/screens/BottomNavBar/home_screen.dart';
 
 
@@ -47,6 +49,12 @@ class Routes {
 
       case MapScreen.mapScreenRoute:
         return CupertinoPageRoute(builder: (context) => const MapScreen());
+
+    case LikesScreen.likesScreenRoute:
+    return CupertinoPageRoute(builder: (context) => const LikesScreen());
+
+      case ChatScreen.chatScreenRoute:
+        return CupertinoPageRoute(builder: (context) => const ChatScreen());
 
       case ProfilePage.profilePageRoute:
         return CupertinoPageRoute(builder: (context) => const ProfilePage());

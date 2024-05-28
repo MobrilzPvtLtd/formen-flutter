@@ -33,7 +33,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  
+
   late HomeProvider homeProvider;
   late EditProfileProvider editProfileProvider;
 
@@ -149,18 +149,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           Navigator.pushNamed(context,  NotificationPage.notificationRoute);
                         },
                         child: SvgPicture.asset("assets/icons/notificationicon.svg",colorFilter: ColorFilter.mode(Theme.of(context).indicatorColor, BlendMode.srcIn),)),
-
                     const SizBoxW(size: 0.03),
-
                     InkWell(
                         onTap: () {
-                          state.homeData.filterInclude == "0"? Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute):
+                          state.homeData.filterInclude == "1"? Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute):
                           homeProvider.filterBottomSheet(context);
                         },
                         child: SvgPicture.asset("assets/icons/Filter.svg",colorFilter: ColorFilter.mode(Theme.of(context).indicatorColor, BlendMode.srcIn),)
                     ),
-
-
                   ],
                 ),
 
@@ -216,7 +212,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                    clipBehavior: Clip.none,
                    alignment: Alignment.bottomCenter,
                    children: [
-
                    PageView.builder(
                        itemCount: state.homeData.profilelist!.length,
                        onPageChanged: (i) {
@@ -235,7 +230,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                  height: MediaQuery.of(context).size.height / 1.45,
                                  child: Stack(
                                    children: [
-
                                      Container(
                                        height: MediaQuery.of(context).size.height / 1.45,
                                        width: MediaQuery.of(context).size.width,
@@ -246,11 +240,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                                fit: BoxFit.cover
                                            )),
                                      ),
-
                                      Stack(
                                        alignment: Alignment.bottomCenter,
                                        children: [
-
                                          Container(
                                            height: MediaQuery.of(context).size.height / 1.45,
                                            width: MediaQuery.of(context).size.width,
@@ -406,7 +398,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                          ],
                                        ),
                                      ) : const SizedBox(),
-
                                    ],
                                  ),
                                ),
@@ -457,28 +448,28 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         itemCount: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length,
                                         carouselController: homeProvider.carouselController,
                                         itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-
                                           return Container(
                                             height: MediaQuery.of(context).size.height / 1.45,
                                             width: MediaQuery.of(context).size.width,
                                             decoration: BoxDecoration(
-                                                image: DecorationImage(image: NetworkImage("${Config.baseUrl}${state.homeData.profilelist![homeProvider.currentIndex].profileImages![itemIndex]}"), fit: BoxFit.cover)
+                                              image: DecorationImage(
+                                                image: NetworkImage("${Config.baseUrl}/${state.homeData.profilelist![homeProvider.currentIndex].profileImages![itemIndex]}"),
+                                                fit: BoxFit.cover,
+                                              ),
                                             ),
-
-
-
                                           );
                                         },
                                         options: CarouselOptions(
-                                            autoPlay: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length > 1? true : false,
-                                            enableInfiniteScroll: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length > 1? true : false,
-                                            height: MediaQuery.of(context).size.height / 1.45,
-                                            onPageChanged: (i, r) {
-                                              homeProvider.upDateinnerindex(i);
-                                            },
-                                            viewportFraction: 1
+                                          autoPlay: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length > 1? true : false,
+                                          enableInfiniteScroll: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length > 1? true : false,
+                                          height: MediaQuery.of(context).size.height / 1.45,
+                                          onPageChanged: (i, r) {
+                                            homeProvider.upDateinnerindex(i);
+                                          },
+                                          viewportFraction: 1,
                                         ),
                                       ),
+
 
                                       Stack(
                                         alignment: Alignment.bottomCenter,
@@ -686,18 +677,31 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                         if (i == 2  && state.homeData.planId == "0") {
                                           Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
                                         }
-
-                                        if (state.homeData.profilelist!.isNotEmpty){
+                                        if (state.homeData.profilelist!.isNotEmpty) {
                                           if (i == 0) {
-                                            homeProvider.cancleButton(state,context);
-                                            BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(uid: homeProvider.uid, proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!, action: "UNLIKE", lat: homeProvider.lat, long: homeProvider.long);
+                                            homeProvider.cancleButton(state, context);
+                                            BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(
+                                              uid: homeProvider.uid,
+                                              proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
+                                              action: "UNLIKE",
+                                              lat: homeProvider.lat,
+                                              long: homeProvider.long,
+                                            );
+                                            // Remove the current profile from the list
+                                            state.homeData.profilelist!.removeAt(homeProvider.currentIndex);
                                           } else if (i == 1) {
-                                            homeProvider.likeButton(state,context);
-                                            BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(uid: homeProvider.uid, proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!, action: "LIKE", lat: homeProvider.lat, long: homeProvider.long);
+                                            homeProvider.likeButton(state, context);
+                                            BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(
+                                              uid: homeProvider.uid,
+                                              proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
+                                              action: "LIKE",
+                                              lat: homeProvider.lat,
+                                              long: homeProvider.long,
+                                            );
                                           }
-
                                         }
-                                    },
+
+                                      },
                                       child: (i == 2 && state.homeData.planId != "0") ? (state.homeData.planId == "3") ? InkWell(
                                         onTap: () {
                                           // BlocProvider.of<HomePageCubit>(context).planDataApi(context, state.homeData.profilelist![homeProvider.currentIndex].profileId).then((value) {

@@ -265,13 +265,13 @@ class _BottomBarState extends State<BottomBar> {
                                   return InkWell(
                                       onTap: () {
                                         homeProvider.setSelectPage(index);
-                                        if(homeProvider.selectPageIndex == 2 && state.homeData.likeMenu == "0") {
-                                          homeProvider.setSelectPage(0);
-                                          Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
-                                        }else if(homeProvider.selectPageIndex == 3 && (state.homeData.chat == "0")) {
-                                          homeProvider.setSelectPage(0);
-                                          Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
-                                        }
+                                        // if(homeProvider.selectPageIndex == 2 && state.homeData.likeMenu == "0") {
+                                        //   homeProvider.setSelectPage(0);
+                                        //   Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
+                                        // }else if(homeProvider.selectPageIndex == 3 && (state.homeData.chat == "0")) {
+                                        //   homeProvider.setSelectPage(0);
+                                        //   Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
+                                        // }
                                       },
                                       child: Container(
                                         height: 45,

@@ -151,7 +151,7 @@ class _ChattingPageState extends State<ChattingPage> {
                               : CircleAvatar(
                               radius: 20,
                               backgroundColor: Colors.transparent,
-                              backgroundImage: NetworkImage("${Config.baseUrl}$proPic")
+                              backgroundImage: NetworkImage("${Config.baseUrl}/$proPic")
                           ),
                           const SizedBox(width: 10,),
                           Expanded(

@@ -49,7 +49,7 @@ class _push_notification_screenState extends State<push_notification_screen> {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   title: Padding(
-                    padding: EdgeInsets.only(bottom: 4.0),
+                    padding: const EdgeInsets.only(bottom: 4.0),
                     // child: Text('New Matches'.tr,style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold)),
                     child: Text(AppLocalizations.of(context)?.translate("New Matches") ?? "New Matches",style: Theme.of(context).textTheme.bodyMedium!.copyWith(fontWeight: FontWeight.bold)),
                   ),

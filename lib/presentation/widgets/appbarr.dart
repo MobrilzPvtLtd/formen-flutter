@@ -9,8 +9,8 @@ PreferredSize appbarr(context,String title,{Widget? traling}){
         children: [
           Row(
             children: [
-              Image.asset("assets/Image/appmainLogo1.png",height: 50,width: 50,),
-              const SizedBox(width: 10,),
+              // Image.asset("assets/Image/appmainLogo1.png",height: 50,width: 50,),
+              const SizedBox(width: 20,),
               Text(title,style: Theme.of(context).textTheme.headlineSmall,),
               const Spacer(),
               traling ?? const SizedBox(),

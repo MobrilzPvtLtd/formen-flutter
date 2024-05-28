@@ -248,15 +248,15 @@ Future demo1(context) async{
               : CrossAxisAlignment.start,
           children: [
 
-            // Text(data["senderEmail"],
-            //     style: TextStyle(
-            //         fontSize: 12,
-            //         fontFamily: FontFamily.gilroyLight,
-            //         color: blueColor)),
-            // // Text(data["message"])
-            // const SizedBox(
-            //   height: 5,
-            // ),
+            Text(data["senderEmail"],
+                style: TextStyle(
+                    fontSize: 12,
+                    // fontFamily: FontFamily.gilroyLight,
+                    color: AppColors.greyLight)),
+            // Text(data["message"])
+            const SizedBox(
+              height: 5,
+            ),
 
             ChatBubble(
               chatColor: (data["senderid"] == Provider.of<HomeProvider>(context,listen: false).uid)

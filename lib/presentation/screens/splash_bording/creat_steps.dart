@@ -122,35 +122,35 @@ class _CreatStepsState extends State<CreatSteps> {
                   onBordingProvider.images.length >= 3) {
                 BlocProvider.of<OnbordingCubit>(context)
                     .registerUserApi(
-                        name: onBordingProvider.name.text,
-                        email: onBordingProvider.email.text,
-                        mobile: onBordingProvider.mobileNumber.text,
-                        ccode: "+${onBordingProvider.ccode}",
-                        bday: onBordingProvider.bdatePicker
-                            .toString()
-                            .split(" ")
-                            .first,
-                        searchPreference: onBordingProvider.maleFemaleBoth(onBordingProvider.select1),
-                        rediusSearch:
-                            onBordingProvider.kmCounter.toStringAsFixed(2),
-                        relationGoal: onBordingProvider.relationGoal.toString(),
-                        profileBio: onBordingProvider.bio.text,
-                        intrest: onBordingProvider.selectHobi.join(","),
-                        language: onBordingProvider.selectedLanguage.join(","),
-                        password: onBordingProvider.password.text,
-                        refCode: onBordingProvider.referelCode.text,
-                        gender: onBordingProvider.maleFemaleOther(onBordingProvider.select),
-                        lat: onBordingProvider.lat.toString(),
-                        long: onBordingProvider.long.toString(),
-                        religon: onBordingProvider.selectReligion.toString(),
-                        images: onBordingProvider.images,context: context)
+                    name: onBordingProvider.name.text,
+                    email: onBordingProvider.email.text,
+                    mobile: onBordingProvider.mobileNumber.text,
+                    ccode: "+${onBordingProvider.ccode}",
+                    bday: onBordingProvider.bdatePicker
+                        .toString()
+                        .split(" ")
+                        .first,
+                    searchPreference: onBordingProvider.maleFemaleBoth(onBordingProvider.select1),
+                    rediusSearch:
+                    onBordingProvider.kmCounter.toStringAsFixed(2),
+                    relationGoal: onBordingProvider.relationGoal.toString(),
+                    profileBio: onBordingProvider.bio.text,
+                    intrest: onBordingProvider.selectHobi.join(","),
+                    language: onBordingProvider.selectedLanguage.join(","),
+                    password: onBordingProvider.password.text,
+                    refCode: onBordingProvider.referelCode.text,
+                    gender: onBordingProvider.maleFemaleOther(onBordingProvider.select),
+                    lat: onBordingProvider.lat.toString(),
+                    long: onBordingProvider.long.toString(),
+                    religon: onBordingProvider.selectReligion.toString(),
+                    images: onBordingProvider.images,context: context)
                     .then((value) {
                   Fluttertoast.showToast(msg: value.responseMsg.toString());
                 });
               } else {
                 if ((onBordingProvider.name.text.isEmpty ||
-                        onBordingProvider.email.text.isEmpty ||
-                        onBordingProvider.password.text.isEmpty) &&
+                    onBordingProvider.email.text.isEmpty ||
+                    onBordingProvider.password.text.isEmpty) &&
                     onBordingProvider.stepsCount == 0) {
                   if (onBordingProvider.name.text.isEmpty) {
                     // Fluttertoast.showToast(msg: "Please Enter Name".tr);
@@ -177,7 +177,7 @@ class _CreatStepsState extends State<CreatSteps> {
                 } else if (onBordingProvider.relationGoal < 0 &&
                     onBordingProvider.stepsCount == 4) {
                   Fluttertoast.showToast(
-                      // msg: "Please Select Relationship Goals".tr);
+                    // msg: "Please Select Relationship Goals".tr);
                       msg: AppLocalizations.of(context)?.translate("Please Select Relationship Goals") ?? "Please Select Relationship Goals");
                 } else if (onBordingProvider.kmCounter < 10 &&
                     onBordingProvider.stepsCount == 5) {
@@ -210,7 +210,7 @@ class _CreatStepsState extends State<CreatSteps> {
             child: SvgPicture.asset(
               "assets/icons/angle-right-small.svg",
               colorFilter:
-                  const ColorFilter.mode(Colors.white, BlendMode.srcIn),
+              const ColorFilter.mode(Colors.white, BlendMode.srcIn),
             )),
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         appBar: PreferredSize(
@@ -225,43 +225,45 @@ class _CreatStepsState extends State<CreatSteps> {
                     onBordingProvider.stepsCount == 0
                         ? const SizedBox()
                         : InkWell(
-                            onTap: () {
-                              onBordingProvider.updatestepsCount(onBordingProvider.stepsCount - 1);
-                            },
-                            child: SvgPicture.asset(
-                              "assets/icons/BackIcon.svg",
-                              height: 25,
-                              width: 25,
-                              colorFilter: ColorFilter.mode(
-                                  Theme.of(context)
-                                          .textTheme
-                                          .headlineMedium
-                                          ?.color ??
-                                      Colors.black,
-                                  BlendMode.srcIn),
-                            ),
-                          ),
+                      onTap: () {
+                        onBordingProvider.updatestepsCount(onBordingProvider.stepsCount - 1);
+                      },
+                      child: SvgPicture.asset(
+                        "assets/icons/BackIcon.svg",
+                        height: 25,
+                        width: 25,
+                        colorFilter: ColorFilter.mode(
+                            Theme.of(context)
+                                .textTheme
+                                .headlineMedium
+                                ?.color ??
+                                Colors.black,
+                            BlendMode.srcIn),
+                      ),
+                    ),
                     const SizBoxW(size: 0.05),
-                    Stack(
-                      children: [
-                        Container(
-                          height: 4,
-                          decoration: BoxDecoration(
-                              color: Theme.of(context).dividerTheme.color!,
-                              borderRadius: BorderRadius.circular(10)),
-                          width: MediaQuery.of(context).size.width,
-                        ),
-                        Container(
-                          height: 4,
-                          decoration: BoxDecoration(
-                              color: AppColors.appColor,
-                              borderRadius: BorderRadius.circular(10)),
-                          width: onBordingProvider.stepsCount == 0
-                              ? 10
-                              : (onBordingProvider.stepsCount * 2.6) *
-                                  (MediaQuery.of(context).size.width * 0.027),
-                        ),
-                      ],
+                    Expanded(
+                      child: Stack(
+                        children: [
+                          Container(
+                            height: 4,
+                            decoration: BoxDecoration(
+                                color: Theme.of(context).dividerTheme.color!,
+                                borderRadius: BorderRadius.circular(10)),
+                            width: MediaQuery.of(context).size.width,
+                          ),
+                          Container(
+                            height: 4,
+                            decoration: BoxDecoration(
+                                color: AppColors.appColor,
+                                borderRadius: BorderRadius.circular(10)),
+                            width: onBordingProvider.stepsCount == 0
+                                ? 10
+                                : (onBordingProvider.stepsCount * 2.6) *
+                                (MediaQuery.of(context).size.width * 0.027),
+                          ),
+                        ],
+                      ),
                     ),
                     const SizBoxW(size: 0.05),
                   ]),
@@ -304,14 +306,14 @@ class _CreatStepsState extends State<CreatSteps> {
               }),
               BlocConsumer<OnbordingCubit, OnbordingState>(
                   listener: (context, state) {
-                if (state is CompletSteps) {
-                  Navigator.pushNamedAndRemoveUntil(
-                      context, BottomBar.bottomBarRoute, (route) => false);
-                }
-                if (state is ErrorState) {
-                  Fluttertoast.showToast(msg: state.error);
-                }
-              }, builder: (context, state) {
+                    if (state is CompletSteps) {
+                      Navigator.pushNamedAndRemoveUntil(
+                          context, BottomBar.bottomBarRoute, (route) => false);
+                    }
+                    if (state is ErrorState) {
+                      Fluttertoast.showToast(msg: state.error);
+                    }
+                  }, builder: (context, state) {
                 if (state is LoadingState) {
                   return CircularProgressIndicator(color: AppColors.appColor);
                 } else {
@@ -453,7 +455,7 @@ class _CreatStepsState extends State<CreatSteps> {
             style: Theme.of(context)
                 .textTheme
                 .bodyMedium!
-                ,
+            ,
             onCountryChanged: (value) {
               onBordingProvider.ccode =
                   onBordingProvider.updateVeriable(value.dialCode);
@@ -559,9 +561,9 @@ class _CreatStepsState extends State<CreatSteps> {
                         child: Text(
                             "${onBordingProvider.bdatePicker}" != "null"
                                 ? onBordingProvider.bdatePicker
-                                    .toString()
-                                    .split(" ")
-                                    .first
+                                .toString()
+                                .split(" ")
+                                .first
                                 : "YYYY - MM - DD",
                             style: Theme.of(context).textTheme.bodySmall),
                       ),
@@ -610,7 +612,7 @@ class _CreatStepsState extends State<CreatSteps> {
                     height: 55,
                     padding: const EdgeInsets.all(12),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
+                        color: Theme.of(context).cardColor,
                         borderRadius: BorderRadius.circular(12),
                         border: Border.all(
                             color: onBordingProvider.select == i
@@ -663,10 +665,10 @@ class _CreatStepsState extends State<CreatSteps> {
                 },
                 shrinkWrap: true,
                 itemCount:
-                    onBordingProvider.relationGoalData?.goallist!.length ?? 0,
+                onBordingProvider.relationGoalData?.goallist!.length ?? 0,
                 itemBuilder: (c, i) {
                   Goallist? data =
-                      onBordingProvider.relationGoalData?.goallist?[i];
+                  onBordingProvider.relationGoalData?.goallist?[i];
                   return InkWell(
                     onTap: () {
                       onBordingProvider
@@ -680,7 +682,7 @@ class _CreatStepsState extends State<CreatSteps> {
                           color: Theme.of(context).cardColor,
                           border: Border.all(
                               color: onBordingProvider.relationGoal ==
-                                      int.parse(data!.id.toString())
+                                  int.parse(data!.id.toString())
                                   ? AppColors.appColor
                                   : Theme.of(context).dividerTheme.color!)),
                       width: MediaQuery.of(context).size.width,
@@ -824,137 +826,137 @@ class _CreatStepsState extends State<CreatSteps> {
           ),
           onBordingProvider.hobieSearchContoller.text.isEmpty
               ? Wrap(
-                  spacing: 13,
-                  runSpacing: 13,
-                  children: [
-                    for (int a = 0;
-                        a <
-                            onBordingProvider
-                                .getInterestModel!.interestlist!.length;
-                        a++)
-                      Builder(builder: (context) {
-                        Interestlist data = onBordingProvider
-                            .getInterestModel!.interestlist![a];
-                        return InkWell(
-                          onTap: () {
-                            if (onBordingProvider.selectHobi
-                                    .contains(data.id) ==
-                                true) {
-                              onBordingProvider.removeHobi(data.id);
-                            } else {
-                              if (onBordingProvider.selectHobi.length < 5) {
-                                onBordingProvider.addInHobi(data.id);
-                              }
-                            }
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 8),
-                            decoration: BoxDecoration(
-                                color: onBordingProvider.selectHobi
-                                        .contains(data.id)
-                                    ? AppColors.appColor
-                                    : Theme.of(context).cardColor,
-                                borderRadius: BorderRadius.circular(40),
-                                border: Border.all(
-                                    color: onBordingProvider.selectHobi
-                                            .contains(data.id)
-                                        ? Colors.transparent
-                                        : Theme.of(context).dividerTheme.color!)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(data.title.toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .copyWith(
-                                            color: onBordingProvider.selectHobi
-                                                    .contains(data.id)
-                                                ? AppColors.white
-                                                : null)),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                // Image.network(
-                                //   "${Config.baseUrl}${data.img}",
-                                //   height: 24,
-                                //   width: 24,
-                                // )
-                              ],
-                            ),
+            spacing: 13,
+            runSpacing: 13,
+            children: [
+              for (int a = 0;
+              a <
+                  onBordingProvider
+                      .getInterestModel!.interestlist!.length;
+              a++)
+                Builder(builder: (context) {
+                  Interestlist data = onBordingProvider
+                      .getInterestModel!.interestlist![a];
+                  return InkWell(
+                    onTap: () {
+                      if (onBordingProvider.selectHobi
+                          .contains(data.id) ==
+                          true) {
+                        onBordingProvider.removeHobi(data.id);
+                      } else {
+                        if (onBordingProvider.selectHobi.length < 5) {
+                          onBordingProvider.addInHobi(data.id);
+                        }
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                          color: onBordingProvider.selectHobi
+                              .contains(data.id)
+                              ? AppColors.appColor
+                              : Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(40),
+                          border: Border.all(
+                              color: onBordingProvider.selectHobi
+                                  .contains(data.id)
+                                  ? Colors.transparent
+                                  : Theme.of(context).dividerTheme.color!)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(data.title.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                  color: onBordingProvider.selectHobi
+                                      .contains(data.id)
+                                      ? AppColors.white
+                                      : null)),
+                          const SizedBox(
+                            width: 5,
                           ),
-                        );
-                      })
-                  ],
-                )
+                          Image.network(
+                            "${Config.baseUrl}/${data.img}",
+                            height: 24,
+                            width: 24,
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                })
+            ],
+          )
               : onBordingProvider.searchForHobie.isEmpty
-                  ? const SizedBox()
-                  : Wrap(
-                      spacing: 13,
-                      runSpacing: 13,
-                      children: [
-                        for (int a = 0;
-                            a < onBordingProvider.searchForHobie.length;
-                            a++)
-                          Builder(builder: (context) {
-                            var result = onBordingProvider.searchForHobie[a];
-                            Interestlist data = onBordingProvider
-                                .getInterestModel!.interestlist![result];
-                            return InkWell(
-                              onTap: () {
-                                if (onBordingProvider.selectHobi
-                                        .contains(data.id) ==
-                                    true) {
-                                  onBordingProvider.removeHobi(data.id);
-                                } else {
-                                  if (onBordingProvider.selectHobi.length < 5) {
-                                    onBordingProvider.addInHobi(data.id);
-                                  }
-                                }
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 8),
-                                decoration: BoxDecoration(
-                                    color: onBordingProvider.selectHobi
-                                            .contains(data.id)
-                                        ? AppColors.appColor
-                                        : Theme.of(context).cardColor,
-                                    borderRadius: BorderRadius.circular(40),
-                                    border: Border.all(
-                                        color: onBordingProvider.selectHobi
-                                                .contains(data.id)
-                                            ? Colors.transparent
-                                            : Theme.of(context).dividerTheme.color!)),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(data.title.toString(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .copyWith(
-                                                color: onBordingProvider
-                                                        .selectHobi
-                                                        .contains(data.id)
-                                                    ? AppColors.white
-                                                    : null)),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    // Image.network(
-                                    //   "${Config.baseUrl}${data.img}",
-                                    //   height: 24,
-                                    //   width: 24,
-                                    // )
-                                  ],
-                                ),
-                              ),
-                            );
-                          })
-                      ],
-                    )
+              ? const SizedBox()
+              : Wrap(
+            spacing: 13,
+            runSpacing: 13,
+            children: [
+              for (int a = 0;
+              a < onBordingProvider.searchForHobie.length;
+              a++)
+                Builder(builder: (context) {
+                  var result = onBordingProvider.searchForHobie[a];
+                  Interestlist data = onBordingProvider
+                      .getInterestModel!.interestlist![result];
+                  return InkWell(
+                    onTap: () {
+                      if (onBordingProvider.selectHobi
+                          .contains(data.id) ==
+                          true) {
+                        onBordingProvider.removeHobi(data.id);
+                      } else {
+                        if (onBordingProvider.selectHobi.length < 5) {
+                          onBordingProvider.addInHobi(data.id);
+                        }
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                          color: onBordingProvider.selectHobi
+                              .contains(data.id)
+                              ? AppColors.appColor
+                              : Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(40),
+                          border: Border.all(
+                              color: onBordingProvider.selectHobi
+                                  .contains(data.id)
+                                  ? Colors.transparent
+                                  : Theme.of(context).dividerTheme.color!)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(data.title.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                  color: onBordingProvider
+                                      .selectHobi
+                                      .contains(data.id)
+                                      ? AppColors.white
+                                      : null)),
+                          const SizedBox(
+                            width: 5,
+                          ),
+                          Image.network(
+                            "${Config.baseUrl}/${data.img}",
+                            height: 24,
+                            width: 24,
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                })
+            ],
+          )
         ],
       ),
     );
@@ -984,7 +986,7 @@ class _CreatStepsState extends State<CreatSteps> {
               style: Theme.of(context)
                   .textTheme
                   .bodySmall!
-                  ,
+              ,
               decoration: InputDecoration(
                 // isDense: true,
                 contentPadding: const EdgeInsets.all(10),
@@ -1020,139 +1022,139 @@ class _CreatStepsState extends State<CreatSteps> {
             ),
             onBordingProvider.languageContoller.text.isEmpty
                 ? ListView.separated(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    itemBuilder: (c, i) {
-                      Languagelist? data =
-                          onBordingProvider.languageModel?.languagelist![i];
-                      return InkWell(
-                        onTap: () {
-                          if (onBordingProvider.selectedLanguage
-                                  .contains(data.id) ==
-                              true) {
-                            onBordingProvider.removelanguage(data.id);
-                          } else {
-                            onBordingProvider.addlanguage(data.id);
-                          }
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(12),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(12),
-                              color: Theme.of(context).cardColor,
-                              border: Border.all(
-                                  color: onBordingProvider.selectedLanguage
-                                          .contains(data!.id)
-                                      ? AppColors.appColor
-                                      : Theme.of(context).dividerTheme.color!)),
-                          child: Expanded(
-                            child: Row(
-                              children: [
-                                // Image.network(
-                                //   "${Config.baseUrl}${data.img}",
-                                //   height: 50,
-                                //   width: 50,
-                                // ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Text(
-                                  data.title ?? "",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall!
-                                      ,
-                                ),
-                                const Spacer(),
-                                onBordingProvider.selectedLanguage
-                                        .contains(data.id)
-                                    ? SvgPicture.asset(
-                                        "assets/icons/Iconcheck.svg",
-                                        height: 25,
-                                        width: 25,
-                                  colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                      )
-                                    : const SizedBox(),
-                              ],
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (c, i) {
+                  Languagelist? data =
+                  onBordingProvider.languageModel?.languagelist![i];
+                  return InkWell(
+                    onTap: () {
+                      if (onBordingProvider.selectedLanguage
+                          .contains(data.id) ==
+                          true) {
+                        onBordingProvider.removelanguage(data.id);
+                      } else {
+                        onBordingProvider.addlanguage(data.id);
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                          border: Border.all(
+                              color: onBordingProvider.selectedLanguage
+                                  .contains(data!.id)
+                                  ? AppColors.appColor
+                                  : Theme.of(context).dividerTheme.color!)),
+                      child: Expanded(
+                        child: Row(
+                          children: [
+                            Image.network(
+                              "${Config.baseUrl}/${data.img}",
+                              height: 50,
+                              width: 50,
                             ),
-                          ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Text(
+                              data.title ?? "",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                              ,
+                            ),
+                            const Spacer(),
+                            onBordingProvider.selectedLanguage
+                                .contains(data.id)
+                                ? SvgPicture.asset(
+                              "assets/icons/Iconcheck.svg",
+                              height: 25,
+                              width: 25,
+                              colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
+                            )
+                                : const SizedBox(),
+                          ],
                         ),
-                      );
-                    },
-                    separatorBuilder: (c, i) {
-                      return const SizedBox(
-                        height: 15,
-                      );
-                    },
-                    itemCount:
-                        onBordingProvider.languageModel?.languagelist!.length ??
-                            0)
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (c, i) {
+                  return const SizedBox(
+                    height: 15,
+                  );
+                },
+                itemCount:
+                onBordingProvider.languageModel?.languagelist!.length ??
+                    0)
                 : onBordingProvider.searchForLanguage.isEmpty
-                    ? const SizedBox()
-                    : ListView.separated(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemBuilder: (c, i) {
-                          var result = onBordingProvider.searchForLanguage[i];
-                          Languagelist? data = onBordingProvider
-                              .languageModel?.languagelist![result];
-                          return InkWell(
-                            onTap: () {
-                              if (onBordingProvider.selectedLanguage
-                                      .contains(data.id) ==
-                                  true) {
-                                onBordingProvider.removelanguage(data.id);
-                              } else {
-                                onBordingProvider.addlanguage(data.id);
-                              }
-                            },
-                            child: Container(
-                              padding: const EdgeInsets.all(12),
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                      color: onBordingProvider.selectedLanguage
-                                              .contains(data!.id)
-                                          ? AppColors.appColor
-                                          : Theme.of(context).dividerTheme.color!)),
-                              child: Row(
-                                children: [
-                                  // Image.network(
-                                  //   "${Config.baseUrl}${data.img}",
-                                  //   height: 50,
-                                  //   width: 50,
-                                  // ),
-                                  const SizedBox(
-                                    width: 10,
-                                  ),
-                                  Text(
-                                    data.title ?? "",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        ,
-                                  ),
-                                  const Spacer(),
-                                  onBordingProvider.selectedLanguage
-                                          .contains(data.id)
-                                      ? SvgPicture.asset(
-                                          "assets/icons/Iconcheck.svg",
-                                          height: 25,
-                                          width: 25,
-                                    colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                        )
-                                      : const SizedBox(),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                        separatorBuilder: (c, i) {
-                          return const SizedBox(
-                            height: 15,
-                          );
-                        },
-                        itemCount: onBordingProvider.searchForLanguage.length)
+                ? const SizedBox()
+                : ListView.separated(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemBuilder: (c, i) {
+                  var result = onBordingProvider.searchForLanguage[i];
+                  Languagelist? data = onBordingProvider
+                      .languageModel?.languagelist![result];
+                  return InkWell(
+                    onTap: () {
+                      if (onBordingProvider.selectedLanguage
+                          .contains(data.id) ==
+                          true) {
+                        onBordingProvider.removelanguage(data.id);
+                      } else {
+                        onBordingProvider.addlanguage(data.id);
+                      }
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(
+                              color: onBordingProvider.selectedLanguage
+                                  .contains(data!.id)
+                                  ? AppColors.appColor
+                                  : Theme.of(context).dividerTheme.color!)),
+                      child: Row(
+                        children: [
+                          Image.network(
+                            "${Config.baseUrl}/${data.img}",
+                            height: 50,
+                            width: 50,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            data.title ?? "",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                            ,
+                          ),
+                          const Spacer(),
+                          onBordingProvider.selectedLanguage
+                              .contains(data.id)
+                              ? SvgPicture.asset(
+                            "assets/icons/Iconcheck.svg",
+                            height: 25,
+                            width: 25,
+                            colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
+                          )
+                              : const SizedBox(),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (c, i) {
+                  return const SizedBox(
+                    height: 15,
+                  );
+                },
+                itemCount: onBordingProvider.searchForLanguage.length)
           ],
         ),
       ),
@@ -1182,7 +1184,7 @@ class _CreatStepsState extends State<CreatSteps> {
             style: Theme.of(context)
                 .textTheme
                 .bodySmall!
-                ,
+            ,
             decoration: InputDecoration(
               // isDense: true,
               contentPadding: const EdgeInsets.all(10),
@@ -1216,111 +1218,111 @@ class _CreatStepsState extends State<CreatSteps> {
           ),
           onBordingProvider.religionSearchContoller.text.isEmpty
               ? Wrap(
-                  spacing: 13,
-                  runSpacing: 13,
-                  children: [
-                    for (int a = 0;
-                        a <
-                            onBordingProvider
-                                .religionModel!.religionlist!.length;
-                        a++)
-                      Builder(builder: (context) {
-                        Religionlist data =
-                            onBordingProvider.religionModel!.religionlist![a];
-                        return InkWell(
-                          onTap: () {
-                            onBordingProvider
-                                .updatereligion(int.parse(data.id.toString()));
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 12, vertical: 8),
-                            decoration: BoxDecoration(
-                                color: onBordingProvider.selectReligion ==
-                                        int.parse(data.id.toString())
-                                    ? AppColors.appColor
-                                    : Theme.of(context).cardColor,
-                                borderRadius: BorderRadius.circular(40),
-                                border: Border.all(
-                                    color: onBordingProvider.selectReligion ==
-                                            int.parse(data.id.toString())
-                                        ? Colors.transparent
-                                        : Theme.of(context).dividerTheme.color!)),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text(data.title.toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .copyWith(
-                                            color: onBordingProvider
-                                                        .selectReligion ==
-                                                    int.parse(
-                                                        data.id.toString())
-                                                ? AppColors.white
-                                                : null)),
-                              ],
-                            ),
-                          ),
-                        );
-                      })
-                  ],
-                )
+            spacing: 13,
+            runSpacing: 13,
+            children: [
+              for (int a = 0;
+              a <
+                  onBordingProvider
+                      .religionModel!.religionlist!.length;
+              a++)
+                Builder(builder: (context) {
+                  Religionlist data =
+                  onBordingProvider.religionModel!.religionlist![a];
+                  return InkWell(
+                    onTap: () {
+                      onBordingProvider
+                          .updatereligion(int.parse(data.id.toString()));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                          color: onBordingProvider.selectReligion ==
+                              int.parse(data.id.toString())
+                              ? AppColors.appColor
+                              : Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(40),
+                          border: Border.all(
+                              color: onBordingProvider.selectReligion ==
+                                  int.parse(data.id.toString())
+                                  ? Colors.transparent
+                                  : Theme.of(context).dividerTheme.color!)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(data.title.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                  color: onBordingProvider
+                                      .selectReligion ==
+                                      int.parse(
+                                          data.id.toString())
+                                      ? AppColors.white
+                                      : null)),
+                        ],
+                      ),
+                    ),
+                  );
+                })
+            ],
+          )
               : onBordingProvider.searchForReligion.isEmpty
-                  ? const SizedBox()
-                  : Wrap(
-                      spacing: 13,
-                      runSpacing: 13,
-                      children: [
-                        for (int a = 0;
-                            a < onBordingProvider.searchForReligion.length;
-                            a++)
-                          Builder(builder: (context) {
-                            var result = onBordingProvider.searchForReligion[a];
-                            Religionlist data = onBordingProvider
-                                .religionModel!.religionlist![result];
-                            return InkWell(
-                              onTap: () {
-                                onBordingProvider.updatereligion(
-                                    int.parse(data.id.toString()));
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 12, vertical: 8),
-                                decoration: BoxDecoration(
-                                    color: onBordingProvider.selectReligion ==
-                                            int.parse(data.id.toString())
-                                        ? AppColors.appColor
-                                        : Theme.of(context).cardColor,
-                                    borderRadius: BorderRadius.circular(40),
-                                    border: Border.all(
-                                        color: onBordingProvider
-                                                    .selectReligion ==
-                                                int.parse(data.id.toString())
-                                            ? Colors.transparent
-                                            : Theme.of(context).dividerTheme.color!)),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Text(data.title.toString(),
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodySmall!
-                                            .copyWith(
-                                                color: onBordingProvider
-                                                            .selectReligion ==
-                                                        int.parse(
-                                                            data.id.toString())
-                                                    ? AppColors.white
-                                                    : null)),
-                                  ],
-                                ),
-                              ),
-                            );
-                          })
-                      ],
-                    )
+              ? const SizedBox()
+              : Wrap(
+            spacing: 13,
+            runSpacing: 13,
+            children: [
+              for (int a = 0;
+              a < onBordingProvider.searchForReligion.length;
+              a++)
+                Builder(builder: (context) {
+                  var result = onBordingProvider.searchForReligion[a];
+                  Religionlist data = onBordingProvider
+                      .religionModel!.religionlist![result];
+                  return InkWell(
+                    onTap: () {
+                      onBordingProvider.updatereligion(
+                          int.parse(data.id.toString()));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                          color: onBordingProvider.selectReligion ==
+                              int.parse(data.id.toString())
+                              ? AppColors.appColor
+                              : Theme.of(context).cardColor,
+                          borderRadius: BorderRadius.circular(40),
+                          border: Border.all(
+                              color: onBordingProvider
+                                  .selectReligion ==
+                                  int.parse(data.id.toString())
+                                  ? Colors.transparent
+                                  : Theme.of(context).dividerTheme.color!)),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(data.title.toString(),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(
+                                  color: onBordingProvider
+                                      .selectReligion ==
+                                      int.parse(
+                                          data.id.toString())
+                                      ? AppColors.white
+                                      : null)),
+                        ],
+                      ),
+                    ),
+                  );
+                })
+            ],
+          )
         ],
       ),
     );
@@ -1405,60 +1407,188 @@ class _CreatStepsState extends State<CreatSteps> {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
           const SizBoxH(size: 0.018),
-          Row(children: [
-            InkWell(
-              onTap: () async {
-                onBordingProvider.pickupImage(0);
-                if (images.isEmpty) {
-                  final XFile? image =
-                      await picker.pickImage(source: ImageSource.gallery);
-                  images.add(image!);
-                  setState(() {});
-                }
-              },
-              child: Stack(
-                alignment: Alignment.topRight,
+          Expanded(
+            child: Row(children: [
+              InkWell(
+                onTap: () async {
+                  onBordingProvider.pickupImage(0);
+                  // if (images.isEmpty) {
+                  //   final XFile? image =
+                  //   await picker.pickImage(source: ImageSource.gallery);
+                  //   images.add(image!);
+                  //   setState(() {});
+                  // }
+                },
+                child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    Container(
+                      height: MediaQuery.of(context).size.height / 3.5,
+                      decoration: BoxDecoration(
+                          border: Border.all(
+                              color: onBordingProvider.images.isEmpty
+                                  ? AppColors.appColor
+                                  : Theme.of(context).dividerTheme.color!),
+                          image: onBordingProvider.images.isNotEmpty
+                              ? DecorationImage(
+                              image: FileImage(
+                                File(onBordingProvider.images.first.path
+                                    .toString()),
+                              ),
+                              fit: BoxFit.cover)
+                              : null,
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20))),
+                      child: onBordingProvider.images.isEmpty
+                          ? Center(
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
+                          child: const Icon(Icons.add),
+                        ),
+                      )
+                          : null,
+                    ),
+                    onBordingProvider.images.isEmpty
+                        ? const SizedBox()
+                        : Positioned(
+                      top: 10,
+                      right: 10,
+                      child: InkWell(
+                        onTap: () {
+                          onBordingProvider.removeImages(0);
+                        },
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
+                          child: Center(
+                            child: SvgPicture.asset(
+                              "assets/icons/times.svg",
+                              height: 20,
+                              width: 20,
+                              colorFilter:  ColorFilter.mode(
+                                  Theme.of(context).indicatorColor, BlendMode.srcIn),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
                 children: [
-                  Container(
-                    height: MediaQuery.of(context).size.height / 3.5,
-                    decoration: BoxDecoration(
-                        border: Border.all(
-                            color: onBordingProvider.images.isEmpty
-                                ? AppColors.appColor
-                                : Theme.of(context).dividerTheme.color!),
-                        image: onBordingProvider.images.isNotEmpty
-                            ? DecorationImage(
+                  Stack(
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          onBordingProvider.pickupImage(1);
+                          // if (images.length == 1) {
+                          //   final XFile? image = await picker.pickImage(
+                          //       source: ImageSource.gallery);
+
+                          //   images.add(image!);
+
+                          //   setState(() {});
+                          // }
+                        },
+                        child: Container(
+                            height: MediaQuery.of(context).size.height / 7,
+                            decoration: BoxDecoration(
+
+                                border: Border.all(
+                                    color: onBordingProvider.images.length == 1
+                                        ? AppColors.appColor
+                                        : Theme.of(context).dividerTheme.color!),
+                                image: onBordingProvider.images.length >= 2
+                                    ? DecorationImage(
+                                    image: FileImage(
+                                      File(onBordingProvider.images[1].path
+                                          .toString()),
+                                    ),
+                                    fit: BoxFit.cover)
+                                    : null,
+                                borderRadius: const BorderRadius.only(
+                                    topRight: Radius.circular(20))),
+                            child: onBordingProvider.images.length == 1
+                                ? Center(
+                              child: Container(
+                                height: 30,
+                                width: 30,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(12),
+                                  color: Theme.of(context).cardColor,
+                                ),
+                                child: const Icon(
+                                  Icons.add,
+                                  size: 15,
+                                ),
+                              ),
+                            )
+                                : null),
+                      ),
+                      onBordingProvider.images.length >= 2
+                          ? Positioned(
+                        top: 10,
+                        right: 10,
+                        child: InkWell(
+                          onTap: () {
+                            onBordingProvider.removeImages(1);
+                          },
+                          child: Container(
+                            height: 23,
+                            width: 23,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Theme.of(context).dividerTheme.color!,
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                "assets/icons/times.svg",
+                                height: 12,
+                                width: 12,
+                                colorFilter:  ColorFilter.mode(
+                                    Theme.of(context).indicatorColor, BlendMode.srcIn),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                          : const SizedBox()
+                    ],
+                  ),
+                  Stack(
+                    children: [
+                      InkWell(
+                        onTap: () async {
+                          onBordingProvider.pickupImage(2);
+                        },
+                        child: Container(
+                          height: MediaQuery.of(context).size.height / 7,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: onBordingProvider.images.length == 2
+                                    ? AppColors.appColor
+                                    : Theme.of(context).dividerTheme.color!),
+                            image: onBordingProvider.images.length >= 3
+                                ? DecorationImage(
                                 image: FileImage(
-                                  File(onBordingProvider.images.first.path
+                                  File(onBordingProvider.images[2].path
                                       .toString()),
                                 ),
                                 fit: BoxFit.cover)
-                            : null,
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20))),
-                    child: onBordingProvider.images.isEmpty
-                        ? Center(
-                            child: Container(
-                              height: 50,
-                              width: 50,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Theme.of(context).cardColor,
-                              ),
-                              child: const Icon(Icons.add),
-                            ),
-                          )
-                        : null,
-                  ),
-                  onBordingProvider.images.isEmpty
-                      ? const SizedBox()
-                      : Positioned(
-                          top: 10,
-                          right: 10,
-                          child: InkWell(
-                            onTap: () {
-                              onBordingProvider.removeImages(0);
-                            },
+                                : null,
+                          ),
+                          child: onBordingProvider.images.length == 2
+                              ? Center(
                             child: Container(
                               height: 30,
                               width: 30,
@@ -1466,175 +1596,49 @@ class _CreatStepsState extends State<CreatSteps> {
                                 borderRadius: BorderRadius.circular(12),
                                 color: Theme.of(context).cardColor,
                               ),
-                              child: Center(
-                                child: SvgPicture.asset(
-                                  "assets/icons/times.svg",
-                                  height: 20,
-                                  width: 20,
-                                  colorFilter:  ColorFilter.mode(
-                                      Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                ),
+                              child: const Icon(
+                                Icons.add,
+                                size: 15,
+                              ),
+                            ),
+                          )
+                              : null,
+                        ),
+                      ),
+                      onBordingProvider.images.length >= 3
+                          ? Positioned(
+                        top: 10,
+                        right: 10,
+                        child: InkWell(
+                          onTap: () {
+                            onBordingProvider.removeImages(2);
+                          },
+                          child: Container(
+                            height: 23,
+                            width: 23,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Theme.of(context).cardColor,
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                "assets/icons/times.svg",
+                                height: 12,
+                                width: 12,
+                                colorFilter: ColorFilter.mode(
+                                    Theme.of(context).indicatorColor, BlendMode.srcIn),
                               ),
                             ),
                           ),
                         ),
+                      )
+                          : const SizedBox()
+                    ],
+                  ),
                 ],
               ),
-            ),
-            Column(
-              children: [
-                Stack(
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        onBordingProvider.pickupImage(1);
-                        // if (images.length == 1) {
-                        //   final XFile? image = await picker.pickImage(
-                        //       source: ImageSource.gallery);
-
-                        //   images.add(image!);
-
-                        //   setState(() {});
-                        // }
-                      },
-                      child: Container(
-                          height: MediaQuery.of(context).size.height / 7,
-                          decoration: BoxDecoration(
-
-                              border: Border.all(
-                                  color: onBordingProvider.images.length == 1
-                                      ? AppColors.appColor
-                                      : Theme.of(context).dividerTheme.color!),
-                              image: onBordingProvider.images.length >= 2
-                                  ? DecorationImage(
-                                      image: FileImage(
-                                        File(onBordingProvider.images[1].path
-                                            .toString()),
-                                      ),
-                                      fit: BoxFit.cover)
-                                  : null,
-                              borderRadius: const BorderRadius.only(
-                                  topRight: Radius.circular(20))),
-                          child: onBordingProvider.images.length == 1
-                              ? Center(
-                                  child: Container(
-                                    height: 30,
-                                    width: 30,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(12),
-                                      color: Theme.of(context).cardColor,
-                                    ),
-                                    child: const Icon(
-                                      Icons.add,
-                                      size: 15,
-                                    ),
-                                  ),
-                                )
-                              : null),
-                    ),
-                    onBordingProvider.images.length >= 2
-                        ? Positioned(
-                            top: 10,
-                            right: 10,
-                            child: InkWell(
-                              onTap: () {
-                                onBordingProvider.removeImages(1);
-                              },
-                              child: Container(
-                                height: 23,
-                                width: 23,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Theme.of(context).dividerTheme.color!,
-                                ),
-                                child: Center(
-                                  child: SvgPicture.asset(
-                                    "assets/icons/times.svg",
-                                    height: 12,
-                                    width: 12,
-                                    colorFilter:  ColorFilter.mode(
-                                        Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        : const SizedBox()
-                  ],
-                ),
-                Stack(
-                  children: [
-                    InkWell(
-                      onTap: () async {
-                        onBordingProvider.pickupImage(2);
-                      },
-                      child: Container(
-                        height: MediaQuery.of(context).size.height / 7,
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                              color: onBordingProvider.images.length == 2
-                                  ? AppColors.appColor
-                                  : Theme.of(context).dividerTheme.color!),
-                          image: onBordingProvider.images.length >= 3
-                              ? DecorationImage(
-                                  image: FileImage(
-                                    File(onBordingProvider.images[2].path
-                                        .toString()),
-                                  ),
-                                  fit: BoxFit.cover)
-                              : null,
-                        ),
-                        child: onBordingProvider.images.length == 2
-                            ? Center(
-                                child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                  child: const Icon(
-                                    Icons.add,
-                                    size: 15,
-                                  ),
-                                ),
-                              )
-                            : null,
-                      ),
-                    ),
-                    onBordingProvider.images.length >= 3
-                        ? Positioned(
-                            top: 10,
-                            right: 10,
-                            child: InkWell(
-                              onTap: () {
-                                onBordingProvider.removeImages(2);
-                              },
-                              child: Container(
-                                height: 23,
-                                width: 23,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Theme.of(context).cardColor,
-                                ),
-                                child: Center(
-                                  child: SvgPicture.asset(
-                                    "assets/icons/times.svg",
-                                    height: 12,
-                                    width: 12,
-                                    colorFilter: ColorFilter.mode(
-                                        Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                        : const SizedBox()
-                  ],
-                ),
-              ],
-            ),
-          ]),
+            ]),
+          ),
           Row(
             children: [
               Stack(
@@ -1654,58 +1658,58 @@ class _CreatStepsState extends State<CreatSteps> {
                             bottomLeft: Radius.circular(20)),
                         image: onBordingProvider.images.length >= 4
                             ? DecorationImage(
-                                image: FileImage(
-                                  File(onBordingProvider.images[3].path
-                                      .toString()),
-                                ),
-                                fit: BoxFit.cover)
+                            image: FileImage(
+                              File(onBordingProvider.images[3].path
+                                  .toString()),
+                            ),
+                            fit: BoxFit.cover)
                             : null,
                       ),
                       child: onBordingProvider.images.length == 3
                           ? Center(
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Theme.of(context).cardColor,
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  size: 15,
-                                ),
-                              ),
-                            )
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
+                          child: const Icon(
+                            Icons.add,
+                            size: 15,
+                          ),
+                        ),
+                      )
                           : null,
                     ),
                   ),
                   onBordingProvider.images.length >= 4
                       ? Positioned(
-                          top: 10,
-                          right: 10,
-                          child: InkWell(
-                            onTap: () {
-                              onBordingProvider.removeImages(3);
-                            },
-                            child: Container(
-                              height: 23,
-                              width: 23,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Theme.of(context).cardColor,
-                              ),
-                              child: Center(
-                                child: SvgPicture.asset(
-                                  "assets/icons/times.svg",
-                                  height: 12,
-                                  width: 12,
-                                  colorFilter: ColorFilter.mode(
-                                      Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                ),
-                              ),
-                            ),
+                    top: 10,
+                    right: 10,
+                    child: InkWell(
+                      onTap: () {
+                        onBordingProvider.removeImages(3);
+                      },
+                      child: Container(
+                        height: 23,
+                        width: 23,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset(
+                            "assets/icons/times.svg",
+                            height: 12,
+                            width: 12,
+                            colorFilter: ColorFilter.mode(
+                                Theme.of(context).indicatorColor, BlendMode.srcIn),
                           ),
-                        )
+                        ),
+                      ),
+                    ),
+                  )
                       : const SizedBox()
                 ],
               ),
@@ -1724,58 +1728,58 @@ class _CreatStepsState extends State<CreatSteps> {
                                 : Theme.of(context).dividerTheme.color!),
                         image: onBordingProvider.images.length >= 5
                             ? DecorationImage(
-                                image: FileImage(
-                                  File(onBordingProvider.images[4].path
-                                      .toString()),
-                                ),
-                                fit: BoxFit.cover)
+                            image: FileImage(
+                              File(onBordingProvider.images[4].path
+                                  .toString()),
+                            ),
+                            fit: BoxFit.cover)
                             : null,
                       ),
                       child: onBordingProvider.images.length == 4
                           ? Center(
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color:Theme.of(context).cardColor,
-                                ),
-                                child: const Icon(
-                                  Icons.add,
-                                  size: 15,
-                                ),
-                              ),
-                            )
+                        child: Container(
+                          height: 30,
+                          width: 30,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color:Theme.of(context).cardColor,
+                          ),
+                          child: const Icon(
+                            Icons.add,
+                            size: 15,
+                          ),
+                        ),
+                      )
                           : null,
                     ),
                   ),
                   onBordingProvider.images.length >= 5
                       ? Positioned(
-                          top: 10,
-                          right: 10,
-                          child: InkWell(
-                            onTap: () {
-                              onBordingProvider.removeImages(4);
-                            },
-                            child: Container(
-                              height: 23,
-                              width: 23,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(12),
-                                color: Theme.of(context).cardColor,
-                              ),
-                              child: Center(
-                                child: SvgPicture.asset(
-                                  "assets/icons/times.svg",
-                                  height: 12,
-                                  width: 12,
-                                  colorFilter:  ColorFilter.mode(
-                                      Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                ),
-                              ),
-                            ),
+                    top: 10,
+                    right: 10,
+                    child: InkWell(
+                      onTap: () {
+                        onBordingProvider.removeImages(4);
+                      },
+                      child: Container(
+                        height: 23,
+                        width: 23,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: Theme.of(context).cardColor,
+                        ),
+                        child: Center(
+                          child: SvgPicture.asset(
+                            "assets/icons/times.svg",
+                            height: 12,
+                            width: 12,
+                            colorFilter:  ColorFilter.mode(
+                                Theme.of(context).indicatorColor, BlendMode.srcIn),
                           ),
-                        )
+                        ),
+                      ),
+                    ),
+                  )
                       : const SizedBox()
                 ],
               ),
@@ -1797,58 +1801,58 @@ class _CreatStepsState extends State<CreatSteps> {
                               bottomRight: Radius.circular(20)),
                           image: onBordingProvider.images.length >= 6
                               ? DecorationImage(
-                                  image: FileImage(
-                                    File(onBordingProvider.images[5].path
-                                        .toString()),
-                                  ),
-                                  fit: BoxFit.cover)
+                              image: FileImage(
+                                File(onBordingProvider.images[5].path
+                                    .toString()),
+                              ),
+                              fit: BoxFit.cover)
                               : null,
                         ),
                         child: onBordingProvider.images.length == 5
                             ? Center(
-                                child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(12),
-                                    color: Theme.of(context).cardColor,
-                                  ),
-                                  child: const Icon(
-                                    Icons.add,
-                                    size: 15,
-                                  ),
-                                ),
-                              )
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: Theme.of(context).cardColor,
+                            ),
+                            child: const Icon(
+                              Icons.add,
+                              size: 15,
+                            ),
+                          ),
+                        )
                             : null,
                       ),
                     ),
                     onBordingProvider.images.length >= 6
                         ? Positioned(
-                            top: 10,
-                            right: 10,
-                            child: InkWell(
-                              onTap: () {
-                                onBordingProvider.removeImages(5);
-                              },
-                              child: Container(
-                                height: 23,
-                                width: 23,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(12),
-                                  color: Theme.of(context).cardColor,
-                                ),
-                                child: Center(
-                                  child: SvgPicture.asset(
-                                    "assets/icons/times.svg",
-                                    height: 12,
-                                    width: 12,
-                                    colorFilter: ColorFilter.mode(
-                                        Theme.of(context).indicatorColor, BlendMode.srcIn),
-                                  ),
-                                ),
-                              ),
+                      top: 10,
+                      right: 10,
+                      child: InkWell(
+                        onTap: () {
+                          onBordingProvider.removeImages(5);
+                        },
+                        child: Container(
+                          height: 23,
+                          width: 23,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Theme.of(context).cardColor,
+                          ),
+                          child: Center(
+                            child: SvgPicture.asset(
+                              "assets/icons/times.svg",
+                              height: 12,
+                              width: 12,
+                              colorFilter: ColorFilter.mode(
+                                  Theme.of(context).indicatorColor, BlendMode.srcIn),
                             ),
-                          )
+                          ),
+                        ),
+                      ),
+                    )
                         : const SizedBox()
                   ],
                 ),

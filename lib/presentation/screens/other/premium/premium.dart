@@ -123,8 +123,6 @@ void handleExternalWallet(ExternalWalletResponse response) {
                                            // title: "Continue".tr,onTap: () {
                                            title: AppLocalizations.of(context)?.translate("Continue") ?? "Continue",onTap: () {
 
-
-
                                            if(premiumProvider.selectedPayment == 1) {
                                              _razorPayClass.openCheckout(
                                                  name:   Provider.of<HomeProvider>(context,listen: false).userlocalData.userLogin!.name.toString(),
