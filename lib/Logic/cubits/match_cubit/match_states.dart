@@ -14,6 +14,6 @@ class MatchCompleteState extends MatchStates {
    NewMatchModel newMatchModel;
    FavlistModel favListModel;
    LikeMeModel likeMeModel;
-   PassedModel passedModel;
-   MatchCompleteState(this.passedModel,this.likeMeModel,this.newMatchModel,this.favListModel);
+   // PassedModel passedModel;
+   MatchCompleteState(this.likeMeModel,this.newMatchModel,this.favListModel);
 }

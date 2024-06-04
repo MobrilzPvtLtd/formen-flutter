@@ -140,8 +140,8 @@ class _BrowesPage extends State<BrowesPage> {
                         return likeMe(state.likeMeModel);
                       case 2:
                         return favourite(state.favListModel);
-                      case 3:
-                        return passed(state.passedModel);
+                      // case 3:
+                      //   return passed(state.passedModel);
                       default:
                         return newMatch(state.newMatchModel);
                     }

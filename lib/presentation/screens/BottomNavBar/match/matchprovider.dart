@@ -17,27 +17,26 @@ class MatchProvider extends ChangeNotifier {
     matchCubit.loadingState();
     matchCubit.newMatchApi(context).then((newMatchApi) {
       matchCubit.favouriteApi(context).then((favoriteApi) {
-        matchCubit.passedApi(context).then((passedApi) {
+        // matchCubit.passedApi(context).then((passedApi) {
           matchCubit.likeMeApi(context).then((likeApi) {
-            matchCubit.completeState(passedApi, likeApi, newMatchApi, favoriteApi);
+            matchCubit.completeState( likeApi, newMatchApi, favoriteApi);
             notifyListeners();
           });
         });
       });
-    });
+
   }
 
   callAllApi(context){
       MatchCubit matchCubit = BlocProvider.of<MatchCubit>(context, listen: false);
       matchCubit.newMatchApi(context).then((newMatchApi) {
         matchCubit.favouriteApi(context).then((favoriteApi) {
-          matchCubit.passedApi(context).then((passedApi) {
+          // matchCubit.passedApi(context).then((passedApi) {
             matchCubit.likeMeApi(context).then((likeApi) {
-              matchCubit.completeState(passedApi, likeApi, newMatchApi, favoriteApi);
+              matchCubit.completeState(likeApi, newMatchApi, favoriteApi);
               notifyListeners();
             });
           });
-        });
       });
   }
 }
