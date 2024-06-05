@@ -1047,36 +1047,34 @@ class _CreatStepsState extends State<CreatSteps> {
                                   .contains(data!.id)
                                   ? AppColors.appColor
                                   : Theme.of(context).dividerTheme.color!)),
-                      child: Expanded(
-                        child: Row(
-                          children: [
-                            Image.network(
-                              "${Config.baseUrl}/${data.img}",
-                              height: 50,
-                              width: 50,
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Text(
-                              data.title ?? "",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                              ,
-                            ),
-                            const Spacer(),
-                            onBordingProvider.selectedLanguage
-                                .contains(data.id)
-                                ? SvgPicture.asset(
-                              "assets/icons/Iconcheck.svg",
-                              height: 25,
-                              width: 25,
-                              colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
-                            )
-                                : const SizedBox(),
-                          ],
-                        ),
+                      child: Row(
+                        children: [
+                          Image.network(
+                            "${Config.baseUrl}/${data.img}",
+                            height: 50,
+                            width: 50,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            data.title ?? "",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                            ,
+                          ),
+                          const Spacer(),
+                          onBordingProvider.selectedLanguage
+                              .contains(data.id)
+                              ? SvgPicture.asset(
+                            "assets/icons/Iconcheck.svg",
+                            height: 25,
+                            width: 25,
+                            colorFilter: ColorFilter.mode( Theme.of(context).indicatorColor, BlendMode.srcIn),
+                          )
+                              : const SizedBox(),
+                        ],
                       ),
                     ),
                   );
