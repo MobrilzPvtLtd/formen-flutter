@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating/Logic/cubits/Home_cubit/home_cubit.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
@@ -40,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+    log("running");
    StackTrace;
     BlocProvider.of<HomePageCubit>(context).initforHome(context);
     homeProvider = Provider.of<HomeProvider>(context, listen: false);
@@ -50,7 +53,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     homeProvider.animation = Tween<Offset>(begin: Offset.zero, end: const Offset(-1.0, -1.0)).animate(homeProvider.controller);
   }
 
+
   initForHome(){
+    log("secound stage");
     BlocProvider.of<OnbordingCubit>(context).religionApi().then((value) {
       editProfileProvider.valuInReligion(value.religionlist!);
       BlocProvider.of<OnbordingCubit>(context).relationGoalListApi().then((value) {
@@ -75,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     StackTrace;
     homeProvider = Provider.of<HomeProvider>(context);
+    log("thrid stage");
     return Scaffold(
       appBar:  PreferredSize(
               preferredSize: const Size.fromHeight(80),

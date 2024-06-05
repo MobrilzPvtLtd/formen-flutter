@@ -49,7 +49,7 @@ class HomePageCubit extends Cubit<HomePageStates> {
       };
 
 
-      Response response = await _api.sendRequest
+      final response = await _api.sendRequest
           .post("${Config.baseUrlApi}${Config.homeData}", data: data);
 
       if (response.statusCode == 200) {

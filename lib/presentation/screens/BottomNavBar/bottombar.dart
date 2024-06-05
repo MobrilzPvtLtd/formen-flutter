@@ -6,6 +6,7 @@ import 'package:dating/presentation/screens/BottomNavBar/chats.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
 import 'package:dating/presentation/screens/BottomNavBar/home_screen.dart';
 import 'package:dating/presentation/screens/BottomNavBar/mapscreen.dart';
+import 'package:dating/presentation/screens/chatroom/chatroom.dart';
 import 'package:dating/presentation/screens/other/premium/premium.dart';
 import 'package:dating/presentation/screens/other/profileScreen/profile_page.dart';
 import 'package:flutter/material.dart';
@@ -32,7 +33,7 @@ class _BottomBarState extends State<BottomBar> {
     const MapScreen(),
     const BrowesPage(),
     // const LikesScreen(),
-    const ChatScreen(),
+    const Chatroom(),
     const ProfilePage(),
   ];
   List bottomItems = [

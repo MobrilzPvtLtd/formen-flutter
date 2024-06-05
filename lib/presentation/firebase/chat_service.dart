@@ -28,7 +28,7 @@ class ChatServices extends ChangeNotifier {
 
       String chatRoomId = ids.join("_");
 
-      await _firebaseStorage.collection("chat_rooms").doc(chatRoomId).collection("message").add(newMessage.toMap());
+      await _firebaseStorage.collection("datingUser").doc(chatRoomId).collection("message").doc(chatRoomId).set(newMessage.toMap());
     }catch(e){
       // Fluttertoast.showToast(msg: "Something Want Wrong".tr);
       Fluttertoast.showToast(msg: AppLocalizations.of(context)?.translate("Something Want Wrong") ?? "Something Want Wrong");
