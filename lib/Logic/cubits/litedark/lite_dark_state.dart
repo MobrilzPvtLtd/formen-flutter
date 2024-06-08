@@ -7,8 +7,8 @@ class ThemeState {
 
   ThemeState(this.themeData);
 
-  static ThemeState get darkTheme => ThemeState(Themes.darkTheme);
+  static ThemeState get darkTheme => ThemeState(Themes.defaultTheme);
 
-  static ThemeState get lightTheme => ThemeState(Themes.defaultTheme);
+  static ThemeState get lightTheme => ThemeState(Themes.darkTheme);
 
 }

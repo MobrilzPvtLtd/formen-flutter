@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating/Logic/cubits/Home_cubit/home_cubit.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
 import 'package:dating/presentation/screens/BottomNavBar/notification_page.dart';
+import 'package:dating/presentation/screens/BottomNavBar/user_detail_screen.dart';
 import 'package:dating/presentation/screens/other/editProfile/editprofile_provider.dart';
 import 'package:dating/presentation/screens/other/likeMatch/like_match.dart';
 import 'package:dating/presentation/screens/other/likeMatch/likematch_provider.dart';
@@ -109,7 +110,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                               fit: BoxFit.cover
                           ),
                       ),
-                    ) : Container(
+                    ) :
+                    Container(
                       height: 50,
                       width: 50,
                       decoration: BoxDecoration(
@@ -183,7 +185,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             if (state is HomeLoadingState) {
               return Center(child: CircularProgressIndicator(color: AppColors.appColor));
             } else if (state is HomeCompleteState) {
-              return state.homeData.profilelist!.isEmpty ? Padding(
+              return state.homeData.profilelist!.isEmpty ?
+              Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Column(
                    children: [
@@ -218,539 +221,381 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                    clipBehavior: Clip.none,
                    alignment: Alignment.bottomCenter,
                    children: [
-                   PageView.builder(
-                       itemCount: state.homeData.profilelist!.length,
-                       onPageChanged: (i) {
-                         homeProvider.upDateCurrentindex(i);
-                       },
-                       itemBuilder: (context, index) {
-                         int nextIndex = homeProvider.currentIndex == state.homeData.profilelist!.length - 1 ? 0 : homeProvider.currentIndex + 1;
-                         return index == state.homeData.profilelist!.length - 1 ? const SizedBox() :
-                         SingleChildScrollView(
-                           physics: const NeverScrollableScrollPhysics(),
-                           child: Padding(
-                             padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                             child: ClipRRect(
-                               borderRadius: BorderRadius.circular(48),
-                               child: SizedBox(
-                                 height: MediaQuery.of(context).size.height / 1.45,
-                                 child: Stack(
-                                   children: [
-                                     Container(
-                                       height: MediaQuery.of(context).size.height / 1.45,
-                                       width: MediaQuery.of(context).size.width,
-                                       decoration: BoxDecoration(
-                                         color: Theme.of(context).cardColor,
-                                           image: DecorationImage(
-                                               image: NetworkImage("${Config.baseUrl}${state.homeData.profilelist![nextIndex].profileImages!.first}"),
-                                               fit: BoxFit.cover
-                                           )),
+                   // PageView.builder(
+                   //     itemCount: state.homeData.profilelist!.length,
+                   //     onPageChanged: (i) {
+                   //       homeProvider.upDateCurrentindex(i);
+                   //     },
+                   //     itemBuilder: (context, index) {
+                   //       int nextIndex = homeProvider.currentIndex == state.homeData.profilelist!.length - 1 ? 0 : homeProvider.currentIndex + 1;
+                   //       return index == state.homeData.profilelist!.length - 1 ? const SizedBox() :
+                   //       SingleChildScrollView(
+                   //         physics: const NeverScrollableScrollPhysics(),
+                   //         child: Padding(
+                   //           padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                   //           child: ClipRRect(
+                   //             borderRadius: BorderRadius.circular(48),
+                   //             child: SizedBox(
+                   //               height: MediaQuery.of(context).size.height / 1.45,
+                   //               child: Stack(
+                   //                 children: [
+                   //                   Container(
+                   //                     height: MediaQuery.of(context).size.height / 1.45,
+                   //                     width: MediaQuery.of(context).size.width,
+                   //                     decoration: BoxDecoration(
+                   //                       color: Theme.of(context).cardColor,
+                   //                         image: DecorationImage(
+                   //                             image: NetworkImage("${Config.baseUrl}${state.homeData.profilelist![nextIndex].profileImages!.first}"),
+                   //                             fit: BoxFit.cover
+                   //                         )),
+                   //                   ),
+                   //                   Stack(
+                   //                     alignment: Alignment.bottomCenter,
+                   //                     children: [
+                   //                       Container(
+                   //                         height: MediaQuery.of(context).size.height / 1.45,
+                   //                         width: MediaQuery.of(context).size.width,
+                   //                         decoration: BoxDecoration(
+                   //                           gradient: LinearGradient(
+                   //                             begin: Alignment.topCenter,
+                   //                             end: Alignment.bottomCenter,
+                   //                             stops: const [0.4, 1, 1.5],
+                   //                             colors: [
+                   //                               Colors.transparent,
+                   //                               AppColors.appColor,
+                   //                               AppColors.appColor,
+                   //                             ],
+                   //                           ),
+                   //                         ),
+                   //                       ),
+                   //
+                   //                       Padding(
+                   //                         padding: const EdgeInsets.all(15.0),
+                   //                         child: Column(
+                   //                           mainAxisAlignment: MainAxisAlignment.end,
+                   //                           crossAxisAlignment: CrossAxisAlignment.start,
+                   //                           children: [
+                   //                             Row(
+                   //                               crossAxisAlignment: CrossAxisAlignment.end,
+                   //                               children: [
+                   //
+                   //                                 Expanded(
+                   //                                   child: Text(
+                   //                                     "${state.homeData.profilelist![nextIndex].profileName}",
+                   //                                     style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
+                   //                                     overflow: TextOverflow.ellipsis,
+                   //                                     maxLines: 1,
+                   //                                   ),
+                   //                                 ),
+                   //
+                   //                                 Expanded(
+                   //                                   child: Text(
+                   //                                     ",${state.homeData.profilelist![nextIndex].profileAge}",
+                   //                                     style: Theme.of(context)
+                   //                                         .textTheme
+                   //                                         .headlineSmall!
+                   //                                         .copyWith(
+                   //                                         color: Colors.white),
+                   //                                     overflow: TextOverflow.ellipsis,
+                   //                                     maxLines: 1,
+                   //                                   ),
+                   //                                 ),
+                   //
+                   //                                 // const Spacer(),
+                   //                                 Expanded(
+                   //                                   child: Column(
+                   //                                     mainAxisAlignment: MainAxisAlignment.end,
+                   //                                     children: [
+                   //                                       Stack(
+                   //                                         alignment: Alignment.center,
+                   //                                         clipBehavior: Clip.none,
+                   //                                         children: [
+                   //
+                   //                                           SizedBox(
+                   //                                             height: 50,
+                   //                                             width: 50,
+                   //                                             child: CircularProgressIndicator(
+                   //                                                 backgroundColor: Colors.white.withOpacity(0.3),
+                   //                                                 valueColor: const AlwaysStoppedAnimation(Colors.white),
+                   //                                                 value: (double.parse(state.homeData.profilelist![nextIndex].matchRatio.toString().split(".").first) /100)
+                   //                                             ),
+                   //                                           ),
+                   //                                           state.homeData.profilelist![nextIndex].isSubscribe != "0"?  Row(
+                   //                                             children: [
+                   //                                               Image.asset("assets/Image/premium.png",height: 25,width: 25,),
+                   //                                               const SizedBox(width: 8,),
+                   //                                               Text("Premium",style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white),)
+                   //                                             ],
+                   //                                           ) : const SizedBox(),
+                   //                                           state.homeData.profilelist![nextIndex].isSubscribe != "0"? const SizBoxH(size: 0.02) : const SizedBox(),
+                   //                                           Text(
+                   //                                             "${state.homeData.profilelist![nextIndex].matchRatio.toString().split(".").first}%",
+                   //                                             style: Theme.of(context)
+                   //                                                 .textTheme
+                   //                                                 .bodySmall!
+                   //                                                 .copyWith(color: Colors.white),
+                   //                                           ),
+                   //
+                   //                                         ],
+                   //                                       ),
+                   //                                       const SizBoxH(size: 0.02),
+                   //                                       Container(
+                   //                                         padding:
+                   //                                             const EdgeInsets.symmetric(
+                   //                                                 vertical: 6,
+                   //                                                 horizontal: 12
+                   //                                             ),
+                   //                                         decoration:
+                   //                                             BoxDecoration(
+                   //                                           borderRadius: BorderRadius.circular(16),
+                   //                                           color: const Color(0xffF0F0F0).withOpacity(0.25),
+                   //                                         ),
+                   //                                         child: Row(
+                   //                                           children: [
+                   //                                             SvgPicture.asset(
+                   //                                               "assets/icons/Location.svg",
+                   //                                               height: 15,
+                   //                                               width: 15,
+                   //                                             ),
+                   //                                             const SizBoxW(size: 0.02),
+                   //                                             Expanded(
+                   //                                               child: Text(
+                   //                                                 state.homeData.profilelist![
+                   //                                                 nextIndex].profileDistance.toString(),
+                   //                                                 style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white,fontSize: 12),
+                   //                                                 overflow: TextOverflow.ellipsis,
+                   //                                                 maxLines: 1,
+                   //                                               ),
+                   //                                             ),
+                   //                                           ],
+                   //                                         ),
+                   //                                       ),
+                   //                                     ],
+                   //                                   ),
+                   //                                 ),
+                   //                               ],
+                   //                             ),
+                   //                             Text(
+                   //                               "${state.homeData.profilelist![nextIndex].profileBio}",
+                   //                               style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
+                   //                               overflow: TextOverflow.ellipsis,
+                   //                               maxLines: 1,
+                   //                             ),
+                   //                             const SizBoxH(size: 0.04),
+                   //                           ],
+                   //                         ),
+                   //                       ),
+                   //
+                   //                     ],
+                   //                   ),
+                   //
+                   //                   state.homeData.profilelist![nextIndex].profileImages!.length> 1?  SizedBox(
+                   //                     height: 25,
+                   //                     width : MediaQuery.of(context).size.width,
+                   //                     child: Row(
+                   //                       mainAxisAlignment: MainAxisAlignment.center,
+                   //                       children: [
+                   //
+                   //                         ...List.generate(
+                   //                             state.homeData.profilelist![nextIndex].profileImages!.length,
+                   //                             (index) {
+                   //                             return Indicator(
+                   //                               isActive: homeProvider.interIndex1 == index ? true : false,
+                   //                             );
+                   //                         }),
+                   //
+                   //                       ],
+                   //                     ),
+                   //                   ) : const SizedBox(),
+                   //                 ],
+                   //               ),
+                   //             ),
+                   //           ),
+                   //         ),
+                   //       );
+                   //     },
+                   //   ),
+
+                     Padding(
+                       padding: const EdgeInsets.only(left: 25, right: 25),
+                       child: GridView.builder(
+                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                           crossAxisCount: 3, // Number of columns
+                           crossAxisSpacing: 0, // Spacing between columns
+                           mainAxisSpacing: 0, // Spacing between rows
+                         ),
+                         itemCount: state.homeData.profilelist!.length,
+                         itemBuilder: (context, index) {
+                           // bool isOnline = state.homeData.profilelist![index].isOnline ?? false; // Assuming isOnline is a boolean property in your profile data
+
+                           return InkWell(
+                             onTap: () {
+                               var lat = Provider.of<OnBordingProvider>(context, listen: false).lat;
+                               var long = Provider.of<OnBordingProvider>(context, listen: false).long;
+                               Provider.of<DetailProvider>(context, listen: false).updateIsMatch(false);
+                               Provider.of<DetailProvider>(context, listen: false).status = "1";
+                               Provider.of<DetailProvider>(context, listen: false).detailsApi(
+                                 uid: homeProvider.userlocalData.userLogin!.id ?? "",
+                                 lat: lat.toString(),
+                                 long: long.toString(),
+                                 profileId: state.homeData.profilelist![index].profileId ?? '',
+                               ).then((value) {
+                                 Navigator.pushNamed(
+                                   context,
+                                   ProfileScreen.profileScreenRoute,
+                                 );
+                               });
+                             },
+                             child: Stack(
+                               fit: StackFit.expand,
+                               children: [
+                                 Image.network(
+                                   "${Config.baseUrl}/${state.homeData.profilelist![index].profileImages![0]}",
+                                   fit: BoxFit.cover,
+                                 ),
+                                 Positioned(
+                                   top: 8,
+                                   right: 8,
+                                   child: Container(
+                                     width: 16,
+                                     height: 16,
+                                     decoration: BoxDecoration(
+                                       shape: BoxShape.circle,
+                                       color:Colors.green
+                                       // color: isOnline ? Colors.green : Colors.yellow, // Set indicator color based on online/offline status
                                      ),
-                                     Stack(
-                                       alignment: Alignment.bottomCenter,
+                                   ),
+                                 ),
+                                 Positioned(
+                                   bottom: 0,
+                                   left: 0,
+                                   right: 0,
+                                   child: Container(
+                                     padding: EdgeInsets.all(8),
+                                     color: Colors.black.withOpacity(0.5), // Semi-transparent background to improve text visibility
+                                     child: Column(
+                                       crossAxisAlignment: CrossAxisAlignment.start,
                                        children: [
-                                         Container(
-                                           height: MediaQuery.of(context).size.height / 1.45,
-                                           width: MediaQuery.of(context).size.width,
-                                           decoration: BoxDecoration(
-                                             gradient: LinearGradient(
-                                               begin: Alignment.topCenter,
-                                               end: Alignment.bottomCenter,
-                                               stops: const [0.4, 1, 1.5],
-                                               colors: [
-                                                 Colors.transparent,
-                                                 AppColors.appColor,
-                                                 AppColors.appColor,
-                                               ],
-                                             ),
-                                           ),
+                                         Text(
+                                           "${state.homeData.profilelist![index].profileName}, ${state.homeData.profilelist![index].profileAge}",
+                                           style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
+                                           overflow: TextOverflow.ellipsis,
+                                           maxLines: 1,
                                          ),
-
-                                         Padding(
-                                           padding: const EdgeInsets.all(15.0),
-                                           child: Column(
-                                             mainAxisAlignment: MainAxisAlignment.end,
-                                             crossAxisAlignment: CrossAxisAlignment.start,
-                                             children: [
-                                               Row(
-                                                 crossAxisAlignment: CrossAxisAlignment.end,
-                                                 children: [
-
-                                                   Expanded(
-                                                     child: Text(
-                                                       "${state.homeData.profilelist![nextIndex].profileName}",
-                                                       style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
-                                                       overflow: TextOverflow.ellipsis,
-                                                       maxLines: 1,
-                                                     ),
-                                                   ),
-
-                                                   Expanded(
-                                                     child: Text(
-                                                       ",${state.homeData.profilelist![nextIndex].profileAge}",
-                                                       style: Theme.of(context)
-                                                           .textTheme
-                                                           .headlineSmall!
-                                                           .copyWith(
-                                                           color: Colors.white),
-                                                       overflow: TextOverflow.ellipsis,
-                                                       maxLines: 1,
-                                                     ),
-                                                   ),
-
-                                                   // const Spacer(),
-                                                   Expanded(
-                                                     child: Column(
-                                                       mainAxisAlignment: MainAxisAlignment.end,
-                                                       children: [
-                                                         Stack(
-                                                           alignment: Alignment.center,
-                                                           clipBehavior: Clip.none,
-                                                           children: [
-
-                                                             SizedBox(
-                                                               height: 50,
-                                                               width: 50,
-                                                               child: CircularProgressIndicator(
-                                                                   backgroundColor: Colors.white.withOpacity(0.3),
-                                                                   valueColor: const AlwaysStoppedAnimation(Colors.white),
-                                                                   value: (double.parse(state.homeData.profilelist![nextIndex].matchRatio.toString().split(".").first) /100)
-                                                               ),
-                                                             ),
-                                                             state.homeData.profilelist![nextIndex].isSubscribe != "0"?  Row(
-                                                               children: [
-                                                                 Image.asset("assets/Image/premium.png",height: 25,width: 25,),
-                                                                 const SizedBox(width: 8,),
-                                                                 Text("Premium",style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white),)
-                                                               ],
-                                                             ) : const SizedBox(),
-                                                             state.homeData.profilelist![nextIndex].isSubscribe != "0"? const SizBoxH(size: 0.02) : const SizedBox(),
-                                                             Text(
-                                                               "${state.homeData.profilelist![nextIndex].matchRatio.toString().split(".").first}%",
-                                                               style: Theme.of(context)
-                                                                   .textTheme
-                                                                   .bodySmall!
-                                                                   .copyWith(color: Colors.white),
-                                                             ),
-
-                                                           ],
-                                                         ),
-                                                         const SizBoxH(size: 0.02),
-                                                         Container(
-                                                           padding:
-                                                               const EdgeInsets.symmetric(
-                                                                   vertical: 6,
-                                                                   horizontal: 12
-                                                               ),
-                                                           decoration:
-                                                               BoxDecoration(
-                                                             borderRadius: BorderRadius.circular(16),
-                                                             color: const Color(0xffF0F0F0).withOpacity(0.25),
-                                                           ),
-                                                           child: Row(
-                                                             children: [
-                                                               SvgPicture.asset(
-                                                                 "assets/icons/Location.svg",
-                                                                 height: 15,
-                                                                 width: 15,
-                                                               ),
-                                                               const SizBoxW(size: 0.02),
-                                                               Expanded(
-                                                                 child: Text(
-                                                                   state.homeData.profilelist![
-                                                                   nextIndex].profileDistance.toString(),
-                                                                   style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white,fontSize: 12),
-                                                                   overflow: TextOverflow.ellipsis,
-                                                                   maxLines: 1,
-                                                                 ),
-                                                               ),
-                                                             ],
-                                                           ),
-                                                         ),
-                                                       ],
-                                                     ),
-                                                   ),
-                                                 ],
-                                               ),
-                                               Text(
-                                                 "${state.homeData.profilelist![nextIndex].profileBio}",
-                                                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
-                                                 overflow: TextOverflow.ellipsis,
-                                                 maxLines: 1,
-                                               ),
-                                               const SizBoxH(size: 0.04),
-                                             ],
-                                           ),
+                                         SizedBox(height: 4),
+                                         Text(
+                                           "${state.homeData.profilelist![index].profileBio}",
+                                           style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),
+                                           overflow: TextOverflow.ellipsis,
+                                           maxLines: 2,
                                          ),
-
                                        ],
                                      ),
-
-                                     state.homeData.profilelist![nextIndex].profileImages!.length> 1?  SizedBox(
-                                       height: 25,
-                                       width : MediaQuery.of(context).size.width,
-                                       child: Row(
-                                         mainAxisAlignment: MainAxisAlignment.center,
-                                         children: [
-
-                                           ...List.generate(
-                                               state.homeData.profilelist![nextIndex].profileImages!.length,
-                                               (index) {
-                                               return Indicator(
-                                                 isActive: homeProvider.interIndex1 == index ? true : false,
-                                               );
-                                           }),
-
-                                         ],
-                                       ),
-                                     ) : const SizedBox(),
-                                   ],
+                                   ),
                                  ),
-                               ),
+                               ],
                              ),
-                           ),
-                         );
-                       },
+                           );
+                         },
+                       ),
                      ),
 
-                   InkWell(
-                    onTap: () {
-                      var lat = Provider.of<OnBordingProvider>(context, listen: false).lat;
-                      var long = Provider.of<OnBordingProvider>(context, listen: false).long;
-                      Provider.of<DetailProvider>(context, listen: false).updateIsMatch(false);
-                      Provider.of<DetailProvider>(context, listen: false).status = "1";
-                      Provider.of<DetailProvider>(context, listen: false).detailsApi(uid: homeProvider.userlocalData.userLogin!.id ?? "", lat: lat.toString(), long: long.toString(), profileId: state.homeData.profilelist![homeProvider.currentIndex].profileId ?? '').then((value) {
-                        Navigator.pushNamed(
-                          context,
-                          DetailScreen.detailScreenRoute,
-                        );
-                      });
-                    },
-                    child: PageView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: state.homeData.profilelist!.length,
-                      onPageChanged: (i) {
-                        homeProvider.upDateCurrentindex(i);
-                      },
-                      itemBuilder: (context, index) {
-                        if (state.homeData.profilelist!.isEmpty) {
-                          return const SizedBox();
-                        } else {
-                          return SlideTransition(
-                          position: homeProvider.animation,
-                          child: SingleChildScrollView(
-                            physics: const NeverScrollableScrollPhysics(),
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                              child: ClipRRect(
-                                borderRadius: BorderRadius.circular(48),
-                                  child:   Container(
-                                  color:  Theme.of(context).cardColor,
-                                  height:  MediaQuery.of(context).size.height / 1.45,
-                                  child: Stack(
-                                    children: [
-
-                                      CarouselSlider.builder(
-                                        itemCount: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length,
-                                        carouselController: homeProvider.carouselController,
-                                        itemBuilder: (BuildContext context, int itemIndex, int pageViewIndex) {
-                                          return Container(
-                                            height: MediaQuery.of(context).size.height / 1.45,
-                                            width: MediaQuery.of(context).size.width,
-                                            decoration: BoxDecoration(
-                                              image: DecorationImage(
-                                                image: NetworkImage("${Config.baseUrl}/${state.homeData.profilelist![homeProvider.currentIndex].profileImages![itemIndex]}"),
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        options: CarouselOptions(
-                                          autoPlay: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length > 1? true : false,
-                                          enableInfiniteScroll: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length > 1? true : false,
-                                          height: MediaQuery.of(context).size.height / 1.45,
-                                          onPageChanged: (i, r) {
-                                            homeProvider.upDateinnerindex(i);
-                                          },
-                                          viewportFraction: 1,
-                                        ),
-                                      ),
 
 
-                                      Stack(
-                                        alignment: Alignment.bottomCenter,
-                                        children: [
-
-                                          Positioned(
-                                            bottom: 0,
-                                            child: Container(
-                                              height: MediaQuery.of(context).size.height / 1.45,
-                                              width: MediaQuery.of(context).size.width,
-                                              decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  begin: Alignment.topCenter,
-                                                  end: Alignment.bottomCenter,
-                                                  stops: const [0.4, 1, 1.5],
-                                                  colors: [
-                                                    Colors.transparent,
-                                                    homeProvider.slidecolor,
-                                                    homeProvider.slidecolor,
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-
-                                          Padding(
-                                            padding: const EdgeInsets.all(15.0),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              mainAxisAlignment: MainAxisAlignment.end,
-                                              children: [
-                                                Row(
-                                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                                  children: [
-
-                                                    Expanded(
-                                                      child: Text(
-                                                        "${state.homeData.profilelist![homeProvider.currentIndex].profileName}",
-                                                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
-                                                        overflow: TextOverflow.ellipsis,
-                                                        maxLines: 1,
-                                                      ),
-                                                    ),
-
-                                                    Expanded(
-                                                      child: Text(
-                                                        ",${state.homeData.profilelist![homeProvider.currentIndex].profileAge}",
-                                                        style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
-                                                        overflow: TextOverflow.ellipsis,
-                                                        maxLines: 1,
-                                                      ),
-                                                    ),
-
-                                                    // const Spacer(),
-
-                                                    Expanded(
-                                                      child: Column(
-                                                        mainAxisAlignment: MainAxisAlignment.end,
-                                                        children: [
-
-                                                        Row(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                              Stack(
-                                                                alignment: Alignment.center,
-                                                                clipBehavior: Clip.none,
-                                                                children: [
-
-                                                                  SizedBox(
-                                                                    height: 50,
-                                                                    width : 50,
-                                                                    child: CircularProgressIndicator(
-                                                                        backgroundColor: Colors.white.withOpacity(0.3),
-                                                                        valueColor: const AlwaysStoppedAnimation(Colors.white),
-                                                                        value: (double.parse(state.homeData.profilelist![homeProvider.currentIndex].matchRatio.toString().split(".").first) /100)
-                                                                    ),
-                                                                  ),
-
-                                                                  Text(
-                                                                    "${state.homeData.profilelist![homeProvider.currentIndex].matchRatio.toString().split(".").first}%",
-                                                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),
-                                                                  ),
-
-                                                                ],
-                                                              ),
-                                                            ],
-                                                          ),
-
-                                                        const SizBoxH(size: 0.02),
-
-                                                        state.homeData.profilelist![homeProvider.currentIndex].isSubscribe != "0"?  Row(
-                                                            children: [
-                                                              Image.asset("assets/Image/premium.png",height: 25,width: 25,),
-                                                              const SizedBox(width: 8,),
-                                                              // Text("Premium".tr,style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white),),
-                                                              Text(AppLocalizations.of(context)?.translate("Premium") ?? "Premium",style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white),),
-                                                            ],
-                                                          ) : const SizedBox(),
-                                                          state.homeData.profilelist![homeProvider.currentIndex].isSubscribe != "0"? const SizBoxH(size: 0.02) : const SizedBox(),
-
-                                                          Container(
-                                                            // width: 90,
-                                                            padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
-                                                            decoration: BoxDecoration(
-                                                              borderRadius: BorderRadius.circular(16),
-                                                              color: const Color(0xffF0F0F0).withOpacity(0.25),
-                                                            ),
-
-                                                            child: Row(
-                                                              children: [
-
-                                                                SvgPicture.asset(
-                                                                  "assets/icons/Location.svg",
-                                                                  height: 15,
-                                                                  width: 15,
-                                                                ),
-
-                                                                const SizBoxW(size: 0.01),
-
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    state.homeData.profilelist![homeProvider.currentIndex].profileDistance.toString(),
-                                                                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: AppColors.white,fontSize: 12),
-                                                                    overflow: TextOverflow.ellipsis,
-                                                                    maxLines: 1,
-                                                                  ),
-                                                                ),
-
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-
-                                                Text(
-                                                  "${state.homeData.profilelist![homeProvider.currentIndex].profileBio}",
-                                                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.white),
-                                                  overflow: TextOverflow.ellipsis,
-                                                  maxLines: 1,
-                                                ),
-
-                                                const SizBoxH(size: 0.04),
-
-                                              ],
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                      state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length > 1? SizedBox(
-                                        height: 25,
-                                        width: MediaQuery.of(context).size.width,
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-
-                                            ...List.generate(
-                                                state.homeData.profilelist![homeProvider.currentIndex].profileImages!.length, (index) {
-                                                  return Indicator(
-                                                    isActive: homeProvider.interIndex == index ? true : false,
-                                                  );
-                                                }
-                                            ),
-
-                                            ],
-                                          ),
-                                        ) : const SizedBox(),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          );
-                        }
-                      },
-                    ),
-                  ),
-
-                   Positioned(
-                     bottom: -7,
-                     child: SizedBox(
-                      height: 90,
-                      child: Column(
-                        children: [
-
-                          Expanded(
-                            child: ListView.separated(
-                                padding: const EdgeInsets.symmetric(horizontal: 15),
-                                separatorBuilder: (c, i) {
-                                  return const SizedBox(
-                                    width: 20,
-                                  );
-                                },
-                                itemCount: homeProvider.flotingIcons.length,
-                                shrinkWrap: true,
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (c, i) {
-                                  return Center(
-                                    child: InkWell(
-                                      onTap: () {
-
-                                        if (i == 2  && state.homeData.planId == "0") {
-                                          Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
-                                        }
-                                        if (state.homeData.profilelist!.isNotEmpty) {
-                                          if (i == 0) {
-                                            homeProvider.cancleButton(state, context);
-                                            BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(
-                                              uid: homeProvider.uid,
-                                              proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
-                                              action: "UNLIKE",
-                                              lat: homeProvider.lat,
-                                              long: homeProvider.long,
-                                            );
-                                            // Remove the current profile from the list
-                                            state.homeData.profilelist!.removeAt(homeProvider.currentIndex);
-                                          } else if (i == 1) {
-                                            homeProvider.likeButton(state, context);
-                                            BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(
-                                              uid: homeProvider.uid,
-                                              proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
-                                              action: "LIKE",
-                                              lat: homeProvider.lat,
-                                              long: homeProvider.long,
-                                            );
-                                          }
-                                        }
-
-                                      },
-                                      child: (i == 2 && state.homeData.planId != "0") ? (state.homeData.planId == "3") ? InkWell(
-                                        onTap: () {
-                                          // BlocProvider.of<HomePageCubit>(context).planDataApi(context, state.homeData.profilelist![homeProvider.currentIndex].profileId).then((value) {
-
-                                              Navigator.push(context, MaterialPageRoute(builder: (context) => ChattingPage(
-                                                proPic: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.first,
-                                                resiverUserId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
-                                                resiverUseremail: state.homeData.profilelist![homeProvider.currentIndex].profileName!,
-                                              )));
-
-
-
-                                          // });
-
-
-                                        },
-                                        child: Container(
-                                          height: (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
-                                          width:  (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
-                                          decoration: BoxDecoration(color: AppColors.darkContainer,
-                                              borderRadius: BorderRadius.circular(20)),
-                                          child: Center(child: SvgPicture.asset("assets/icons/Chat-fill.svg",height: 29, width: 29,)),
-                                        ),
-                                      ) : const SizedBox() : Container(
-                                        height: (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
-                                        width:  (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
-                                        decoration: BoxDecoration(color: AppColors.darkContainer,
-                                        borderRadius: BorderRadius.circular(20)),
-                                        child: Center(child: SvgPicture.asset(homeProvider.flotingIcons[i],height: 29, width: 29,)),
-                                      ),
-                                    ),
-                                  );
-                                }),
-                          ),
-
-                          const SizedBox(
-                            height: 15,
-                          ),
-
-                        ],
-                      ),
-                                       ),
-                   ),
+                     // Positioned(
+                   //   bottom: -7,
+                   //   child: SizedBox(
+                   //    height: 90,
+                   //    child: Column(
+                   //      children: [
+                   //
+                   //        Expanded(
+                   //          child: ListView.separated(
+                   //              padding: const EdgeInsets.symmetric(horizontal: 15),
+                   //              separatorBuilder: (c, i) {
+                   //                return const SizedBox(
+                   //                  width: 20,
+                   //                );
+                   //              },
+                   //              itemCount: homeProvider.flotingIcons.length,
+                   //              shrinkWrap: true,
+                   //              scrollDirection: Axis.horizontal,
+                   //              itemBuilder: (c, i) {
+                   //                return Center(
+                   //                  child: InkWell(
+                   //                    onTap: () {
+                   //
+                   //                      if (i == 2  && state.homeData.planId == "0") {
+                   //                        Navigator.pushNamed(context, PremiumScreen.premiumScreenRoute);
+                   //                      }
+                   //                      if (state.homeData.profilelist!.isNotEmpty) {
+                   //                        if (i == 0) {
+                   //                          homeProvider.cancleButton(state, context);
+                   //                          BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(
+                   //                            uid: homeProvider.uid,
+                   //                            proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
+                   //                            action: "UNLIKE",
+                   //                            lat: homeProvider.lat,
+                   //                            long: homeProvider.long,
+                   //                          );
+                   //                          // Remove the current profile from the list
+                   //                          state.homeData.profilelist!.removeAt(homeProvider.currentIndex);
+                   //                        } else if (i == 1) {
+                   //                          homeProvider.likeButton(state, context);
+                   //                          BlocProvider.of<HomePageCubit>(context).profileLikeDislikeApi(
+                   //                            uid: homeProvider.uid,
+                   //                            proId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
+                   //                            action: "LIKE",
+                   //                            lat: homeProvider.lat,
+                   //                            long: homeProvider.long,
+                   //                          );
+                   //                        }
+                   //                      }
+                   //
+                   //                    },
+                   //                    child: (i == 2 && state.homeData.planId != "0") ? (state.homeData.planId == "3") ? InkWell(
+                   //                      onTap: () {
+                   //                        // BlocProvider.of<HomePageCubit>(context).planDataApi(context, state.homeData.profilelist![homeProvider.currentIndex].profileId).then((value) {
+                   //
+                   //                            Navigator.push(context, MaterialPageRoute(builder: (context) => ChattingPage(
+                   //                              proPic: state.homeData.profilelist![homeProvider.currentIndex].profileImages!.first,
+                   //                              resiverUserId: state.homeData.profilelist![homeProvider.currentIndex].profileId!,
+                   //                              resiverUseremail: state.homeData.profilelist![homeProvider.currentIndex].profileName!,
+                   //                            )));
+                   //
+                   //
+                   //
+                   //                        // });
+                   //
+                   //
+                   //                      },
+                   //                      child: Container(
+                   //                        height: (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
+                   //                        width:  (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
+                   //                        decoration: BoxDecoration(color: AppColors.darkContainer,
+                   //                            borderRadius: BorderRadius.circular(20)),
+                   //                        child: Center(child: SvgPicture.asset("assets/icons/Chat-fill.svg",height: 29, width: 29,)),
+                   //                      ),
+                   //                    ) : const SizedBox() : Container(
+                   //                      height: (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
+                   //                      width:  (i == 0 || i == homeProvider.flotingIcons.length-1) ? 60 : 72,
+                   //                      decoration: BoxDecoration(color: AppColors.darkContainer,
+                   //                      borderRadius: BorderRadius.circular(20)),
+                   //                      child: Center(child: SvgPicture.asset(homeProvider.flotingIcons[i],height: 29, width: 29,)),
+                   //                    ),
+                   //                  ),
+                   //                );
+                   //              }),
+                   //        ),
+                   //
+                   //        const SizedBox(
+                   //          height: 15,
+                   //        ),
+                   //
+                   //      ],
+                   //    ),
+                   //                     ),
+                   // ),
 
                 ],
               );
