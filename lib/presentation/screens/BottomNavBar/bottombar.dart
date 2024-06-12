@@ -17,6 +17,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import '../../../Logic/cubits/Home_cubit/home_cubit.dart';
 import '../../../Logic/cubits/Home_cubit/homestate.dart';
+import 'Chat_screens/chat_screen.dart';
 
 class BottomBar extends StatefulWidget {
   static const String bottomBarRoute = "/bottomBar";
@@ -34,7 +35,7 @@ class _BottomBarState extends State<BottomBar> {
     const MapScreen(),
     const BrowesPage(),
     // const LikesScreen(),
-    const ChatScreen(),
+     InboxScreen(),
     const ProfilePage(),
   ];
   List bottomItems = [

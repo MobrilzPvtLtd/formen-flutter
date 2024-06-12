@@ -440,9 +440,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                  long: long.toString(),
                                  profileId: state.homeData.profilelist![index].profileId ?? '',
                                ).then((value) {
-                                 Navigator.pushNamed(
+                                 Navigator.push(
                                    context,
-                                   ProfileScreen.profileScreenRoute,
+                                   MaterialPageRoute(builder: (context) => ProfileScreen()),
                                  );
                                });
                              },
@@ -454,43 +454,35 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                    fit: BoxFit.cover,
                                  ),
                                  Positioned(
-                                   top: 8,
-                                   right: 8,
-                                   child: Container(
-                                     width: 16,
-                                     height: 16,
-                                     decoration: BoxDecoration(
-                                       shape: BoxShape.circle,
-                                       color:Colors.green
-                                       // color: isOnline ? Colors.green : Colors.yellow, // Set indicator color based on online/offline status
-                                     ),
-                                   ),
-                                 ),
-                                 Positioned(
                                    bottom: 0,
                                    left: 0,
                                    right: 0,
-                                   child: Container(
-                                     padding: EdgeInsets.all(8),
-                                     color: Colors.black.withOpacity(0.5), // Semi-transparent background to improve text visibility
-                                     child: Column(
-                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                       children: [
-                                         Text(
-                                           "${state.homeData.profilelist![index].profileName}, ${state.homeData.profilelist![index].profileAge}",
-                                           style: Theme.of(context).textTheme.headlineSmall!.copyWith(color: Colors.white),
-                                           overflow: TextOverflow.ellipsis,
-                                           maxLines: 1,
+                                   child: Row(
+                                     crossAxisAlignment: CrossAxisAlignment.center,
+                                     children: [
+                                       Text(
+                                         "${state.homeData.profilelist![index].profileName}, ${state.homeData.profilelist![index].profileAge}",
+                                         style: const TextStyle(fontSize: 14),
+                                         overflow: TextOverflow.ellipsis,
+                                         maxLines: 1,
+                                       ),
+                                      const SizedBox(width: 10),
+                                       // Text(
+                                       //   "${state.homeData.profilelist![index].profileBio}",
+                                       //   style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),
+                                       //   overflow: TextOverflow.ellipsis,
+                                       //   maxLines: 2,
+                                       // ),
+                                       Container(
+                                         width: 10,
+                                         height: 10,
+                                         decoration:const BoxDecoration(
+                                             shape: BoxShape.circle,
+                                             color:Colors.green
+                                           // color: isOnline ? Colors.green : Colors.yellow, // Set indicator color based on online/offline status
                                          ),
-                                         SizedBox(height: 4),
-                                         Text(
-                                           "${state.homeData.profilelist![index].profileBio}",
-                                           style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),
-                                           overflow: TextOverflow.ellipsis,
-                                           maxLines: 2,
-                                         ),
-                                       ],
-                                     ),
+                                       ),
+                                     ],
                                    ),
                                  ),
                                ],
