@@ -325,7 +325,7 @@ class HomeProvider extends ChangeNotifier {
   List<Map> mapDataList = [];
   List<Marker> markers = [];
 
-  mapMarkers() async {
+ Future mapMarkers() async {
     await Future.wait(mapDataList.mapIndexed((e,i) async {
        await getmarkers(e,i).then((value) {
         markers.add(value);

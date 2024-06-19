@@ -84,7 +84,7 @@ Future demo1(context) async{
    Stream<QuerySnapshot<Map<String, dynamic>>> snep =  FirebaseFirestore.instance.collection("datingUser").snapshots();
    snep.forEach((element) {
  List<QueryDocumentSnapshot<Map<String, dynamic>>> data = element.docs;
- for(int a = 0;a <data.length;a++){
+ for(int a = 0;a<data.length;a++){
    Map<String, dynamic> dataa = data[a].data();
    print("* * :-- ${data[a].data()}");
    Stream<QuerySnapshot<Object?>> snapshot  = chatservices.getMessage(userId: dataa["uid"], otherUserId: Provider.of<HomeProvider>(context,listen: false).uid);

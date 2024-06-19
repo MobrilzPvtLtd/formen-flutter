@@ -16,7 +16,7 @@ class FirebaseAuthService extends ChangeNotifier {
           "name": name,
           "email": email,
           "number": number,
-          "token": "$token",
+          "token": token,
           "isOnline": false,
           "pro_pic": proPicPath
         });
@@ -35,8 +35,8 @@ class FirebaseAuthService extends ChangeNotifier {
           "uid": uid,
           "name": name,
           "email": email,
-          // "number": number,
-          "token": "$token",
+          "number": number,
+          "token": token,
           "isOnline": false,
           "pro_pic": proPicPath
         }, SetOptions(merge: true));

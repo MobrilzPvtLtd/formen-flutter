@@ -33,7 +33,8 @@ class _BottomBarState extends State<BottomBar> {
     const MapScreen(),
     const BrowesPage(),
     // const LikesScreen(),
-    const Chatroom(),
+    // const Chatroom()
+    const  ChatScreen(),
     const ProfilePage(),
   ];
   List bottomItems = [
