@@ -69,8 +69,8 @@ class Routes {
       case DetailScreen.detailScreenRoute:
         return CupertinoPageRoute(builder: (context) => const DetailScreen());
 
-      case ProfileScreen.profileScreenRoute:
-        return CupertinoPageRoute(builder: (context) =>  ProfileScreen());
+      // case ProfileScreen.profileScreenRoute:
+      //   return CupertinoPageRoute(builder: (context) =>  ProfileScreen());
 
       case LoginScreen.loginRoute:
         return CupertinoPageRoute(builder: (context) => const LoginScreen());

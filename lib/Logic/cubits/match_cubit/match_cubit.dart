@@ -75,31 +75,31 @@ class MatchCubit extends Cubit<MatchStates> {
     }
   }
 
-  // Future<PassedModel> passedApi(context) async{
-  //   try{
-  //     Map data = {
-  //       "uid": Provider.of<HomeProvider>(context,listen: false).uid,
-  //       "lats": Provider.of<HomeProvider>(context,listen: false).lat,
-  //       "longs": Provider.of<HomeProvider>(context,listen: false).long
-  //     };
-  //     Response response = await _api.sendRequest.post("${Config.baseUrlApi}${Config.passed}",data: data);
-  //
-  //     if(response.statusCode == 200){
-  //       if(response.data["Result"] == "true"){
-  //         return PassedModel.fromJson(response.data);
-  //       }else{
-  //         // emit(MatchErrorState(response.data["Result"]));
-  //         return PassedModel.fromJson(response.data);
-  //       }
-  //     }else{
-  //       emit(MatchErrorState(response.data["Result"]));
-  //       return PassedModel.fromJson(response.data);
-  //     }
-  //   }catch(e){
-  //     emit(MatchErrorState(e.toString()));
-  //     rethrow;
-  //   }
-  // }
+  Future<PassedModel> passedApi(context) async{
+    try{
+      Map data = {
+        "uid": Provider.of<HomeProvider>(context,listen: false).uid,
+        "lats": Provider.of<HomeProvider>(context,listen: false).lat,
+        "longs": Provider.of<HomeProvider>(context,listen: false).long
+      };
+      Response response = await _api.sendRequest.post("${Config.baseUrlApi}${Config.passed}",data: data);
+
+      if(response.statusCode == 200){
+        if(response.data["Result"] == "true"){
+          return PassedModel.fromJson(response.data);
+        }else{
+          // emit(MatchErrorState(response.data["Result"]));
+          return PassedModel.fromJson(response.data);
+        }
+      }else{
+        emit(MatchErrorState(response.data["Result"]));
+        return PassedModel.fromJson(response.data);
+      }
+    }catch(e){
+      emit(MatchErrorState(e.toString()));
+      rethrow;
+    }
+  }
 
   Future<NewMatchModel> newMatchApi(context) async{
     try{
@@ -156,8 +156,8 @@ class MatchCubit extends Cubit<MatchStates> {
     emit(MatchLoadingState());
   }
 
-  completeState(likeMeModel,newMatchModel,favListModel){
-    emit(MatchCompleteState(likeMeModel,newMatchModel,favListModel));
+  completeState(likeMeModel,newMatchModel,favListModel,passedModel){
+    emit(MatchCompleteState(likeMeModel,newMatchModel,favListModel,passedModel));
   }
 
 }

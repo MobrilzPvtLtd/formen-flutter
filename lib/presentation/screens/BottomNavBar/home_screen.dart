@@ -19,6 +19,7 @@ import '../../../Logic/cubits/Home_cubit/homestate.dart';
 import '../../../Logic/cubits/onBording_cubit/onbording_cubit.dart';
 import '../../../core/config.dart';
 import '../../../core/ui.dart';
+import '../../../data/models/homemodel.dart';
 import '../../../language/localization/app_localization.dart';
 import '../../firebase/chat_page.dart';
 import '../../widgets/sizeboxx.dart';
@@ -440,9 +441,16 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                  long: long.toString(),
                                  profileId: state.homeData.profilelist![index].profileId ?? '',
                                ).then((value) {
+                                 var profile = Profilelist(
+                                   profileName: state.homeData.profilelist![index].profileName ?? '',
+                                   profileBio: state.homeData.profilelist![index].profileBio ?? '',
+                                   profileAge: state.homeData.profilelist![index].profileAge,
+                                 );
                                  Navigator.push(
                                    context,
-                                   MaterialPageRoute(builder: (context) => ProfileScreen()),
+                                   MaterialPageRoute(builder: (context) => ProfileScreen(
+                                     profile: profile,
+                                   )),
                                  );
                                });
                              },

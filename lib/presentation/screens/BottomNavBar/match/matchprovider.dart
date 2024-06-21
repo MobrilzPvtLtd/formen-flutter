@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MatchProvider extends ChangeNotifier {
-  List menuData = ["New Match", "Like Me", "Favourite", "Passed"];
+  List menuData = ["New Match", "Like Me", "Favourite", "Me viu"];
 
   int selectIndex = 0;
 
@@ -17,26 +17,29 @@ class MatchProvider extends ChangeNotifier {
     matchCubit.loadingState();
     matchCubit.newMatchApi(context).then((newMatchApi) {
       matchCubit.favouriteApi(context).then((favoriteApi) {
-        // matchCubit.passedApi(context).then((passedApi) {
+        matchCubit.passedApi(context).then((passedApi) {
           matchCubit.likeMeApi(context).then((likeApi) {
-            matchCubit.completeState( likeApi, newMatchApi, favoriteApi);
+            matchCubit.completeState(
+                likeApi, newMatchApi, favoriteApi, passedApi);
             notifyListeners();
           });
         });
       });
-
+    });
   }
 
   callAllApi(context){
       MatchCubit matchCubit = BlocProvider.of<MatchCubit>(context, listen: false);
       matchCubit.newMatchApi(context).then((newMatchApi) {
         matchCubit.favouriteApi(context).then((favoriteApi) {
-          // matchCubit.passedApi(context).then((passedApi) {
+          matchCubit.passedApi(context).then((passedApi) {
             matchCubit.likeMeApi(context).then((likeApi) {
-              matchCubit.completeState(likeApi, newMatchApi, favoriteApi);
+              matchCubit.completeState(
+                  likeApi, newMatchApi, favoriteApi, passedApi);
               notifyListeners();
             });
           });
+        });
       });
   }
 }

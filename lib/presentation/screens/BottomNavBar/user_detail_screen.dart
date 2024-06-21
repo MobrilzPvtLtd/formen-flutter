@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/models/homemodel.dart';
+
 class ProfileScreen extends StatefulWidget {
   static const String profileScreenRoute = "/profileScreen";
+  final Profilelist profile;
   @override
+  ProfileScreen({required this.profile});
+
   _ProfileScreenState createState() => _ProfileScreenState();
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+
   bool showAge = true;
   @override
   Widget build(BuildContext context) {
@@ -29,8 +35,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.all(16.0),
               child: SectionTitle(title: 'Profile Information'),
             ),
-            _buildProfileItem(title: 'Display Name', subtitle: 'Others will see this on the grid...'),
-            _buildProfileItem(title: 'About Me', subtitle: 'What should people know about you...'),
+            _buildProfileItem(title: 'Name', subtitle: widget.profile.profileName!),
+            _buildProfileItem(title: 'About Me', subtitle: widget.profile.profileBio!),
             _buildProfileItem(title: 'My Tags', subtitle: 'Add keywords to be easily found...'),
             Container(color: Colors.black,height: 70,child: const Padding(
               padding: EdgeInsets.only(left:16.0),
@@ -51,7 +57,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 });
               },
             ),
-            _buildProfileItem(title: 'Age', trailing: '52'),
+            _buildProfileItem(title: 'Age', trailing: widget.profile.profileAge!.toString()),
             _buildProfileItem(title: 'Height'),
             _buildProfileItem(title: 'Weight'),
             _buildProfileItem(title: 'Body Type'),
@@ -123,25 +129,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             const SizedBox(height: 10),
-            Container(
-              height: 70,
-              color: Colors.black,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 16, right: 16, top: 16),
-                child: SectionTitle(title: 'Social Links'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16),
-              child: Column(
-                children: [
-                  SocialLink(title: 'Instagram', username: 'barbeariaseuadao'),
-                  SocialLink(title: 'Spotify', username: 'Add your favorite music'),
-                  SocialLink(title: 'Twitter', username: 'barbeariaseuadao'),
-                  SocialLink(title: 'Facebook', username: 'barbeariaseuadao'),
-                ],
-              ),
-            ),
+
           ],
         ),
       ),

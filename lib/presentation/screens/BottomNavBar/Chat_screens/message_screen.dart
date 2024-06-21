@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../../firebase/chatting_provider.dart';
 
 class MessagesTab extends StatefulWidget {
   @override
@@ -7,6 +10,21 @@ class MessagesTab extends StatefulWidget {
 }
 
 class _MessagesTabState extends State<MessagesTab> {
+
+  late ChattingProvider chattingProvider;
+
+  @override
+  void initState() {
+    super.initState();
+    chattingProvider = Provider.of<ChattingProvider>(context,listen: false);
+    chattingProvider.demo1(context).then((value) {
+      chattingProvider.isLoadingchat = false;
+    });
+    chattingProvider.getblockklisttApi(context);
+    chattingProvider.searchController.clear();
+    chattingProvider.isSearch = false;
+    // chattingProvider.isLoadingchat = true;
+  }
   final List<Map<String, dynamic>> messages = [
     {'icon': Icons.person, 'title': 'Turista psvo', 'subtitle': 'Oi'},
     {'icon': Icons.photo, 'title': '.', 'subtitle': 'Foto recebida'},
@@ -19,9 +37,11 @@ class _MessagesTabState extends State<MessagesTab> {
 
   @override
   Widget build(BuildContext context) {
+    chattingProvider = Provider.of<ChattingProvider>(context);
     return ListView.separated(
-      itemCount: messages.length,
+      itemCount: chattingProvider.searchIndexList.length,
       itemBuilder: (BuildContext context, int index) {
+        var result = chattingProvider.searchIndexList[index];
         final message = messages[index];
         return ListTile(
           leading: ClipRRect(
@@ -30,11 +50,11 @@ class _MessagesTabState extends State<MessagesTab> {
               color: Colors.grey.shade300, // Background color if there's no image
               width: 50.0,
               height: 50.0,
-              child: Icon(message['icon'] as IconData),
+              child:chattingProvider.searchiteams[result]["image"],
             ),
           ),
-          title: Text(message['title'] as String),
-          subtitle: Text(message['subtitle'] as String),
+          title: chattingProvider.searchiteams[result]["name"],
+          subtitle: chattingProvider.searchiteams[result]["message"],
         );
       },
       separatorBuilder: (BuildContext context, int index) {
