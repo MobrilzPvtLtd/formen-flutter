@@ -145,6 +145,7 @@ class _BrowesPage extends State<BrowesPage> {
                         return favourite(state.favListModel);
                       case 3:
                         return MeviudyanmicData();
+                      // return passed(state.passedModel);
                       default:
                         return newMatch(state.newMatchModel);
                     }
@@ -384,7 +385,7 @@ class _BrowesPage extends State<BrowesPage> {
 
   Widget passed(PassedModel passedModel) {
     return passedModel.passedlist!.isEmpty
-        ? MeviudyanmicData()
+        ? notFoundPage()
         : Expanded(
             child: GridView.builder(
               shrinkWrap: true,
