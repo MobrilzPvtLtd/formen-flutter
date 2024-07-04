@@ -1,3 +1,4 @@
+import 'package:dating/presentation/screens/BottomNavBar/chats.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,6 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-
   bool showAge = true;
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
-           Navigator.pop(context);
+            Navigator.pop(context);
           },
         ),
       ),
@@ -35,21 +35,38 @@ class _ProfileScreenState extends State<ProfileScreen> {
               padding: const EdgeInsets.all(16.0),
               child: SectionTitle(title: 'Profile Information'),
             ),
-            _buildProfileItem(title: 'Name', subtitle: widget.profile.profileName!),
-            _buildProfileItem(title: 'About Me', subtitle: widget.profile.profileBio!),
-            _buildProfileItem(title: 'My Tags', subtitle: 'Add keywords to be easily found...'),
-            Container(color: Colors.black,height: 70,child: const Padding(
-              padding: EdgeInsets.only(left:16.0),
-              child: Row(
-                children: [
-                  Text( 'Statistics'),
-                ],
+            _buildProfileItem(
+                title: 'Name', subtitle: widget.profile.profileName!),
+            _buildProfileItem(
+                title: 'About Me', subtitle: widget.profile.profileBio!),
+            _buildProfileItem(
+                title: 'My Tags',
+                subtitle: 'Add keywords to be easily found...'),
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (_) => ChatScreen()));
+              },
+              child: _buildProfileItem(
+                  title: 'Chats', subtitle: "let's talk together"),
+            ),
+            Container(
+              color: Colors.black,
+              height: 70,
+              child: const Padding(
+                padding: EdgeInsets.only(left: 16.0),
+                child: Row(
+                  children: [
+                    Text('Statistics'),
+                  ],
+                ),
               ),
-            ),),
+            ),
             SwitchListTile(
               activeTrackColor: Colors.yellow,
               activeColor: Colors.white,
-              title: const Text('Show Age', style: TextStyle(color: Colors.white)),
+              title:
+                  const Text('Show Age', style: TextStyle(color: Colors.white)),
               value: showAge,
               onChanged: (bool value) {
                 setState(() {
@@ -57,7 +74,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 });
               },
             ),
-            _buildProfileItem(title: 'Age', trailing: widget.profile.profileAge!.toString()),
+            _buildProfileItem(
+                title: 'Age', trailing: widget.profile.profileAge!.toString()),
             _buildProfileItem(title: 'Height'),
             _buildProfileItem(title: 'Weight'),
             _buildProfileItem(title: 'Body Type'),
@@ -73,8 +91,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             _buildExpectationItem(title: 'Looking For', trailing: 'None'),
             _buildExpectationItem(title: 'Meetup Place', trailing: 'None'),
-            _buildExpectationItem(title: 'Accept NSFW Photos', trailing: 'None'),
-
+            _buildExpectationItem(
+                title: 'Accept NSFW Photos', trailing: 'None'),
             Container(
               color: Colors.black,
               child: Padding(
@@ -84,7 +102,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             _buildNavigationItem(title: 'Sex'),
             _buildNavigationItem(title: 'Pronouns'),
-
             Container(
               color: Colors.black,
               child: Padding(
@@ -93,24 +110,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16.0,right: 16.0,top: 10.0),
+              padding:
+                  const EdgeInsets.only(left: 16.0, right: 16.0, top: 10.0),
               child: ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                separatorBuilder: (context, index) => const Divider(color: Color(0xFF545454)),
+                separatorBuilder: (context, index) =>
+                    const Divider(color: Color(0xFF545454)),
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   switch (index) {
                     case 0:
                       return _buildHealthItem(
                         title: 'HIV Test',
-                        subtitle: 'Insert your HIV status to add the date of the last test.',
+                        subtitle:
+                            'Insert your HIV status to add the date of the last test.',
                         trailing: 'Insert test date',
                       );
                     case 1:
                       return _buildHealthItem(
                         title: 'Test Reminders',
-                        subtitle: 'A reminder will be displayed in your Grindr inbox at the specified time.',
+                        subtitle:
+                            'A reminder will be displayed in your Grindr inbox at the specified time.',
                         trailing: 'Disabled',
                       );
                     case 2:
@@ -120,7 +141,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     case 3:
                       return _buildHealthNavigationItem(
                         title: 'Sexual Health Questions',
-                        subtitle: 'Learn more about HIV, PrEP, how to test for STIs, Grindr\'s commitment to privacy, and other FAQs.',
+                        subtitle:
+                            'Learn more about HIV, PrEP, how to test for STIs, Grindr\'s commitment to privacy, and other FAQs.',
                       );
                     default:
                       return Container();
@@ -129,7 +151,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
             ),
             const SizedBox(height: 10),
-
           ],
         ),
       ),
@@ -142,7 +163,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     String? trailing,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16,right: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -157,15 +178,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             subtitle: subtitle != null
                 ? Text(
-              subtitle,
-              style: const TextStyle(color: Colors.white70),
-            )
+                    subtitle,
+                    style: const TextStyle(color: Colors.white70),
+                  )
                 : null,
             trailing: trailing != null
                 ? Text(
-              trailing,
-              style: const TextStyle(color: Colors.grey),
-            )
+                    trailing,
+                    style: const TextStyle(color: Colors.grey),
+                  )
                 : null,
           ),
           const Divider(color: Color(0xFF545454)),
@@ -179,7 +200,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     String? trailing,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16,right: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -194,9 +215,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             trailing: trailing != null
                 ? Text(
-              trailing,
-              style: const TextStyle(color: Colors.grey),
-            )
+                    trailing,
+                    style: const TextStyle(color: Colors.grey),
+                  )
                 : null,
           ),
         ],
@@ -209,7 +230,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     String? subtitle,
   }) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16,right: 16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: GestureDetector(
         onTap: () {
           // Handle navigation
@@ -228,11 +249,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               subtitle: subtitle != null
                   ? Text(
-                subtitle,
-                style: const TextStyle(color: Colors.white70),
-              )
+                      subtitle,
+                      style: const TextStyle(color: Colors.white70),
+                    )
                   : null,
-              trailing: const Icon(Icons.arrow_forward_ios, color: Color(0xFF545454)),
+              trailing:
+                  const Icon(Icons.arrow_forward_ios, color: Color(0xFF545454)),
             ),
             const Divider(color: Color(0xFF545454)),
           ],
@@ -257,7 +279,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             fontWeight: FontWeight.bold,
           ),
         ),
-       const SizedBox(height: 4.0),
+        const SizedBox(height: 4.0),
         Text(
           subtitle,
           style: const TextStyle(color: Colors.white70, fontSize: 14.0),
@@ -267,7 +289,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           alignment: Alignment.centerRight,
           child: Text(
             trailing,
-            style:const TextStyle(color: Colors.grey),
+            style: const TextStyle(color: Colors.grey),
           ),
         ),
       ],
