@@ -29,7 +29,7 @@ class EditProfileProvider extends ChangeNotifier {
   final languageSearchContoller = TextEditingController();
   final religionSearchContoller = TextEditingController();
   final heightcontrooler = TextEditingController();
-
+  final id = TextEditingController();
   List<Interestlist>? interest;
   List<Languagelist>? language;
   List<Religionlist>? religion;
@@ -343,6 +343,7 @@ class EditProfileProvider extends ChangeNotifier {
     languageList.clear();
     interestList.clear();
     newImage.clear();
+    id.text =userData.userLogin!.id ?? "";
     name.text = userData.userLogin!.name ?? "";
     bio.text = userData.userLogin!.profileBio ?? "";
     email.text = userData.userLogin!.email ?? "";

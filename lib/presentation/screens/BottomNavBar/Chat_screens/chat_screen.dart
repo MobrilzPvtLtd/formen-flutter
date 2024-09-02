@@ -1,12 +1,13 @@
 
 import 'package:dating/presentation/screens/BottomNavBar/Chat_screens/taps_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'album_screen.dart';
 import 'message_screen.dart';
 
 class InboxScreen extends StatefulWidget {
+  const InboxScreen({super.key});
+
   @override
   _InboxScreenState createState() => _InboxScreenState();
 }
@@ -29,11 +30,11 @@ class _InboxScreenState extends State<InboxScreen> {
             unselectedLabelStyle: TextStyle(fontSize: 14.0),
           ),
         ),
-        body: TabBarView(
+        body:  TabBarView(
           children: [
-            MessagesTab(),
-            TapsTab(),
-            AlbumsTab(),
+           const MessagesTab(),
+            const TapsTab(),
+            CreateAlbumScreen(),
           ],
         ),
       ),

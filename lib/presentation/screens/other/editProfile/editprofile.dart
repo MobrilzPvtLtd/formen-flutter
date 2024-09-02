@@ -1689,7 +1689,7 @@ class _EditProfileState extends State<EditProfile> {
                                     borderRadius: BorderRadius.circular(10)
                                   ),
                                   // child:  Center(child: Text('New'.tr,style: TextStyle(color: Colors.white,fontSize: 13),)),
-                                  child:  Center(child: Text(AppLocalizations.of(context)?.translate("New") ?? "New",style: TextStyle(color: Colors.white,fontSize: 13),)),
+                                  child:  Center(child: Text(AppLocalizations.of(context)?.translate("New") ?? "New",style: const TextStyle(color: Colors.white,fontSize: 13),)),
                                 )
                               ],
                             ),

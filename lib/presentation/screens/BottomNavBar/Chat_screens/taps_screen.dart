@@ -1,7 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class TapsTab extends StatefulWidget {
+  const TapsTab({super.key});
+
   @override
   _TapsTabState createState() => _TapsTabState();
 }

@@ -81,42 +81,34 @@ class _CreatStepsState extends State<CreatSteps> {
         floatingActionButton: FloatingActionButton(
             onPressed: () {
 
-              if (onBordingProvider.name.text.isNotEmpty &&
-                  onBordingProvider.email.text.isNotEmpty &&
+              if(onBordingProvider.email.text.isNotEmpty &&
                   onBordingProvider.password.text.isNotEmpty &&
                   onBordingProvider.stepsCount == 0) {
                 onBordingProvider.updatestepsCount(1);
-              } else if (onBordingProvider.mobileNumber.text.isNotEmpty &&
+              }
+              else if (onBordingProvider.mobileNumber.text.isNotEmpty &&
                   onBordingProvider.stepsCount == 1) {
-                BlocProvider.of<OnbordingCubit>(context).mobileCheckApi(number: onBordingProvider.mobileNumber.text, ccode: onBordingProvider.ccode).then((value) {
-                  if (value == "true") {
-                    BlocProvider.of<OnbordingCubit>(context).sendOtpFunction(number: "+${onBordingProvider.ccode} ${onBordingProvider.mobileNumber.text}", context: context,isForgot: false);
-                  }
-                });
-              } else if (onBordingProvider.bdatePicker.toString() != "null" &&
-                  onBordingProvider.stepsCount == 2) {
+                onBordingProvider.updatestepsCount(2);
+                // BlocProvider.of<OnbordingCubit>(context).mobileCheckApi(number: onBordingProvider.mobileNumber.text, ccode: onBordingProvider.ccode).then((value) {
+                //   if (value == "true") {
+                //     BlocProvider.of<OnbordingCubit>(context).sendOtpFunction(number: "+${onBordingProvider.ccode} ${onBordingProvider.mobileNumber.text}", context: context,isForgot: false);
+                //   }
+                // });
+              } else if (onBordingProvider.stepsCount == 2) {
                 onBordingProvider.updatestepsCount(3);
-              } else if (onBordingProvider.select >= 0 &&
-                  onBordingProvider.stepsCount == 3) {
+              } else if (onBordingProvider.stepsCount == 3) {
                 onBordingProvider.updatestepsCount(4);
-              } else if (onBordingProvider.relationGoal >= 0 &&
-                  onBordingProvider.stepsCount == 4) {
+              } else if (onBordingProvider.stepsCount == 4) {
                 onBordingProvider.updatestepsCount(5);
-              } else if (onBordingProvider.kmCounter >= 10 &&
-                  onBordingProvider.stepsCount == 5) {
+              } else if (onBordingProvider.stepsCount == 5) {
                 onBordingProvider.updatestepsCount(6);
-              } else if (onBordingProvider.selectHobi.isNotEmpty &&
-                  onBordingProvider.selectHobi.length <= 5 &&
-                  onBordingProvider.stepsCount == 6) {
+              } else if (onBordingProvider.stepsCount == 6) {
                 onBordingProvider.updatestepsCount(7);
-              } else if (onBordingProvider.selectedLanguage.isNotEmpty &&
-                  onBordingProvider.stepsCount == 7) {
+              } else if (onBordingProvider.stepsCount == 7) {
                 onBordingProvider.updatestepsCount(8);
-              } else if (onBordingProvider.selectReligion >= 0 &&
-                  onBordingProvider.stepsCount == 8) {
+              } else if (onBordingProvider.stepsCount == 8) {
                 onBordingProvider.updatestepsCount(9);
-              } else if (onBordingProvider.select1 >= 0 &&
-                  onBordingProvider.stepsCount == 9) {
+              } else if (onBordingProvider.stepsCount == 9) {
                 onBordingProvider.updatestepsCount(10);
               // } else if (onBordingProvider.stepsCount == 10 &&
               //     onBordingProvider.images.length >= 3) {
@@ -237,8 +229,7 @@ class _CreatStepsState extends State<CreatSteps> {
                     onBordingProvider.stepsCount == 9) {
                   // Fluttertoast.showToast(msg: "Please Select Gender".tr);
                   Fluttertoast.showToast(msg: AppLocalizations.of(context)?.translate("Please Select Gender") ?? "Please Select Gender");
-                } else if (onBordingProvider.stepsCount == 10 &&
-                    onBordingProvider.images.length < 3) {
+                } else if (onBordingProvider.stepsCount == 10) {
                   // Fluttertoast.showToast(msg: "Please Select Minimum 3 Images".tr);
                   Fluttertoast.showToast(msg: AppLocalizations.of(context)?.translate("Please Select Minimum 3 Images") ?? "Please Select Minimum 3 Images");
                 }

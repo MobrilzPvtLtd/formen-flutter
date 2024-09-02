@@ -43,7 +43,7 @@ class _ChatroomState extends State<Chatroom> {
         title: const Text("Chats",style: TextStyle(fontSize: 30,color: Colors.black,fontWeight: FontWeight.w700),),
       ),
       body: SafeArea(
-        minimum: EdgeInsets.symmetric(horizontal: 10),
+        minimum: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
 
           mainAxisAlignment: MainAxisAlignment.end,
@@ -101,10 +101,10 @@ class _ChatroomState extends State<Chatroom> {
                     height: height * 0.06,
                     width: width * 0.12,
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(98, 255, 193, 7),
+                        color: const Color.fromARGB(98, 255, 193, 7),
                         borderRadius: BorderRadius.circular(100),
-                        border: Border.all(width: 1, color: Color(0xffff36a21))),
-                    child: Icon(
+                        border: Border.all(width: 1, color: const Color(0xffff36a21))),
+                    child: const Icon(
                       Icons.arrow_right_alt_rounded,
                       size: 30,
                     ),

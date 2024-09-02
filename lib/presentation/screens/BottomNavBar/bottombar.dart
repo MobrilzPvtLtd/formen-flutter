@@ -1,14 +1,10 @@
 // ignore_for_file: deprecated_member_use, avoid_unnecessary_containers
 
 import 'package:dating/core/ui.dart';
-import 'package:dating/presentation/firebase/chat_page.dart';
 import 'package:dating/presentation/screens/BottomNavBar/match/browes.dart';
-import 'package:dating/presentation/screens/BottomNavBar/chats.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
 import 'package:dating/presentation/screens/BottomNavBar/home_screen.dart';
 import 'package:dating/presentation/screens/BottomNavBar/mapscreen.dart';
-import 'package:dating/presentation/screens/chatroom/chatroom.dart';
-import 'package:dating/presentation/screens/other/premium/premium.dart';
 import 'package:dating/presentation/screens/other/profileScreen/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -35,7 +31,7 @@ class _BottomBarState extends State<BottomBar> {
     const MapScreen(),
     const BrowesPage(),
     // const LikesScreen(),
-     InboxScreen(),
+     const InboxScreen(),
     const ProfilePage(),
   ];
   List bottomItems = [

@@ -65,7 +65,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                     ),
                   ),
                   const SizedBox(height: 10,),
-                  Text(onBordingProvider.onBordingData[onBordingProvider.onboradingCurrent]["title"],style:TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 40) ),
+                  Text(onBordingProvider.onBordingData[onBordingProvider.onboradingCurrent]["title"],style:const TextStyle(color: Colors.white,fontWeight: FontWeight.w800,fontSize: 40) ),
                   const SizedBox(height: 20,),
                    onBordingProvider.onboradingCurrent == onBordingProvider.onBordingData.length-1 ?   Row(
                      mainAxisAlignment: MainAxisAlignment.center,
@@ -91,7 +91,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                           Navigator.pushNamedAndRemoveUntil(context, AuthScreen.authScreenRoute, (route) => false);
                         },
                         // child: Text("Skip".tr,style: Theme.of(context).textTheme.bodyLarge!.copyWith(fontWeight: FontWeight.w700),textAlign: TextAlign.center,))),
-                        child: Text(AppLocalizations.of(context)?.translate("Skip") ?? "Skip",textAlign: TextAlign.center,style: TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w600)))
+                        child: Text(AppLocalizations.of(context)?.translate("Skip") ?? "Skip",textAlign: TextAlign.center,style: const TextStyle(color: Colors.white,fontSize: 25,fontWeight: FontWeight.w600)))
                     ),
                      // Expanded(child: MainButton(title: "Next".tr,radius: 80,onTap: () {
                      Expanded(child: MainButton(title: AppLocalizations.of(context)?.translate("Next") ?? "Next",radius: 80,onTap: () {

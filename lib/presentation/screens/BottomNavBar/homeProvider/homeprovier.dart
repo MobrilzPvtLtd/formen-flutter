@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'dart:ui';
+
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:dating/core/api.dart';
 import 'package:dating/core/config.dart';

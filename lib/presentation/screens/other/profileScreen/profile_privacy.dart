@@ -1,4 +1,3 @@
-import 'package:dating/presentation/push_notification_screen.dart';
 import 'package:dating/presentation/screens/other/profileScreen/blocklist_page.dart';
 import 'package:dating/presentation/screens/other/profileScreen/profile_provider.dart';
 import 'package:flutter/material.dart';

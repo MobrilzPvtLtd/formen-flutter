@@ -1,10 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../../api_data/chat_api.dart';
 import '../../../firebase/chatting_provider.dart';
+import '../../other/editProfile/editprofile_provider.dart';
 
 class MessagesTab extends StatefulWidget {
+  const MessagesTab({super.key});
+
   @override
   _MessagesTabState createState() => _MessagesTabState();
 }
@@ -12,10 +15,11 @@ class MessagesTab extends StatefulWidget {
 class _MessagesTabState extends State<MessagesTab> {
 
   late ChattingProvider chattingProvider;
-
+  late EditProfileProvider editProvider;
   @override
   void initState() {
     super.initState();
+    getMessageList(editProvider.id.text);
     chattingProvider = Provider.of<ChattingProvider>(context,listen: false);
     chattingProvider.demo1(context).then((value) {
       chattingProvider.isLoadingchat = false;

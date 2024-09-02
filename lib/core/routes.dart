@@ -3,7 +3,6 @@ import 'package:dating/presentation/screens/BottomNavBar/likes.dart';
 import 'package:dating/presentation/screens/BottomNavBar/match/browes.dart';
 import 'package:dating/presentation/screens/BottomNavBar/mapscreen.dart';
 import 'package:dating/presentation/screens/BottomNavBar/notification_page.dart';
-import 'package:dating/presentation/screens/BottomNavBar/user_detail_screen.dart';
 import 'package:dating/presentation/screens/Splash_Bording/auth_screen.dart';
 import 'package:dating/presentation/screens/other/editProfile/editprofile.dart';
 import 'package:dating/presentation/screens/other/likeMatch/like_match.dart';

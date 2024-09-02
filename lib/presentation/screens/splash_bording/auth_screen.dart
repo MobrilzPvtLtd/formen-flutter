@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:dating/Logic/cubits/auth_cubit/auth_cubit.dart';
 import 'package:dating/Logic/cubits/auth_cubit/auth_state.dart';
 import 'package:dating/core/ui.dart';
@@ -13,7 +12,6 @@ import 'package:dating/presentation/widgets/sizeboxx.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

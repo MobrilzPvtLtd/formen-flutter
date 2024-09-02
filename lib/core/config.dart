@@ -14,11 +14,12 @@ class Config {
 
 
 
-  
 
-
-
-
+  static const String getMessageList = "/chat/get_chat_list.php?sender_id=";
+  static const String lastAvailable = "/user_last_available.php";
+  static const String getChat = "/chat/get_messages.php?sender_id=";
+  static const String sendChat = "/chat/send_message.php?sender_id=";
+  static const String userLastAvailable = "/user_last_available.php";
   static const String relationGoalList = "/goal.php";
   static const String getInterestList = "/interest.php";
   static const String languagelist = "/languagelist.php";

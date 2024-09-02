@@ -323,7 +323,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                                             },
                                                             style: ButtonStyle(elevation: const MaterialStatePropertyAll(0),shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),backgroundColor: MaterialStatePropertyAll(AppColors.appColor)),
                                                             // child:  Text('Yes, Block'.tr,style: TextStyle(color: Colors.white)),
-                                                            child:  Text(AppLocalizations.of(context)?.translate("Yes, Block") ?? "Yes, Block",style: TextStyle(color: Colors.white)),
+                                                            child:  Text(AppLocalizations.of(context)?.translate("Yes, Block") ?? "Yes, Block",style: const TextStyle(color: Colors.white)),
                                                           ),
                                                         ),
                                                       ],
@@ -437,7 +437,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                                                 },
                                                                 style: ButtonStyle(elevation: const MaterialStatePropertyAll(0),shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(25))),backgroundColor: MaterialStatePropertyAll(AppColors.appColor)),
                                                                 // child: Text('Continue'.tr,style: TextStyle(color: Colors.white)),
-                                                                child: Text(AppLocalizations.of(context)?.translate("Continue") ?? "Continue",style: TextStyle(color: Colors.white)),
+                                                                child: Text(AppLocalizations.of(context)?.translate("Continue") ?? "Continue",style: const TextStyle(color: Colors.white)),
                                                               ),
                                                             ),
                                                           ],
@@ -621,7 +621,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                             width: 5,
                                           ),
                                           Image.network(
-                                            "${Config.baseUrl}${data.img}",
+                                            "${Config.baseUrl}/${data.img}",
                                             height: 24,
                                             width: 24,
                                           )
@@ -670,7 +670,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                         ),
 
                                         Image.network(
-                                          "${Config.baseUrl}${data.img}",
+                                          "${Config.baseUrl}/${data.img}",
                                           height: 24,
                                           width: 24,
                                         )

@@ -1,9 +1,7 @@
 import 'package:dating/core/config.dart';
 import 'package:dating/data/models/planmodel.dart';
-import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 
 import '../../../../core/api.dart';
 

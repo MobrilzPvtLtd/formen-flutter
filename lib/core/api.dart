@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:dating/core/config.dart';
 import 'package:dio/dio.dart';

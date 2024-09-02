@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dating/Logic/cubits/Home_cubit/home_cubit.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
 import 'package:dating/presentation/screens/BottomNavBar/notification_page.dart';
@@ -21,12 +20,11 @@ import '../../../core/config.dart';
 import '../../../core/ui.dart';
 import '../../../data/models/homemodel.dart';
 import '../../../language/localization/app_localization.dart';
-import '../../firebase/chat_page.dart';
 import '../../widgets/sizeboxx.dart';
 import '../other/editProfile/editprofile.dart';
 import '../other/profileAbout/detailprovider.dart';
-import '../other/profileAbout/detailscreen.dart';
 import '../splash_bording/onBordingProvider/onbording_provider.dart';
+import 'detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String homeScrennRoute = "/homeScreen";
@@ -445,6 +443,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                    profileName: state.homeData.profilelist![index].profileName ?? '',
                                    profileBio: state.homeData.profilelist![index].profileBio ?? '',
                                    profileAge: state.homeData.profilelist![index].profileAge,
+                                   profileId: state.homeData.profilelist![index].profileId,
+                                   profileImages: state.homeData.profilelist![index].profileImages,
+                                   profileDistance: state.homeData.profilelist![index].profileDistance,
                                  );
                                  Navigator.push(
                                    context,
@@ -474,19 +475,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                          overflow: TextOverflow.ellipsis,
                                          maxLines: 1,
                                        ),
-                                      const SizedBox(width: 10),
+                                      const SizedBox(width: 20),
                                        // Text(
                                        //   "${state.homeData.profilelist![index].profileBio}",
                                        //   style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Colors.white),
                                        //   overflow: TextOverflow.ellipsis,
                                        //   maxLines: 2,
                                        // ),
+
                                        Container(
                                          width: 10,
                                          height: 10,
-                                         decoration:const BoxDecoration(
+                                         decoration: BoxDecoration(
                                              shape: BoxShape.circle,
-                                             color:Colors.green
+                                             color:state.homeData.lastAvailable == DateTime.now()?Colors.green:Colors.amber,
                                            // color: isOnline ? Colors.green : Colors.yellow, // Set indicator color based on online/offline status
                                          ),
                                        ),

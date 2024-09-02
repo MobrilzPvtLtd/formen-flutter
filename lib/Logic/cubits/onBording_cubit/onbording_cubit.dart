@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:dating/Logic/cubits/onBording_cubit/onbording_state.dart';
 import 'package:dating/core/api.dart';
@@ -8,7 +7,6 @@ import 'package:dating/data/models/languagemodel.dart';
 import 'package:dating/data/models/religionmodel.dart';
 import 'package:dating/data/models/usermodel.dart';
 import 'package:dating/presentation/firebase/auth_firebase.dart';
-import 'package:dating/presentation/screens/BottomNavBar/bottombar.dart';
 import 'package:dating/presentation/screens/splash_bording/onBordingProvider/onbording_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -279,7 +277,8 @@ class OnbordingCubit extends Cubit<OnbordingState> {
           .post("${Config.baseUrlApi}${Config.forgetPassword}", data: data);
       if (response.statusCode == 200) {
         if (response.data["Result"] == "true") {
-          Navigator.pushNamedAndRemoveUntil(context, AuthScreen.authScreenRoute, (route) => false);
+          Navigator.pushNamedAndRemoveUntil(
+              context, AuthScreen.authScreenRoute, (route) => false);
           emit(ErrorState(response.data["ResponseMsg"]));
         } else {
           Navigator.pop(context);
@@ -293,5 +292,9 @@ class OnbordingCubit extends Cubit<OnbordingState> {
       emit(ErrorState(e.toString()));
       rethrow;
     }
+
+
   }
+
+
 }

@@ -8,10 +8,8 @@ import 'package:dating/data/models/newmatchmodel.dart';
 import 'package:dating/data/models/passedmodel.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
 import 'package:dating/presentation/screens/BottomNavBar/match/matchprovider.dart';
-import 'package:dating/presentation/screens/BottomNavBar/user_detail_screen.dart';
 import 'package:dating/presentation/screens/other/likeMatch/like_match.dart';
 import 'package:dating/presentation/screens/other/likeMatch/likematch_provider.dart';
-import 'package:dating/presentation/screens/other/profileScreen/profile_page.dart';
 import 'package:dating/presentation/widgets/sizeboxx.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -1083,7 +1081,7 @@ class _BrowesPage extends State<BrowesPage> {
               crossAxisCount: 2),
           itemBuilder: (context, index) {
             return Container(
-              margin: EdgeInsets.all(10),
+              margin: const EdgeInsets.all(10),
               height: height * 0.08,
               width: width * 0.08,
               decoration: const BoxDecoration(

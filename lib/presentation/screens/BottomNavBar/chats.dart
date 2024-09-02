@@ -6,7 +6,6 @@ import 'package:dating/presentation/firebase/chatting_provider.dart';
 import 'package:dating/presentation/firebase/pickup_callpage.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
 import 'package:dating/presentation/widgets/appbarr.dart';
-import 'package:dating/presentation/widgets/other_widget.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

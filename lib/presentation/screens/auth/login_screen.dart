@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:dating/Logic/cubits/onBording_cubit/onbording_cubit.dart';
 import 'package:dating/Logic/cubits/onBording_cubit/onbording_state.dart';
@@ -291,7 +290,7 @@ class _LoginScreenState extends State<LoginScreen> {
               }
               if (state is CompletSteps) {
                 // Navigator.pushNamed(context, BottomBar.bottomBarRoute);
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => BottomBar()), (route) => false);
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => const BottomBar()), (route) => false);
               }
             }, builder: (context, state) {
               if (state is LoadingState) {

@@ -395,6 +395,7 @@ class HomeModel {
   Plandata? plandata;
   String? chat;
   String? isVerify;
+  String? lastAvailable;
 
   HomeModel({
     this.responseCode,
@@ -414,6 +415,7 @@ class HomeModel {
     this.plandata,
     this.chat,
     this.isVerify,
+    this.lastAvailable
   });
 
   factory HomeModel.fromJson(Map<String, dynamic> json) => HomeModel(
@@ -434,6 +436,7 @@ class HomeModel {
     plandata: json["plandata"] == null ? null : Plandata.fromJson(json["plandata"]),
     chat: json["chat"],
     isVerify: json["is_verify"],
+    lastAvailable: json["last_available"]
 
   );
 
@@ -455,6 +458,7 @@ class HomeModel {
     "plandata": plandata?.toJson(),
     "chat": chat,
     "is_verify": isVerify,
+    "last_available":lastAvailable
   };
 }
 class Plandata {

@@ -45,7 +45,7 @@ class HomePageCubit extends Cubit<HomePageStates> {
         "uid": uid,
         // "lats": lat,
         "lats": lat,
-        "longs": long
+        "longs": long,
       };
 
 

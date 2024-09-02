@@ -86,7 +86,7 @@ class _CompletePaymentState extends State<CompletePayment> {
       body: Container(
         child: loading
             ? Column(
-                children: [
+                children: const [
                   Expanded(
                     child: Center(
                       child: SpinKitFadingCube(

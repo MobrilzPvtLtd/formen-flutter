@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 PreferredSize appbarr(context,String title,{Widget? traling}){

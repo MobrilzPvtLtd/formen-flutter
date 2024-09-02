@@ -7,7 +7,6 @@ import 'package:dating/core/config.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get/get_utils/src/platform/platform.dart';
 
 import 'package:webview_flutter/webview_flutter.dart';
 
@@ -74,7 +73,7 @@ class _StripePaymentWebState extends State<StripePaymentWeb> {
                           maxLines: 2,
                           textAlign: TextAlign.center,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.black,
                               fontSize: 15,
                               fontWeight: FontWeight.w500,

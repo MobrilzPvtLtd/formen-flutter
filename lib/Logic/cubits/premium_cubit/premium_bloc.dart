@@ -1,4 +1,3 @@
-import 'package:dating/Logic/cubits/onBording_cubit/onbording_state.dart';
 import 'package:dating/Logic/cubits/premium_cubit/premium_state.dart';
 import 'package:dating/core/api.dart';
 import 'package:dating/core/config.dart';
@@ -6,7 +5,6 @@ import 'package:dating/data/models/paymentmodel.dart';
 import 'package:dating/data/models/premiummodel.dart';
 import 'package:dating/presentation/screens/BottomNavBar/bottombar.dart';
 import 'package:dating/presentation/screens/BottomNavBar/homeProvider/homeprovier.dart';
-import 'package:dating/presentation/screens/other/premium/premium_provider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
